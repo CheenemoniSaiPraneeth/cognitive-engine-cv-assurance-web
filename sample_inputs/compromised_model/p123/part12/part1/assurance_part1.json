@@ -1,0 +1,2799 @@
+{
+  "schema_version": "1.0",
+  "part": "1 - training-data integrity",
+  "detector_version": "part1-0.1.0",
+  "created_at": "2026-09-29T07:53:47+00:00",
+  "disposition": "QUARANTINE",
+  "dataset_manifest": {
+    "dataset_id": "DS-12953977",
+    "format": "COCO",
+    "root": "/home/claude/demo_p1234/dataset",
+    "annotation_source": "/home/claude/demo_p1234/dataset/annotations.json",
+    "dataset_sha256": "129539776cab3f15998fb4b9450a0fc0d26dcc7890d77c49a147179a23104819",
+    "sample_count": 368,
+    "annotation_count": 368,
+    "trusted_reference": null
+  },
+  "configuration": {
+    "seed": 0,
+    "workers": 4,
+    "embedding": {
+      "backend": "handcrafted",
+      "onnx_path": null,
+      "input_size": 224
+    },
+    "duplicates": {
+      "phash_max_dist": 6,
+      "dhash_max_dist": 10,
+      "semantic_min_cosine": 0.97,
+      "review_min_group_size": 5,
+      "flood_min_group_size": 8,
+      "flood_min_fraction": 0.02
+    },
+    "label_integrity": {
+      "k": 10,
+      "min_neighbours": 5,
+      "min_dominant_share": 0.6,
+      "max_assigned_share": 0.3,
+      "kmeans_cluster_size": 15
+    },
+    "ood": {
+      "k": 10,
+      "z_threshold": 3.5,
+      "min_votes": 2,
+      "pca_components": 32,
+      "min_samples": 30
+    },
+    "trigger": {
+      "patch": 8,
+      "stride": 2,
+      "min_patch_std": 30.0,
+      "min_support": 5,
+      "min_support_fraction": 0.01,
+      "min_position_ratio": 10.0,
+      "max_pixel_std": 18.0,
+      "merge_jaccard": 0.5,
+      "max_candidates": 20
+    },
+    "sources": {
+      "min_count": 3,
+      "min_abs_rate": 0.05,
+      "min_rate_ratio": 2.0,
+      "quarantine_cross_signals": 3
+    }
+  },
+  "configuration_sha256": "3fad25cc3dc85e9d554e43b3fba0e0000cd8e395771b1b934530e8ea2527cb8f",
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.8.0",
+    "encoder_file_sha256": null,
+    "network_access_required": false,
+    "training_performed": false
+  },
+  "profile": {
+    "volume": {
+      "images": 368,
+      "annotations": 368,
+      "unlabelled_images": 0
+    },
+    "classes": {
+      "frequency": {
+        "circle": 100,
+        "square": 109,
+        "stripes": 83,
+        "triangle": 76
+      },
+      "declared_classes": {
+        "0": "circle",
+        "1": "square",
+        "2": "stripes",
+        "3": "triangle"
+      },
+      "imbalance_ratio": 1.4342105263157894
+    },
+    "image_properties": {
+      "formats": {
+        "PNG": 343,
+        "JPEG": 24
+      },
+      "width": {
+        "min": 128.0,
+        "p5": 128.0,
+        "median": 128.0,
+        "mean": 128.0,
+        "p95": 128.0,
+        "max": 128.0
+      },
+      "height": {
+        "min": 128.0,
+        "p5": 128.0,
+        "median": 128.0,
+        "mean": 128.0,
+        "p95": 128.0,
+        "max": 128.0
+      },
+      "aspect_ratio": {
+        "min": 1.0,
+        "p5": 1.0,
+        "median": 1.0,
+        "mean": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "brightness": {
+        "min": 71.563232421875,
+        "p5": 94.64617919921875,
+        "median": 126.29150390625,
+        "mean": 126.53096850452528,
+        "p95": 159.56231689453125,
+        "max": 178.501708984375
+      },
+      "contrast": {
+        "min": 1.7186671495437622,
+        "p5": 7.6937971115112305,
+        "median": 16.22697353363037,
+        "mean": 18.01979145489104,
+        "p95": 29.54715585708618,
+        "max": 114.48999786376953
+      },
+      "sharpness": {
+        "min": 16.794628143310547,
+        "p5": 19.881248950958252,
+        "median": 65.34664916992188,
+        "mean": 268.6040426473148,
+        "p95": 356.74560546875,
+        "max": 15467.7509765625
+      }
+    },
+    "annotations": {
+      "boxes_per_image": {
+        "min": 1.0,
+        "p5": 1.0,
+        "median": 1.0,
+        "mean": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "relative_box_area": {
+        "min": -0.01220703125,
+        "p5": 0.09017333984375,
+        "median": 0.13330078125,
+        "mean": 0.13521194458007812,
+        "p95": 0.1947021484375,
+        "max": 0.2197265625
+      },
+      "centre_heatmap_3x3": [
+        [
+          31,
+          45,
+          14
+        ],
+        [
+          47,
+          132,
+          40
+        ],
+        [
+          13,
+          33,
+          13
+        ]
+      ]
+    },
+    "sources": {
+      "source_id": {
+        "contributor_a": {
+          "count": 80,
+          "fraction": 0.2174
+        },
+        "contributor_b": {
+          "count": 80,
+          "fraction": 0.2174
+        },
+        "contributor_c": {
+          "count": 80,
+          "fraction": 0.2174
+        },
+        "contributor_x": {
+          "count": 128,
+          "fraction": 0.3478
+        }
+      },
+      "contributor_id": {
+        "contributor_a": {
+          "count": 80,
+          "fraction": 0.2174
+        },
+        "contributor_b": {
+          "count": 80,
+          "fraction": 0.2174
+        },
+        "contributor_c": {
+          "count": 80,
+          "fraction": 0.2174
+        },
+        "contributor_x": {
+          "count": 128,
+          "fraction": 0.3478
+        }
+      },
+      "batch_id": {
+        "batch_0": {
+          "count": 40,
+          "fraction": 0.1087
+        },
+        "batch_1": {
+          "count": 40,
+          "fraction": 0.1087
+        },
+        "batch_2": {
+          "count": 40,
+          "fraction": 0.1087
+        },
+        "batch_3": {
+          "count": 40,
+          "fraction": 0.1087
+        },
+        "batch_4": {
+          "count": 40,
+          "fraction": 0.1087
+        },
+        "batch_5": {
+          "count": 40,
+          "fraction": 0.1087
+        },
+        "batch_x": {
+          "count": 128,
+          "fraction": 0.3478
+        }
+      }
+    },
+    "quality": {
+      "unreadable_or_missing": 2,
+      "issue_counts": {
+        "missing_image_file": 1,
+        "impossible_coordinates": 1,
+        "unreadable_image": 1
+      }
+    }
+  },
+  "module_status": {
+    "duplicates": {
+      "status": "OK",
+      "groups": 9
+    },
+    "label_integrity": {
+      "status": "OK",
+      "flagged": 17,
+      "assessed": 366
+    },
+    "ood": {
+      "status": "OK",
+      "mode": "self",
+      "flagged": 5,
+      "assessed": 366,
+      "scorers": 7
+    },
+    "trigger": {
+      "status": "OK",
+      "candidates": 3,
+      "assessed": 336,
+      "min_support": 5
+    }
+  },
+  "unavailable_tests": [
+    "trusted-reference OOD calibration: no trusted reference supplied (dataset used as its own reference - self-reference mode)"
+  ],
+  "finding_counts": {
+    "structural_error": 3,
+    "duplicate_pair_informational": 8,
+    "duplicate_flooding": 1,
+    "label_anomaly": 17,
+    "ood_anomaly": 5,
+    "trigger_candidate": 3,
+    "converging_signals": 2,
+    "source_concentration": 3
+  },
+  "duplicate_groups": [
+    {
+      "group_id": "G-001",
+      "level": "exact",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    },
+    {
+      "group_id": "G-002",
+      "level": "exact",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    },
+    {
+      "group_id": "G-003",
+      "level": "near",
+      "size": 25,
+      "fraction": 0.0683,
+      "flooding": true,
+      "member_count": 25
+    },
+    {
+      "group_id": "G-004",
+      "level": "near",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    },
+    {
+      "group_id": "G-005",
+      "level": "near",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    },
+    {
+      "group_id": "G-006",
+      "level": "near",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    },
+    {
+      "group_id": "G-007",
+      "level": "near",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    },
+    {
+      "group_id": "G-008",
+      "level": "near",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    },
+    {
+      "group_id": "G-009",
+      "level": "near",
+      "size": 2,
+      "fraction": 0.0055,
+      "flooding": false,
+      "member_count": 2
+    }
+  ],
+  "source_summaries": {
+    "source_id:contributor_a": {
+      "sample_count": 80,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "source_id:contributor_b": {
+      "sample_count": 80,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "source_id:contributor_c": {
+      "sample_count": 80,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "source_id:contributor_x": {
+      "sample_count": 128,
+      "duplicate_rate": 0.1953,
+      "label_anomaly_rate": 0.1328,
+      "ood_rate": 0.0391,
+      "trigger_candidate_rate": 0.1953,
+      "structural_error_rate": 0.0234,
+      "anomaly_categories": {
+        "duplicate": 25,
+        "label_anomaly": 17,
+        "ood": 5,
+        "trigger_candidate": 25,
+        "structural": 3
+      },
+      "share_of_all_flagged": {
+        "duplicate": 1.0,
+        "label_anomaly": 1.0,
+        "ood": 1.0,
+        "trigger_candidate": 1.0,
+        "structural": 1.0
+      },
+      "elevated_signals": [
+        "duplicate",
+        "label_anomaly",
+        "trigger_candidate"
+      ],
+      "cross_signal_count": 3,
+      "disposition": "QUARANTINE"
+    },
+    "contributor_id:contributor_a": {
+      "sample_count": 80,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "contributor_id:contributor_b": {
+      "sample_count": 80,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "contributor_id:contributor_c": {
+      "sample_count": 80,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "contributor_id:contributor_x": {
+      "sample_count": 128,
+      "duplicate_rate": 0.1953,
+      "label_anomaly_rate": 0.1328,
+      "ood_rate": 0.0391,
+      "trigger_candidate_rate": 0.1953,
+      "structural_error_rate": 0.0234,
+      "anomaly_categories": {
+        "duplicate": 25,
+        "label_anomaly": 17,
+        "ood": 5,
+        "trigger_candidate": 25,
+        "structural": 3
+      },
+      "share_of_all_flagged": {
+        "duplicate": 1.0,
+        "label_anomaly": 1.0,
+        "ood": 1.0,
+        "trigger_candidate": 1.0,
+        "structural": 1.0
+      },
+      "elevated_signals": [
+        "duplicate",
+        "label_anomaly",
+        "trigger_candidate"
+      ],
+      "cross_signal_count": 3,
+      "disposition": "QUARANTINE"
+    },
+    "batch_id:batch_0": {
+      "sample_count": 40,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "batch_id:batch_1": {
+      "sample_count": 40,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "batch_id:batch_2": {
+      "sample_count": 40,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "batch_id:batch_3": {
+      "sample_count": 40,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "batch_id:batch_4": {
+      "sample_count": 40,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "batch_id:batch_5": {
+      "sample_count": 40,
+      "duplicate_rate": 0.0,
+      "label_anomaly_rate": 0.0,
+      "ood_rate": 0.0,
+      "trigger_candidate_rate": 0.0,
+      "structural_error_rate": 0.0,
+      "anomaly_categories": {},
+      "share_of_all_flagged": {},
+      "elevated_signals": [],
+      "cross_signal_count": 0,
+      "disposition": "ACCEPT"
+    },
+    "batch_id:batch_x": {
+      "sample_count": 128,
+      "duplicate_rate": 0.1953,
+      "label_anomaly_rate": 0.1328,
+      "ood_rate": 0.0391,
+      "trigger_candidate_rate": 0.1953,
+      "structural_error_rate": 0.0234,
+      "anomaly_categories": {
+        "duplicate": 25,
+        "label_anomaly": 17,
+        "ood": 5,
+        "trigger_candidate": 25,
+        "structural": 3
+      },
+      "share_of_all_flagged": {
+        "duplicate": 1.0,
+        "label_anomaly": 1.0,
+        "ood": 1.0,
+        "trigger_candidate": 1.0,
+        "structural": 1.0
+      },
+      "elevated_signals": [
+        "duplicate",
+        "label_anomaly",
+        "trigger_candidate"
+      ],
+      "cross_signal_count": 3,
+      "disposition": "QUARANTINE"
+    }
+  },
+  "limitations": [
+    "Rare legitimate samples can resemble anomalies.",
+    "OOD detection identifies distributional difference, not malicious intent.",
+    "Similarity-based label analysis can be wrong for visually ambiguous classes.",
+    "Dataset-only trigger evidence cannot establish a functional model backdoor.",
+    "Thresholds should be calibrated on clean reference conditions and are recorded in this report.",
+    "Default handcrafted embeddings are less semantic than a frozen pretrained encoder (embedding.backend=onnx)."
+  ],
+  "sample_flags": {
+    "x_flood_seed.png": [
+      "duplicate_group"
+    ],
+    "x_flood_000.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_001.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_002.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_003.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_004.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_005.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_006.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_007.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_008.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_009.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_010.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_011.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_012.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_013.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_014.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_015.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_016.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_017.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_018.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_019.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_020.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_021.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_022.jpg": [
+      "duplicate_group"
+    ],
+    "x_flood_023.jpg": [
+      "duplicate_group"
+    ],
+    "x_flip_001.png": [
+      "label_anomaly"
+    ],
+    "x_flip_002.png": [
+      "label_anomaly"
+    ],
+    "x_flip_003.png": [
+      "label_anomaly"
+    ],
+    "x_flip_004.png": [
+      "label_anomaly"
+    ],
+    "x_flip_005.png": [
+      "label_anomaly"
+    ],
+    "x_flip_006.png": [
+      "label_anomaly"
+    ],
+    "x_flip_007.png": [
+      "label_anomaly"
+    ],
+    "x_flip_008.png": [
+      "label_anomaly"
+    ],
+    "x_flip_009.png": [
+      "label_anomaly"
+    ],
+    "x_flip_010.png": [
+      "label_anomaly"
+    ],
+    "x_flip_011.png": [
+      "label_anomaly"
+    ],
+    "x_flip_012.png": [
+      "label_anomaly"
+    ],
+    "x_flip_015.png": [
+      "label_anomaly"
+    ],
+    "x_flip_016.png": [
+      "label_anomaly"
+    ],
+    "x_flip_017.png": [
+      "label_anomaly"
+    ],
+    "x_flip_019.png": [
+      "label_anomaly"
+    ],
+    "x_ood_001.png": [
+      "ood_anomaly"
+    ],
+    "x_ood_004.png": [
+      "ood_anomaly"
+    ],
+    "x_ood_009.png": [
+      "ood_anomaly"
+    ],
+    "x_ood_010.png": [
+      "converging_signals",
+      "label_anomaly",
+      "ood_anomaly"
+    ],
+    "x_trig_000.png": [
+      "converging_signals",
+      "ood_anomaly",
+      "trigger_candidate"
+    ],
+    "x_trig_001.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_002.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_003.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_004.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_005.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_006.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_007.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_008.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_009.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_010.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_011.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_012.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_013.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_014.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_015.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_016.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_017.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_018.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_019.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_020.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_021.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_022.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_023.png": [
+      "trigger_candidate"
+    ],
+    "x_trig_024.png": [
+      "trigger_candidate"
+    ],
+    "x_corrupt_000.png": [
+      "structural_error"
+    ],
+    "x_missing_000.png": [
+      "structural_error"
+    ],
+    "x_badbox_000.png": [
+      "structural_error"
+    ]
+  },
+  "samples_index": {
+    "img_af0e470853": "clean_0000.png",
+    "img_0fd9cc6cce": "clean_0001.png",
+    "img_279006b23d": "clean_0002.png",
+    "img_6e034a657a": "clean_0003.png",
+    "img_ed1d6f2320": "clean_0004.png",
+    "img_6aa5286aa8": "clean_0005.png",
+    "img_e86aa910ff": "clean_0006.png",
+    "img_6b4bf27ce1": "clean_0007.png",
+    "img_75b8d1625e": "clean_0008.png",
+    "img_8db056ca1c": "clean_0009.png",
+    "img_aec0a3273d": "clean_0010.png",
+    "img_e8794d6f4a": "clean_0011.png",
+    "img_13512f3038": "clean_0012.png",
+    "img_7f17d10691": "clean_0013.png",
+    "img_5f8d16b898": "clean_0014.png",
+    "img_b7e57dade9": "clean_0015.png",
+    "img_574107eac3": "clean_0016.png",
+    "img_bd3183606b": "clean_0017.png",
+    "img_139c688a74": "clean_0018.png",
+    "img_e48cc8b014": "clean_0019.png",
+    "img_5eab270fe0": "clean_0020.png",
+    "img_ee9b8bd289": "clean_0021.png",
+    "img_1145dd78a8": "clean_0022.png",
+    "img_3e281e1848": "clean_0023.png",
+    "img_58c5248c9c": "clean_0024.png",
+    "img_fb298e1bf2": "clean_0025.png",
+    "img_984c1b9e00": "clean_0026.png",
+    "img_5d1ac7d138": "clean_0027.png",
+    "img_c42a82b0f9": "clean_0028.png",
+    "img_7b77dd42d0": "clean_0029.png",
+    "img_d9a6588937": "clean_0030.png",
+    "img_678d4dc0d1": "clean_0031.png",
+    "img_8c5bacef33": "clean_0032.png",
+    "img_a63557c314": "clean_0033.png",
+    "img_07411c86ae": "clean_0034.png",
+    "img_dc9fa9f3fd": "clean_0035.png",
+    "img_016c2b29a2": "clean_0036.png",
+    "img_da320551f4": "clean_0037.png",
+    "img_d6a698b41e": "clean_0038.png",
+    "img_a4a530d332": "clean_0039.png",
+    "img_2ac65604d3": "clean_0040.png",
+    "img_70daaecf5c": "clean_0041.png",
+    "img_8d7657f020": "clean_0042.png",
+    "img_435a418a23": "clean_0043.png",
+    "img_eb859ad5e1": "clean_0044.png",
+    "img_99188ec7ed": "clean_0045.png",
+    "img_b9a3d8de96": "clean_0046.png",
+    "img_31796c67bd": "clean_0047.png",
+    "img_361f4c3a03": "clean_0048.png",
+    "img_8fffff772e": "clean_0049.png",
+    "img_dc7803ad7a": "clean_0050.png",
+    "img_3e1eafb9bf": "clean_0051.png",
+    "img_dc3befbeee": "clean_0052.png",
+    "img_a9b44c5d14": "clean_0053.png",
+    "img_305fe59b5e": "clean_0054.png",
+    "img_fa65976b85": "clean_0055.png",
+    "img_305181c591": "clean_0056.png",
+    "img_3d150f8ee8": "clean_0057.png",
+    "img_19e851f954": "clean_0058.png",
+    "img_2615f76ed7": "clean_0059.png",
+    "img_cb829e5bf8": "clean_0060.png",
+    "img_69454cff93": "clean_0061.png",
+    "img_b07e18200e": "clean_0062.png",
+    "img_03eb321055": "clean_0063.png",
+    "img_7ab586844e": "clean_0064.png",
+    "img_7750a00269": "clean_0065.png",
+    "img_19fa86c7ce": "clean_0066.png",
+    "img_d8be8dec6a": "clean_0067.png",
+    "img_17e204c046": "clean_0068.png",
+    "img_11f849e674": "clean_0069.png",
+    "img_cb00842c1f": "clean_0070.png",
+    "img_0ad1787d66": "clean_0071.png",
+    "img_3ff8ecceab": "clean_0072.png",
+    "img_ff2369ae4f": "clean_0073.png",
+    "img_ce1c7e59bc": "clean_0074.png",
+    "img_26912902bb": "clean_0075.png",
+    "img_6b53cf6d53": "clean_0076.png",
+    "img_23f1379cd0": "clean_0077.png",
+    "img_2e321d2b27": "clean_0078.png",
+    "img_f001515c90": "clean_0079.png",
+    "img_594a26452d": "clean_0080.png",
+    "img_fc1e8d9ab2": "clean_0081.png",
+    "img_3a220e351c": "clean_0082.png",
+    "img_3d2ca06f70": "clean_0083.png",
+    "img_0ac19520f6": "clean_0084.png",
+    "img_1192377e76": "clean_0085.png",
+    "img_5d35d52bad": "clean_0086.png",
+    "img_6f5c117aed": "clean_0087.png",
+    "img_40c407ed0c": "clean_0088.png",
+    "img_b5543064ea": "clean_0089.png",
+    "img_5d96793106": "clean_0090.png",
+    "img_cc06da4373": "clean_0091.png",
+    "img_02f3a516e6": "clean_0092.png",
+    "img_74069099ed": "clean_0093.png",
+    "img_86377aacff": "clean_0094.png",
+    "img_e89d387b92": "clean_0095.png",
+    "img_e77e2a22d5": "clean_0096.png",
+    "img_9ee7d4371c": "clean_0097.png",
+    "img_7827c365f1": "clean_0098.png",
+    "img_8864d8ddaa": "clean_0099.png",
+    "img_9f906d752f": "clean_0100.png",
+    "img_fa65339341": "clean_0101.png",
+    "img_8aee964ed7": "clean_0102.png",
+    "img_b320f3cf37": "clean_0103.png",
+    "img_21fbe987c9": "clean_0104.png",
+    "img_043bd410e3": "clean_0105.png",
+    "img_edfcbc13fb": "clean_0106.png",
+    "img_31da7ec7e3": "clean_0107.png",
+    "img_556bfd19ec": "clean_0108.png",
+    "img_74b6f693ee": "clean_0109.png",
+    "img_ab614a3927": "clean_0110.png",
+    "img_12da9946f0": "clean_0111.png",
+    "img_26d37e98d9": "clean_0112.png",
+    "img_b331c0d394": "clean_0113.png",
+    "img_00079c0da9": "clean_0114.png",
+    "img_7c965e37a0": "clean_0115.png",
+    "img_dfb1092f10": "clean_0116.png",
+    "img_ef2a2343da": "clean_0117.png",
+    "img_bf39b6d540": "clean_0118.png",
+    "img_297fe9709f": "clean_0119.png",
+    "img_346a0fd325": "clean_0120.png",
+    "img_27ac0be3ad": "clean_0121.png",
+    "img_0301eef19b": "clean_0122.png",
+    "img_0a96aca33b": "clean_0123.png",
+    "img_f0219f4dbc": "clean_0124.png",
+    "img_57f52b7335": "clean_0125.png",
+    "img_2ade05e8b3": "clean_0126.png",
+    "img_b355357515": "clean_0127.png",
+    "img_d1c64a9364": "clean_0128.png",
+    "img_555eddc7d9": "clean_0129.png",
+    "img_fc454be5b2": "clean_0130.png",
+    "img_dac112f36b": "clean_0131.png",
+    "img_21d2ed3b5c": "clean_0132.png",
+    "img_ca78afcdd8": "clean_0133.png",
+    "img_2e2504f352": "clean_0134.png",
+    "img_58f08d3add": "clean_0135.png",
+    "img_7cbf5012ca": "clean_0136.png",
+    "img_7ecd5f6f42": "clean_0137.png",
+    "img_cf7deb8125": "clean_0138.png",
+    "img_e18deacd47": "clean_0139.png",
+    "img_28343b288b": "clean_0140.png",
+    "img_10b769a7c9": "clean_0141.png",
+    "img_c31062ecbb": "clean_0142.png",
+    "img_646e2c4663": "clean_0143.png",
+    "img_50a5497239": "clean_0144.png",
+    "img_3635187cdc": "clean_0145.png",
+    "img_a2a4b984cc": "clean_0146.png",
+    "img_0f9b796224": "clean_0147.png",
+    "img_edebc7f0df": "clean_0148.png",
+    "img_aa417c5eef": "clean_0149.png",
+    "img_7c82d4c7c9": "clean_0150.png",
+    "img_4167fb03b1": "clean_0151.png",
+    "img_25c1adecc8": "clean_0152.png",
+    "img_5eeb5ee5b3": "clean_0153.png",
+    "img_f86922a54b": "clean_0154.png",
+    "img_ccd1cb1103": "clean_0155.png",
+    "img_072bc47ea0": "clean_0156.png",
+    "img_2ea147149f": "clean_0157.png",
+    "img_5eef67bfed": "clean_0158.png",
+    "img_c69d2ac3e9": "clean_0159.png",
+    "img_044a05147c": "clean_0160.png",
+    "img_c6a96e609d": "clean_0161.png",
+    "img_1d0c008635": "clean_0162.png",
+    "img_40720f4cd1": "clean_0163.png",
+    "img_4dbade8231": "clean_0164.png",
+    "img_066f8efcff": "clean_0165.png",
+    "img_044332f833": "clean_0166.png",
+    "img_cb256463e1": "clean_0167.png",
+    "img_9d41f54af6": "clean_0168.png",
+    "img_84b2970dac": "clean_0169.png",
+    "img_915f206b22": "clean_0170.png",
+    "img_2123ea6e02": "clean_0171.png",
+    "img_8c33399640": "clean_0172.png",
+    "img_db63f0f1ce": "clean_0173.png",
+    "img_00ceb79ac2": "clean_0174.png",
+    "img_96d39b71d0": "clean_0175.png",
+    "img_fd605c6824": "clean_0176.png",
+    "img_2921ef45a9": "clean_0177.png",
+    "img_81c3c42fc9": "clean_0178.png",
+    "img_77f270cf9d": "clean_0179.png",
+    "img_5a82e9f087": "clean_0180.png",
+    "img_787c36555a": "clean_0181.png",
+    "img_cf56045635": "clean_0182.png",
+    "img_ea8649186e": "clean_0183.png",
+    "img_ac7d6cac24": "clean_0184.png",
+    "img_7442923503": "clean_0185.png",
+    "img_f4aefd7d4e": "clean_0186.png",
+    "img_7c60f5f054": "clean_0187.png",
+    "img_4f6dd8acb2": "clean_0188.png",
+    "img_ce8589f624": "clean_0189.png",
+    "img_cbc1a6e28d": "clean_0190.png",
+    "img_ee29bfc906": "clean_0191.png",
+    "img_3999ff15d7": "clean_0192.png",
+    "img_c6d8394279": "clean_0193.png",
+    "img_e6ea98db22": "clean_0194.png",
+    "img_eeb8950052": "clean_0195.png",
+    "img_af354559e1": "clean_0196.png",
+    "img_868bfa3a8c": "clean_0197.png",
+    "img_ac733bebcd": "clean_0198.png",
+    "img_373e64536a": "clean_0199.png",
+    "img_da3888fc91": "clean_0200.png",
+    "img_bbe693eab3": "clean_0201.png",
+    "img_39047d5b26": "clean_0202.png",
+    "img_54f28658ee": "clean_0203.png",
+    "img_7f3d0b6ce2": "clean_0204.png",
+    "img_6e7026bea9": "clean_0205.png",
+    "img_d57f7e1253": "clean_0206.png",
+    "img_163c56bc45": "clean_0207.png",
+    "img_cc943fb109": "clean_0208.png",
+    "img_4a5f4498fc": "clean_0209.png",
+    "img_91930de4dc": "clean_0210.png",
+    "img_593c7e0238": "clean_0211.png",
+    "img_02370fdb8c": "clean_0212.png",
+    "img_c0b4c12d34": "clean_0213.png",
+    "img_5bcb2c990c": "clean_0214.png",
+    "img_79354faf16": "clean_0215.png",
+    "img_7aad8d840c": "clean_0216.png",
+    "img_e3858dfe35": "clean_0217.png",
+    "img_f7e56785cb": "clean_0218.png",
+    "img_7e1dd8dc19": "clean_0219.png",
+    "img_3b6c90d2bd": "clean_0220.png",
+    "img_34e136ff36": "clean_0221.png",
+    "img_667e11355c": "clean_0222.png",
+    "img_ee4959efcc": "clean_0223.png",
+    "img_505492cfdb": "clean_0224.png",
+    "img_1635a34af1": "clean_0225.png",
+    "img_5980314a8c": "clean_0226.png",
+    "img_a6d6cd6b9d": "clean_0227.png",
+    "img_458fc32b78": "clean_0228.png",
+    "img_949b7d6de3": "clean_0229.png",
+    "img_f23090a327": "clean_0230.png",
+    "img_28cc42609d": "clean_0231.png",
+    "img_aec04a1e79": "clean_0232.png",
+    "img_ec3c5774f6": "clean_0233.png",
+    "img_fd191ef08c": "clean_0234.png",
+    "img_9b5dad81f3": "clean_0235.png",
+    "img_2bbc810687": "clean_0236.png",
+    "img_a0c5a5cfbf": "clean_0237.png",
+    "img_6b816942e4": "clean_0238.png",
+    "img_f52abdde0c": "clean_0239.png",
+    "img_c5d7a8462a": "x_clean_0000.png",
+    "img_e66e0c827f": "x_clean_0001.png",
+    "img_731a1ec540": "x_clean_0002.png",
+    "img_129c8adf9c": "x_clean_0003.png",
+    "img_792d92d83a": "x_clean_0004.png",
+    "img_e790abdaf3": "x_clean_0005.png",
+    "img_2ca94b0048": "x_clean_0006.png",
+    "img_b75de77a31": "x_clean_0007.png",
+    "img_55ecae091f": "x_clean_0008.png",
+    "img_1e9d11c7bb": "x_clean_0009.png",
+    "img_c335e8494c": "x_clean_0010.png",
+    "img_608ceb8496": "x_clean_0011.png",
+    "img_c39ee32789": "x_clean_0012.png",
+    "img_23100d8069": "x_clean_0013.png",
+    "img_2255fc7f78": "x_clean_0014.png",
+    "img_a2d8dd574a": "x_clean_0015.png",
+    "img_bc36f10edc": "x_clean_0016.png",
+    "img_d8dbf407d4": "x_clean_0017.png",
+    "img_30ec71bf8d": "x_clean_0018.png",
+    "img_11d4aebb93": "x_clean_0019.png",
+    "img_99b6239827": "x_clean_0020.png",
+    "img_88456de921": "x_clean_0021.png",
+    "img_023d88b99b": "x_clean_0022.png",
+    "img_aec2a20cf9": "x_clean_0023.png",
+    "img_98644ddd36": "x_clean_0024.png",
+    "img_66d6593e4b": "x_clean_0025.png",
+    "img_db82b58d18": "x_clean_0026.png",
+    "img_ab15371192": "x_clean_0027.png",
+    "img_6121f8ff20": "x_clean_0028.png",
+    "img_fc839cf029": "x_clean_0029.png",
+    "img_9cc0fb15c7": "x_clean_0030.png",
+    "img_588211397c": "x_clean_0031.png",
+    "img_53f59e8e95": "x_clean_0032.png",
+    "img_e36059e26b": "x_clean_0033.png",
+    "img_e5a6a68d35": "x_clean_0034.png",
+    "img_6f8ef790b7": "x_clean_0035.png",
+    "img_0c8ae6e3b1": "x_clean_0036.png",
+    "img_838f432484": "x_clean_0037.png",
+    "img_b0f27bfdf9": "x_clean_0038.png",
+    "img_237140db82": "x_clean_0039.png",
+    "img_27e18b8869": "x_flood_seed.png",
+    "img_84f3a02b8b": "x_flood_000.jpg",
+    "img_b5e16f87e8": "x_flood_001.jpg",
+    "img_5386a22769": "x_flood_002.jpg",
+    "img_2c63d3a9cd": "x_flood_003.jpg",
+    "img_e18e9b0773": "x_flood_004.jpg",
+    "img_633ad0b6cc": "x_flood_005.jpg",
+    "img_e1911a1b2b": "x_flood_006.jpg",
+    "img_488f27577e": "x_flood_007.jpg",
+    "img_6b6cc6b56d": "x_flood_008.jpg",
+    "img_2d12911c08": "x_flood_009.jpg",
+    "img_cf204446c6": "x_flood_010.jpg",
+    "img_8fa34c28cb": "x_flood_011.jpg",
+    "img_77f72b3537": "x_flood_012.jpg",
+    "img_f3a81d56e3": "x_flood_013.jpg",
+    "img_f75614bae1": "x_flood_014.jpg",
+    "img_b7bbbf9073": "x_flood_015.jpg",
+    "img_f182f95b8b": "x_flood_016.jpg",
+    "img_d7776b1a79": "x_flood_017.jpg",
+    "img_a65c4d20cf": "x_flood_018.jpg",
+    "img_a505c1f44f": "x_flood_019.jpg",
+    "img_80c9c0534f": "x_flood_020.jpg",
+    "img_607f0ddd19": "x_flood_021.jpg",
+    "img_e8d2ad3d24": "x_flood_022.jpg",
+    "img_d5a974f2bc": "x_flood_023.jpg",
+    "img_33485519de": "x_flip_000.png",
+    "img_11e8f3c24c": "x_flip_001.png",
+    "img_114129616d": "x_flip_002.png",
+    "img_f780f7c6ec": "x_flip_003.png",
+    "img_4973e0bd41": "x_flip_004.png",
+    "img_3406d19a05": "x_flip_005.png",
+    "img_71f9cd7e0b": "x_flip_006.png",
+    "img_80400fe65f": "x_flip_007.png",
+    "img_02641a0ec3": "x_flip_008.png",
+    "img_57a367ce04": "x_flip_009.png",
+    "img_f08ded2e40": "x_flip_010.png",
+    "img_f620532f08": "x_flip_011.png",
+    "img_74b07f5b59": "x_flip_012.png",
+    "img_5b5731021a": "x_flip_013.png",
+    "img_e52c4370bf": "x_flip_014.png",
+    "img_62ac0444b5": "x_flip_015.png",
+    "img_2ede9daa15": "x_flip_016.png",
+    "img_164016c8c0": "x_flip_017.png",
+    "img_dd4dd03fd6": "x_flip_018.png",
+    "img_543a1a7d99": "x_flip_019.png",
+    "img_d9c1e62989": "x_ood_000.png",
+    "img_9c21ce223c": "x_ood_001.png",
+    "img_52a8d2c1c4": "x_ood_002.png",
+    "img_fb1f0fa139": "x_ood_003.png",
+    "img_ea9dc60196": "x_ood_004.png",
+    "img_c12f8978d8": "x_ood_005.png",
+    "img_823f85360d": "x_ood_006.png",
+    "img_d51302a68a": "x_ood_007.png",
+    "img_693d646a11": "x_ood_008.png",
+    "img_e72964b46c": "x_ood_009.png",
+    "img_58e3d69637": "x_ood_010.png",
+    "img_5f34434af4": "x_ood_011.png",
+    "img_7c2e5ae958": "x_ood_012.png",
+    "img_ef34174b7e": "x_ood_013.png",
+    "img_c5ac982d6a": "x_ood_014.png",
+    "img_70e16e8730": "x_trig_000.png",
+    "img_19cbac6997": "x_trig_001.png",
+    "img_f209049e13": "x_trig_002.png",
+    "img_b30cd21e82": "x_trig_003.png",
+    "img_9fbf58cc56": "x_trig_004.png",
+    "img_d91dc4dad8": "x_trig_005.png",
+    "img_8916b195bc": "x_trig_006.png",
+    "img_ee41ee5e13": "x_trig_007.png",
+    "img_afd4e3b577": "x_trig_008.png",
+    "img_08e1897a4c": "x_trig_009.png",
+    "img_602c548655": "x_trig_010.png",
+    "img_0d448cdc15": "x_trig_011.png",
+    "img_c39b592519": "x_trig_012.png",
+    "img_a31a8cadf2": "x_trig_013.png",
+    "img_852c8ec813": "x_trig_014.png",
+    "img_fb5733802a": "x_trig_015.png",
+    "img_13842a5225": "x_trig_016.png",
+    "img_ff5a6b8bf6": "x_trig_017.png",
+    "img_f33ae427c1": "x_trig_018.png",
+    "img_e394b32ae4": "x_trig_019.png",
+    "img_763f8171ba": "x_trig_020.png",
+    "img_b263c2c583": "x_trig_021.png",
+    "img_62ab31394f": "x_trig_022.png",
+    "img_43804a6554": "x_trig_023.png",
+    "img_c397e8a16b": "x_trig_024.png",
+    "img_000fb9fc6c": "x_corrupt_000.png",
+    "img_0b3b6c44fc": "x_missing_000.png",
+    "img_6212db9079": "x_badbox_000.png"
+  },
+  "findings": [
+    {
+      "finding_id": "F-00001",
+      "asset_type": "sample",
+      "asset_id": "img_0b3b6c44fc",
+      "category": "structural_error",
+      "severity": "high",
+      "confidence": 0.99,
+      "detector": "ingestion_validator_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "kind": "missing_image_file",
+        "file_name": "x_missing_000.png",
+        "detail": "image file not found"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Structural problems can be benign export artefacts."
+      ]
+    },
+    {
+      "finding_id": "F-00002",
+      "asset_type": "sample",
+      "asset_id": "img_6212db9079",
+      "category": "structural_error",
+      "severity": "medium",
+      "confidence": 0.99,
+      "detector": "ingestion_validator_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "kind": "impossible_coordinates",
+        "file_name": "x_badbox_000.png",
+        "detail": "bbox=[10, 10, -5, 40]"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Structural problems can be benign export artefacts."
+      ]
+    },
+    {
+      "finding_id": "F-00003",
+      "asset_type": "sample",
+      "asset_id": "img_000fb9fc6c",
+      "category": "structural_error",
+      "severity": "high",
+      "confidence": 0.99,
+      "detector": "ingestion_validator_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "kind": "unreadable_image",
+        "file_name": "x_corrupt_000.png",
+        "detail": "OSError: image file is truncated"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Structural problems can be benign export artefacts."
+      ]
+    },
+    {
+      "finding_id": "F-00004",
+      "asset_type": "group",
+      "asset_id": "G-001",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "exact",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "square",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_x",
+        "top_source_fraction": 1.0,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_6b6cc6b56d",
+          "img_d5a974f2bc"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00005",
+      "asset_type": "group",
+      "asset_id": "G-002",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "exact",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "square",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_x",
+        "top_source_fraction": 1.0,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_f75614bae1",
+          "img_a505c1f44f"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00006",
+      "asset_type": "group",
+      "asset_id": "G-003",
+      "category": "duplicate_flooding",
+      "severity": "high",
+      "confidence": 0.933,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "near",
+        "group_size": 25,
+        "fraction_of_dataset": 0.0683,
+        "top_class": "square",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_x",
+        "top_source_fraction": 1.0,
+        "member_count": 25,
+        "member_sample_ids": [
+          "img_27e18b8869",
+          "img_84f3a02b8b",
+          "img_b5e16f87e8",
+          "img_5386a22769",
+          "img_2c63d3a9cd",
+          "img_e18e9b0773",
+          "img_633ad0b6cc",
+          "img_e1911a1b2b",
+          "img_488f27577e",
+          "img_6b6cc6b56d",
+          "img_2d12911c08",
+          "img_cf204446c6",
+          "img_8fa34c28cb",
+          "img_77f72b3537",
+          "img_f3a81d56e3",
+          "img_f75614bae1",
+          "img_b7bbbf9073",
+          "img_f182f95b8b",
+          "img_d7776b1a79",
+          "img_a65c4d20cf",
+          "img_a505c1f44f",
+          "img_80c9c0534f",
+          "img_607f0ddd19",
+          "img_e8d2ad3d24",
+          "img_d5a974f2bc"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00007",
+      "asset_type": "group",
+      "asset_id": "G-004",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "near",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "triangle",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_b",
+        "top_source_fraction": 0.5,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_e48cc8b014",
+          "img_588211397c"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00008",
+      "asset_type": "group",
+      "asset_id": "G-005",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "near",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "triangle",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_c",
+        "top_source_fraction": 0.5,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_3e281e1848",
+          "img_8864d8ddaa"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00009",
+      "asset_type": "group",
+      "asset_id": "G-006",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "near",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "circle",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_c",
+        "top_source_fraction": 0.5,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_eb859ad5e1",
+          "img_8c33399640"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00010",
+      "asset_type": "group",
+      "asset_id": "G-007",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "near",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "circle",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_c",
+        "top_source_fraction": 0.5,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_17e204c046",
+          "img_556bfd19ec"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00011",
+      "asset_type": "group",
+      "asset_id": "G-008",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "near",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "triangle",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_c",
+        "top_source_fraction": 0.5,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_297fe9709f",
+          "img_129c8adf9c"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00012",
+      "asset_type": "group",
+      "asset_id": "G-009",
+      "category": "duplicate_pair_informational",
+      "severity": "low",
+      "confidence": 0.5,
+      "detector": "duplicate_flooding_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "level": "near",
+        "group_size": 2,
+        "fraction_of_dataset": 0.0055,
+        "top_class": "triangle",
+        "top_class_fraction": 1.0,
+        "top_source": "contributor_c",
+        "top_source_fraction": 0.5,
+        "member_count": 2,
+        "member_sample_ids": [
+          "img_77f270cf9d",
+          "img_7c60f5f054"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+      ]
+    },
+    {
+      "finding_id": "F-00013",
+      "asset_type": "sample",
+      "asset_id": "img_11e8f3c24c",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.912,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": "0.088",
+        "dominant_neighbour_share": "0.912",
+        "local_label_entropy": 0.214,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.636,
+        "nearest_neighbours": [
+          "img_129c8adf9c",
+          "img_8864d8ddaa",
+          "img_163c56bc45",
+          "img_297fe9709f",
+          "img_77f270cf9d"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00014",
+      "asset_type": "sample",
+      "asset_id": "img_114129616d",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.651,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "square",
+        "dominant_neighbour_label": "circle",
+        "neighbour_label_agreement": "0.094",
+        "dominant_neighbour_share": "0.651",
+        "local_label_entropy": 0.614,
+        "k": 10,
+        "cluster_majority_label": "circle",
+        "cluster_purity": 0.882,
+        "nearest_neighbours": [
+          "img_ac7d6cac24",
+          "img_5eab270fe0",
+          "img_6121f8ff20",
+          "img_9d41f54af6",
+          "img_71f9cd7e0b"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00015",
+      "asset_type": "sample",
+      "asset_id": "img_f780f7c6ec",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.615,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": "0.186",
+        "dominant_neighbour_share": "0.615",
+        "local_label_entropy": 0.772,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.733,
+        "nearest_neighbours": [
+          "img_7e1dd8dc19",
+          "img_a2d8dd574a",
+          "img_e52c4370bf",
+          "img_3e1eafb9bf",
+          "img_c335e8494c"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00016",
+      "asset_type": "sample",
+      "asset_id": "img_4973e0bd41",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.811,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "square",
+        "dominant_neighbour_label": "circle",
+        "neighbour_label_agreement": 0.0,
+        "dominant_neighbour_share": "0.811",
+        "local_label_entropy": 0.349,
+        "k": 10,
+        "cluster_majority_label": "circle",
+        "cluster_purity": 0.895,
+        "nearest_neighbours": [
+          "img_c42a82b0f9",
+          "img_02f3a516e6",
+          "img_c69d2ac3e9",
+          "img_58c5248c9c",
+          "img_21fbe987c9"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00017",
+      "asset_type": "sample",
+      "asset_id": "img_3406d19a05",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 1.0,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": 0.0,
+        "dominant_neighbour_share": "1.0",
+        "local_label_entropy": -0.0,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.733,
+        "nearest_neighbours": [
+          "img_79354faf16",
+          "img_a2d8dd574a",
+          "img_4167fb03b1",
+          "img_6e034a657a",
+          "img_58f08d3add"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00018",
+      "asset_type": "sample",
+      "asset_id": "img_71f9cd7e0b",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.897,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "square",
+        "dominant_neighbour_label": "circle",
+        "neighbour_label_agreement": "0.103",
+        "dominant_neighbour_share": "0.897",
+        "local_label_entropy": 0.239,
+        "k": 10,
+        "cluster_majority_label": "circle",
+        "cluster_purity": 0.882,
+        "nearest_neighbours": [
+          "img_9fbf58cc56",
+          "img_5eab270fe0",
+          "img_2ac65604d3",
+          "img_114129616d",
+          "img_305181c591"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00019",
+      "asset_type": "sample",
+      "asset_id": "img_80400fe65f",
+      "category": "label_anomaly",
+      "severity": "high",
+      "confidence": 1.0,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": 0.0,
+        "dominant_neighbour_share": "1.0",
+        "local_label_entropy": -0.0,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.846,
+        "nearest_neighbours": [
+          "img_aec2a20cf9",
+          "img_31796c67bd",
+          "img_d8be8dec6a",
+          "img_0a96aca33b",
+          "img_6b4bf27ce1"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00020",
+      "asset_type": "sample",
+      "asset_id": "img_02641a0ec3",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.733,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "square",
+        "dominant_neighbour_label": "circle",
+        "neighbour_label_agreement": "0.087",
+        "dominant_neighbour_share": "0.733",
+        "local_label_entropy": 0.63,
+        "k": 10,
+        "cluster_majority_label": "circle",
+        "cluster_purity": 0.632,
+        "nearest_neighbours": [
+          "img_b263c2c583",
+          "img_3ff8ecceab",
+          "img_4dbade8231",
+          "img_25c1adecc8",
+          "img_99b6239827"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00021",
+      "asset_type": "sample",
+      "asset_id": "img_57a367ce04",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.887,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": "0.113",
+        "dominant_neighbour_share": "0.887",
+        "local_label_entropy": 0.255,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.636,
+        "nearest_neighbours": [
+          "img_e18deacd47",
+          "img_608ceb8496",
+          "img_543a1a7d99",
+          "img_eeb8950052",
+          "img_ee4959efcc"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00022",
+      "asset_type": "sample",
+      "asset_id": "img_f08ded2e40",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.589,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "square",
+        "dominant_neighbour_label": "circle",
+        "neighbour_label_agreement": "0.139",
+        "dominant_neighbour_share": "0.693",
+        "local_label_entropy": 0.68,
+        "k": 10,
+        "cluster_majority_label": "square",
+        "cluster_purity": 0.5,
+        "nearest_neighbours": [
+          "img_763f8171ba",
+          "img_cb829e5bf8",
+          "img_346a0fd325",
+          "img_ccd1cb1103",
+          "img_af0e470853"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00023",
+      "asset_type": "sample",
+      "asset_id": "img_f620532f08",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.696,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": "0.237",
+        "dominant_neighbour_share": "0.696",
+        "local_label_entropy": 0.559,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.636,
+        "nearest_neighbours": [
+          "img_237140db82",
+          "img_5b5731021a",
+          "img_ccd1cb1103",
+          "img_9b5dad81f3",
+          "img_fa65976b85"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00024",
+      "asset_type": "sample",
+      "asset_id": "img_74b07f5b59",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.91,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "square",
+        "dominant_neighbour_label": "circle",
+        "neighbour_label_agreement": 0.0,
+        "dominant_neighbour_share": "0.91",
+        "local_label_entropy": 0.219,
+        "k": 10,
+        "cluster_majority_label": "circle",
+        "cluster_purity": 0.632,
+        "nearest_neighbours": [
+          "img_8c5bacef33",
+          "img_3999ff15d7",
+          "img_aec04a1e79",
+          "img_08e1897a4c",
+          "img_c5d7a8462a"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00025",
+      "asset_type": "sample",
+      "asset_id": "img_62ac0444b5",
+      "category": "label_anomaly",
+      "severity": "high",
+      "confidence": 0.916,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": "0.084",
+        "dominant_neighbour_share": "0.916",
+        "local_label_entropy": 0.209,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.846,
+        "nearest_neighbours": [
+          "img_dac112f36b",
+          "img_5d1ac7d138",
+          "img_ab15371192",
+          "img_aec2a20cf9",
+          "img_79354faf16"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00026",
+      "asset_type": "sample",
+      "asset_id": "img_2ede9daa15",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.914,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "square",
+        "dominant_neighbour_label": "circle",
+        "neighbour_label_agreement": "0.086",
+        "dominant_neighbour_share": "0.914",
+        "local_label_entropy": 0.212,
+        "k": 10,
+        "cluster_majority_label": "circle",
+        "cluster_purity": 0.632,
+        "nearest_neighbours": [
+          "img_75b8d1625e",
+          "img_50a5497239",
+          "img_02370fdb8c",
+          "img_e77e2a22d5",
+          "img_19cbac6997"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00027",
+      "asset_type": "sample",
+      "asset_id": "img_164016c8c0",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.639,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": "0.175",
+        "dominant_neighbour_share": "0.639",
+        "local_label_entropy": 0.652,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.6,
+        "nearest_neighbours": [
+          "img_96d39b71d0",
+          "img_ab15371192",
+          "img_a4a530d332",
+          "img_e3858dfe35",
+          "img_b7e57dade9"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00028",
+      "asset_type": "sample",
+      "asset_id": "img_543a1a7d99",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.817,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "stripes",
+        "dominant_neighbour_label": "triangle",
+        "neighbour_label_agreement": "0.183",
+        "dominant_neighbour_share": "0.817",
+        "local_label_entropy": 0.343,
+        "k": 10,
+        "cluster_majority_label": "triangle",
+        "cluster_purity": 0.636,
+        "nearest_neighbours": [
+          "img_588211397c",
+          "img_e48cc8b014",
+          "img_608ceb8496",
+          "img_57a367ce04",
+          "img_fa65976b85"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00029",
+      "asset_type": "sample",
+      "asset_id": "img_58e3d69637",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "confidence": 0.604,
+      "detector": "label_integrity_knn_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "assigned_label": "circle",
+        "dominant_neighbour_label": "square",
+        "neighbour_label_agreement": 0.0,
+        "dominant_neighbour_share": "0.604",
+        "local_label_entropy": 0.484,
+        "k": 10,
+        "cluster_majority_label": "square",
+        "cluster_purity": 0.727,
+        "nearest_neighbours": [
+          "img_9c21ce223c",
+          "img_ea9dc60196",
+          "img_e72964b46c",
+          "img_3d150f8ee8",
+          "img_34e136ff36"
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Similarity-based evidence only; visually ambiguous classes can trigger this."
+      ]
+    },
+    {
+      "finding_id": "F-00030",
+      "asset_type": "sample",
+      "asset_id": "img_9c21ce223c",
+      "category": "ood_anomaly",
+      "severity": "medium",
+      "confidence": 0.571,
+      "detector": "ood_multi_scorer_v2",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "votes": 4,
+        "scorers": 7,
+        "reference_mode": "self",
+        "scores": {
+          "emb_knn_distance": 0.6236,
+          "emb_mahalanobis": 7.0098,
+          "emb_lof": 2.0681,
+          "emb_isolation_forest": 0.4294,
+          "stat_knn_distance": 14.2725,
+          "stat_robust_mahalanobis": 180.9246,
+          "stat_isolation_forest": 0.759
+        },
+        "robust_z": {
+          "emb_knn_distance": 0.84,
+          "emb_mahalanobis": 1.83,
+          "emb_lof": 10.44,
+          "emb_isolation_forest": 0.21,
+          "stat_knn_distance": 29.83,
+          "stat_robust_mahalanobis": 174.14,
+          "stat_isolation_forest": 7.4
+        },
+        "nearest_reference": [
+          [
+            "img_58e3d69637",
+            0.812
+          ],
+          [
+            "img_e72964b46c",
+            0.785
+          ],
+          [
+            "img_ea9dc60196",
+            0.733
+          ]
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Distributional difference only - not evidence of malicious intent.",
+        "Rare legitimate samples can be flagged.",
+        "No trusted reference supplied: dataset used as its own reference."
+      ]
+    },
+    {
+      "finding_id": "F-00031",
+      "asset_type": "sample",
+      "asset_id": "img_ea9dc60196",
+      "category": "ood_anomaly",
+      "severity": "medium",
+      "confidence": 0.571,
+      "detector": "ood_multi_scorer_v2",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "votes": 4,
+        "scorers": 7,
+        "reference_mode": "self",
+        "scores": {
+          "emb_knn_distance": 0.6414,
+          "emb_mahalanobis": 6.6818,
+          "emb_lof": 2.2416,
+          "emb_isolation_forest": 0.4305,
+          "stat_knn_distance": 14.2978,
+          "stat_robust_mahalanobis": 180.9702,
+          "stat_isolation_forest": 0.7549
+        },
+        "robust_z": {
+          "emb_knn_distance": 1.07,
+          "emb_mahalanobis": 1.4,
+          "emb_lof": 12.15,
+          "emb_isolation_forest": 0.24,
+          "stat_knn_distance": 29.89,
+          "stat_robust_mahalanobis": 174.18,
+          "stat_isolation_forest": 7.31
+        },
+        "nearest_reference": [
+          [
+            "img_9c21ce223c",
+            0.733
+          ],
+          [
+            "img_58e3d69637",
+            0.727
+          ],
+          [
+            "img_e72964b46c",
+            0.727
+          ]
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Distributional difference only - not evidence of malicious intent.",
+        "Rare legitimate samples can be flagged.",
+        "No trusted reference supplied: dataset used as its own reference."
+      ]
+    },
+    {
+      "finding_id": "F-00032",
+      "asset_type": "sample",
+      "asset_id": "img_e72964b46c",
+      "category": "ood_anomaly",
+      "severity": "medium",
+      "confidence": 0.571,
+      "detector": "ood_multi_scorer_v2",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "votes": 4,
+        "scorers": 7,
+        "reference_mode": "self",
+        "scores": {
+          "emb_knn_distance": 0.5959,
+          "emb_mahalanobis": 6.8806,
+          "emb_lof": 2.5242,
+          "emb_isolation_forest": 0.4378,
+          "stat_knn_distance": 14.4388,
+          "stat_robust_mahalanobis": 181.0111,
+          "stat_isolation_forest": 0.7558
+        },
+        "robust_z": {
+          "emb_knn_distance": 0.47,
+          "emb_mahalanobis": 1.66,
+          "emb_lof": 14.94,
+          "emb_isolation_forest": 0.41,
+          "stat_knn_distance": 30.24,
+          "stat_robust_mahalanobis": 174.22,
+          "stat_isolation_forest": 7.33
+        },
+        "nearest_reference": [
+          [
+            "img_9c21ce223c",
+            0.785
+          ],
+          [
+            "img_ea9dc60196",
+            0.727
+          ],
+          [
+            "img_58e3d69637",
+            0.727
+          ]
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Distributional difference only - not evidence of malicious intent.",
+        "Rare legitimate samples can be flagged.",
+        "No trusted reference supplied: dataset used as its own reference."
+      ]
+    },
+    {
+      "finding_id": "F-00033",
+      "asset_type": "sample",
+      "asset_id": "img_58e3d69637",
+      "category": "ood_anomaly",
+      "severity": "medium",
+      "confidence": 0.571,
+      "detector": "ood_multi_scorer_v2",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "votes": 4,
+        "scorers": 7,
+        "reference_mode": "self",
+        "scores": {
+          "emb_knn_distance": 0.6114,
+          "emb_mahalanobis": 6.9898,
+          "emb_lof": 1.9051,
+          "emb_isolation_forest": 0.4472,
+          "stat_knn_distance": 14.5708,
+          "stat_robust_mahalanobis": 181.0506,
+          "stat_isolation_forest": 0.7716
+        },
+        "robust_z": {
+          "emb_knn_distance": 0.67,
+          "emb_mahalanobis": 1.81,
+          "emb_lof": 8.82,
+          "emb_isolation_forest": 0.63,
+          "stat_knn_distance": 30.56,
+          "stat_robust_mahalanobis": 174.26,
+          "stat_isolation_forest": 7.68
+        },
+        "nearest_reference": [
+          [
+            "img_9c21ce223c",
+            0.812
+          ],
+          [
+            "img_ea9dc60196",
+            0.727
+          ],
+          [
+            "img_e72964b46c",
+            0.727
+          ]
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Distributional difference only - not evidence of malicious intent.",
+        "Rare legitimate samples can be flagged.",
+        "No trusted reference supplied: dataset used as its own reference."
+      ]
+    },
+    {
+      "finding_id": "F-00034",
+      "asset_type": "sample",
+      "asset_id": "img_70e16e8730",
+      "category": "ood_anomaly",
+      "severity": "low",
+      "confidence": 0.286,
+      "detector": "ood_multi_scorer_v2",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "votes": 2,
+        "scorers": 7,
+        "reference_mode": "self",
+        "scores": {
+          "emb_knn_distance": 0.5202,
+          "emb_mahalanobis": 5.5312,
+          "emb_lof": 1.0009,
+          "emb_isolation_forest": 0.4358,
+          "stat_knn_distance": 3.4334,
+          "stat_robust_mahalanobis": 21.7206,
+          "stat_isolation_forest": 0.6127
+        },
+        "robust_z": {
+          "emb_knn_distance": -0.54,
+          "emb_mahalanobis": -0.13,
+          "emb_lof": -0.11,
+          "emb_isolation_forest": 0.36,
+          "stat_knn_distance": 3.35,
+          "stat_robust_mahalanobis": 17.99,
+          "stat_isolation_forest": 4.12
+        },
+        "nearest_reference": [
+          [
+            "img_21fbe987c9",
+            0.568
+          ],
+          [
+            "img_02f3a516e6",
+            0.534
+          ],
+          [
+            "img_58c5248c9c",
+            0.519
+          ]
+        ]
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:46+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Distributional difference only - not evidence of malicious intent.",
+        "Rare legitimate samples can be flagged.",
+        "No trusted reference supplied: dataset used as its own reference."
+      ]
+    },
+    {
+      "finding_id": "F-00035",
+      "asset_type": "pattern",
+      "asset_id": "T-001",
+      "category": "trigger_candidate",
+      "severity": "high",
+      "confidence": 0.8,
+      "detector": "trigger_candidate_patch_recurrence_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "support": 25,
+        "support_fraction": 0.0744,
+        "location_norm_xyxy": [
+          0.833,
+          0.833,
+          1.0,
+          1.0
+        ],
+        "position_specificity_ratio": 24.3,
+        "pixel_consistency_std": 0.69,
+        "label_correlation": {
+          "value": "circle",
+          "fraction": 1.0,
+          "base_rate": 0.289,
+          "p_value": 3.2419881411345857e-14
+        },
+        "source_correlation": {
+          "value": "contributor_x",
+          "fraction": 1.0,
+          "base_rate": 0.298,
+          "p_value": 6.942534798257662e-14
+        },
+        "label_concentrated": true,
+        "source_concentrated": true,
+        "member_sample_ids": [
+          "img_70e16e8730",
+          "img_19cbac6997",
+          "img_f209049e13",
+          "img_b30cd21e82",
+          "img_9fbf58cc56",
+          "img_d91dc4dad8",
+          "img_8916b195bc",
+          "img_ee41ee5e13",
+          "img_afd4e3b577",
+          "img_08e1897a4c",
+          "img_602c548655",
+          "img_0d448cdc15",
+          "img_c39b592519",
+          "img_a31a8cadf2",
+          "img_852c8ec813",
+          "img_fb5733802a",
+          "img_13842a5225",
+          "img_ff5a6b8bf6",
+          "img_f33ae427c1",
+          "img_e394b32ae4",
+          "img_763f8171ba",
+          "img_b263c2c583",
+          "img_62ab31394f",
+          "img_43804a6554",
+          "img_c397e8a16b"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Potential trigger candidate only; dataset evidence cannot establish a functional backdoor.",
+        "Low-opacity, blended, or input-dependent triggers may be missed."
+      ]
+    },
+    {
+      "finding_id": "F-00036",
+      "asset_type": "pattern",
+      "asset_id": "T-002",
+      "category": "trigger_candidate",
+      "severity": "high",
+      "confidence": 0.8,
+      "detector": "trigger_candidate_patch_recurrence_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "support": 11,
+        "support_fraction": 0.0327,
+        "location_norm_xyxy": [
+          0.896,
+          0.833,
+          1.0,
+          1.0
+        ],
+        "position_specificity_ratio": 11.0,
+        "pixel_consistency_std": 4.76,
+        "label_correlation": {
+          "value": "circle",
+          "fraction": 1.0,
+          "base_rate": 0.289,
+          "p_value": 1.1607990009212247e-06
+        },
+        "source_correlation": {
+          "value": "contributor_x",
+          "fraction": 1.0,
+          "base_rate": 0.298,
+          "p_value": 1.6228110219130772e-06
+        },
+        "label_concentrated": true,
+        "source_concentrated": true,
+        "member_sample_ids": [
+          "img_19cbac6997",
+          "img_8916b195bc",
+          "img_ee41ee5e13",
+          "img_afd4e3b577",
+          "img_602c548655",
+          "img_c39b592519",
+          "img_a31a8cadf2",
+          "img_f33ae427c1",
+          "img_e394b32ae4",
+          "img_763f8171ba",
+          "img_b263c2c583"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Potential trigger candidate only; dataset evidence cannot establish a functional backdoor.",
+        "Low-opacity, blended, or input-dependent triggers may be missed."
+      ]
+    },
+    {
+      "finding_id": "F-00037",
+      "asset_type": "pattern",
+      "asset_id": "T-003",
+      "category": "trigger_candidate",
+      "severity": "high",
+      "confidence": 0.8,
+      "detector": "trigger_candidate_patch_recurrence_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "support": 11,
+        "support_fraction": 0.0327,
+        "location_norm_xyxy": [
+          0.833,
+          0.896,
+          0.917,
+          1.0
+        ],
+        "position_specificity_ratio": 11.0,
+        "pixel_consistency_std": 11.79,
+        "label_correlation": {
+          "value": "circle",
+          "fraction": 1.0,
+          "base_rate": 0.289,
+          "p_value": 1.1607990009212247e-06
+        },
+        "source_correlation": {
+          "value": "contributor_x",
+          "fraction": 1.0,
+          "base_rate": 0.298,
+          "p_value": 1.6228110219130772e-06
+        },
+        "label_concentrated": true,
+        "source_concentrated": true,
+        "member_sample_ids": [
+          "img_19cbac6997",
+          "img_8916b195bc",
+          "img_afd4e3b577",
+          "img_c39b592519",
+          "img_852c8ec813",
+          "img_fb5733802a",
+          "img_f33ae427c1",
+          "img_e394b32ae4",
+          "img_763f8171ba",
+          "img_62ab31394f",
+          "img_c397e8a16b"
+        ],
+        "member_ids_truncated": false
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Potential trigger candidate only; dataset evidence cannot establish a functional backdoor.",
+        "Low-opacity, blended, or input-dependent triggers may be missed."
+      ]
+    },
+    {
+      "finding_id": "F-00038",
+      "asset_type": "sample",
+      "asset_id": "img_58e3d69637",
+      "category": "converging_signals",
+      "severity": "medium",
+      "confidence": 0.8,
+      "detector": "cross_signal_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "signals": [
+          "label_anomaly",
+          "ood_anomaly"
+        ],
+        "file_name": "x_ood_010.png"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Multiple independent detectors point at the same sample."
+      ]
+    },
+    {
+      "finding_id": "F-00039",
+      "asset_type": "sample",
+      "asset_id": "img_70e16e8730",
+      "category": "converging_signals",
+      "severity": "medium",
+      "confidence": 0.8,
+      "detector": "cross_signal_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "signals": [
+          "ood_anomaly",
+          "trigger_candidate"
+        ],
+        "file_name": "x_trig_000.png"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "REVIEW",
+      "limitations": [
+        "Multiple independent detectors point at the same sample."
+      ]
+    },
+    {
+      "finding_id": "F-00040",
+      "asset_type": "source",
+      "asset_id": "source_id:contributor_x",
+      "category": "source_concentration",
+      "severity": "high",
+      "confidence": 0.95,
+      "detector": "source_aggregation_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "sample_count": 128,
+        "duplicate_rate": 0.1953,
+        "label_anomaly_rate": 0.1328,
+        "ood_rate": 0.0391,
+        "trigger_candidate_rate": 0.1953,
+        "structural_error_rate": 0.0234,
+        "anomaly_categories": {
+          "duplicate": 25,
+          "label_anomaly": 17,
+          "ood": 5,
+          "trigger_candidate": 25,
+          "structural": 3
+        },
+        "share_of_all_flagged": {
+          "duplicate": 1.0,
+          "label_anomaly": 1.0,
+          "ood": 1.0,
+          "trigger_candidate": 1.0,
+          "structural": 1.0
+        },
+        "elevated_signals": [
+          "duplicate",
+          "label_anomaly",
+          "trigger_candidate"
+        ],
+        "cross_signal_count": 3,
+        "disposition": "QUARANTINE"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Concentration of evidence prioritises review; it does not establish intent."
+      ]
+    },
+    {
+      "finding_id": "F-00041",
+      "asset_type": "source",
+      "asset_id": "contributor_id:contributor_x",
+      "category": "source_concentration",
+      "severity": "high",
+      "confidence": 0.95,
+      "detector": "source_aggregation_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "sample_count": 128,
+        "duplicate_rate": 0.1953,
+        "label_anomaly_rate": 0.1328,
+        "ood_rate": 0.0391,
+        "trigger_candidate_rate": 0.1953,
+        "structural_error_rate": 0.0234,
+        "anomaly_categories": {
+          "duplicate": 25,
+          "label_anomaly": 17,
+          "ood": 5,
+          "trigger_candidate": 25,
+          "structural": 3
+        },
+        "share_of_all_flagged": {
+          "duplicate": 1.0,
+          "label_anomaly": 1.0,
+          "ood": 1.0,
+          "trigger_candidate": 1.0,
+          "structural": 1.0
+        },
+        "elevated_signals": [
+          "duplicate",
+          "label_anomaly",
+          "trigger_candidate"
+        ],
+        "cross_signal_count": 3,
+        "disposition": "QUARANTINE"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Concentration of evidence prioritises review; it does not establish intent."
+      ]
+    },
+    {
+      "finding_id": "F-00042",
+      "asset_type": "source",
+      "asset_id": "batch_id:batch_x",
+      "category": "source_concentration",
+      "severity": "high",
+      "confidence": 0.95,
+      "detector": "source_aggregation_v1",
+      "detector_version": "part1-0.1.0",
+      "evidence": {
+        "sample_count": 128,
+        "duplicate_rate": 0.1953,
+        "label_anomaly_rate": 0.1328,
+        "ood_rate": 0.0391,
+        "trigger_candidate_rate": 0.1953,
+        "structural_error_rate": 0.0234,
+        "anomaly_categories": {
+          "duplicate": 25,
+          "label_anomaly": 17,
+          "ood": 5,
+          "trigger_candidate": 25,
+          "structural": 3
+        },
+        "share_of_all_flagged": {
+          "duplicate": 1.0,
+          "label_anomaly": 1.0,
+          "ood": 1.0,
+          "trigger_candidate": 1.0,
+          "structural": 1.0
+        },
+        "elevated_signals": [
+          "duplicate",
+          "label_anomaly",
+          "trigger_candidate"
+        ],
+        "cross_signal_count": 3,
+        "disposition": "QUARANTINE"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:47+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Concentration of evidence prioritises review; it does not establish intent."
+      ]
+    }
+  ],
+  "timings_seconds": {
+    "ingest": 0.04,
+    "fingerprint": 1.069,
+    "duplicates": 0.021,
+    "label_integrity": 0.055,
+    "ood": 0.544,
+    "trigger": 1.068,
+    "total": 2.809
+  }
+}

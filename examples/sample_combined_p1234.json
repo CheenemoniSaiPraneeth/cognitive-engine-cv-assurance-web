@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-09-29T07:00:21+00:00",
+  "overall_disposition": "QUARANTINE",
+  "part123": {
+    "overall": "QUARANTINE",
+    "dataset": {
+      "id": "DS-12953977",
+      "disposition": "QUARANTINE",
+      "finding_counts": {
+        "structural_error": 3,
+        "duplicate_pair_informational": 8,
+        "duplicate_flooding": 1,
+        "label_anomaly": 17,
+        "ood_anomaly": 5,
+        "trigger_candidate": 3,
+        "converging_signals": 2,
+        "source_concentration": 3
+      }
+    },
+    "model": {
+      "id": "MODEL-trusted_reference",
+      "disposition": "ACCEPT",
+      "identity": "NO_EXPECTED_DIGEST",
+      "finding_counts": {
+        "identity_unverifiable": 1
+      }
+    },
+    "inference": {
+      "disposition": "ACCEPT",
+      "records": 40,
+      "record_counts": {
+        "ACCEPT": 40
+      },
+      "finding_counts": {},
+      "chain_head": "4a8cfc1be41079674cdcfad038b1a2b08ee839fdee2ad09cc3861d3bed10cbad"
+    }
+  },
+  "reference": {
+    "reference_id": "REF-d25e21c03fcc",
+    "n": 295,
+    "origin": "part1_unflagged_samples"
+  },
+  "streams": [
+    {
+      "stream": "stable_stream",
+      "part3_disposition": "ACCEPT",
+      "records": 160,
+      "part4_level": "NORMAL",
+      "part4_disposition": "ACCEPT",
+      "onset_batch": null,
+      "pattern": "none",
+      "primary_families": [],
+      "finding_counts": {},
+      "signals": [],
+      "unavailable": []
+    },
+    {
+      "stream": "shifted_stream",
+      "part3_disposition": "ACCEPT",
+      "records": 160,
+      "part4_level": "SEVERE SHIFT",
+      "part4_disposition": "REVIEW",
+      "onset_batch": "b2",
+      "pattern": "step",
+      "primary_families": [
+        "geometry"
+      ],
+      "finding_counts": {
+        "distribution_shift": 1,
+        "drift_onset": 1,
+        "geometry_shift": 1,
+        "sharpness_noise_shift": 2,
+        "compression_shift": 1,
+        "new_source": 1,
+        "semantic_shift": 1,
+        "illumination_shift": 1
+      },
+      "signals": [
+        "OPERATIONAL_SHIFT_WITH_INTACT_PROVENANCE"
+      ],
+      "unavailable": []
+    }
+  ],
+  "cross_signals": [
+    {
+      "stream": "shifted_stream",
+      "signal": "OPERATIONAL_SHIFT_WITH_INTACT_PROVENANCE",
+      "severity": "medium",
+      "disposition": "REVIEW",
+      "detail": "Inputs shifted (color, compression, geometry, illumination, semantic, sharpness_noise); ledger is intact and reproducible, so the shift is real, not a recording artefact. Likely environmental (camera/lighting/scene) - analyst decides: accept and re-baseline the reference (Retest), or investigate acquisition."
+    }
+  ],
+  "note": "Dispositions prioritise review; a distribution shift is not an attack. Governance stays with the analyst."
+}

@@ -1,0 +1,1431 @@
+{
+  "schema_version": "1.0",
+  "part": 4,
+  "created_at": "2026-09-29T07:52:49+00:00",
+  "detector_version": "part4-0.1.0",
+  "level": "NORMAL",
+  "disposition": "ACCEPT",
+  "reference": {
+    "reference_id": "REF-d25e21c03fcc",
+    "n": 295,
+    "manifest_sha256": "cfb9083bdddf4170f213df3c092391681b14bcde13613a41cd91236e10e8464c"
+  },
+  "operational": {
+    "n": 160,
+    "batches": 4,
+    "unreadable": 0
+  },
+  "overall": {
+    "batch_id": "OVERALL",
+    "n": 147,
+    "ratio": 0.7,
+    "G": 0.925,
+    "gthr": 1.322,
+    "alert": false,
+    "note": "subsampled 160->147",
+    "families": [],
+    "ood_rate": 0.0,
+    "ood_p": 1.0,
+    "tests": {
+      "emb:centroid": {
+        "u": 0.724,
+        "stats": [
+          0.10745
+        ],
+        "family": "semantic"
+      },
+      "emb:cluster_occupancy": {
+        "u": 0.574,
+        "stats": [
+          0.12705
+        ],
+        "family": "semantic"
+      },
+      "emb:knn_distance": {
+        "u": 0.925,
+        "stats": [
+          1.07493
+        ],
+        "family": "semantic"
+      },
+      "emb:mmd": {
+        "u": 0.096,
+        "stats": [
+          0.00025
+        ],
+        "family": "semantic"
+      },
+      "feat:aspect": {
+        "u": 0.0,
+        "stats": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "family": "geometry"
+      },
+      "feat:blockiness": {
+        "u": 0.561,
+        "stats": [
+          0.10029,
+          0.19647,
+          0.22522,
+          0.12444
+        ],
+        "family": "compression"
+      },
+      "feat:brightness": {
+        "u": 0.706,
+        "stats": [
+          0.12326,
+          0.10516,
+          0.20773,
+          0.17092
+        ],
+        "family": "illumination"
+      },
+      "feat:bytes_per_pixel": {
+        "u": 0.623,
+        "stats": [
+          0.0838,
+          0.11379,
+          0.14691,
+          0.1834
+        ],
+        "family": "compression"
+      },
+      "feat:contrast": {
+        "u": 0.559,
+        "stats": [
+          0.09593,
+          0.12112,
+          0.16289,
+          0.16149
+        ],
+        "family": "illumination"
+      },
+      "feat:edge_density": {
+        "u": 0.56,
+        "stats": [
+          0.10423,
+          0.11641,
+          0.10569,
+          0.12546
+        ],
+        "family": "sharpness_noise"
+      },
+      "feat:extreme_fraction": {
+        "u": 0.417,
+        "stats": [
+          0.00678,
+          0.02821,
+          0.05829,
+          0.08262
+        ],
+        "family": "illumination"
+      },
+      "feat:height": {
+        "u": 0.0,
+        "stats": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "family": "geometry"
+      },
+      "feat:is_jpeg": {
+        "u": 0.0,
+        "stats": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "family": "compression"
+      },
+      "feat:mean_b": {
+        "u": 0.634,
+        "stats": [
+          0.12392,
+          0.23986,
+          0.20521,
+          0.16639
+        ],
+        "family": "color"
+      },
+      "feat:mean_g": {
+        "u": 0.63,
+        "stats": [
+          0.09296,
+          0.10754,
+          0.19954,
+          0.16192
+        ],
+        "family": "color"
+      },
+      "feat:mean_r": {
+        "u": 0.455,
+        "stats": [
+          0.06849,
+          0.12405,
+          0.19319,
+          0.10237
+        ],
+        "family": "color"
+      },
+      "feat:noise_est": {
+        "u": 0.742,
+        "stats": [
+          0.074,
+          0.11129,
+          0.13748,
+          0.12171
+        ],
+        "family": "sharpness_noise"
+      },
+      "feat:out_confidence": {
+        "u": 0.306,
+        "stats": [
+          0.06678,
+          0.03148,
+          0.14173,
+          0.07469
+        ],
+        "family": "task_output"
+      },
+      "feat:out_entropy": {
+        "u": 0.347,
+        "stats": [
+          0.07017,
+          0.04039,
+          0.17624,
+          0.07716
+        ],
+        "family": "task_output"
+      },
+      "feat:saturation": {
+        "u": 0.505,
+        "stats": [
+          0.06731,
+          0.10229,
+          0.21645,
+          0.11464
+        ],
+        "family": "color"
+      },
+      "feat:sharpness": {
+        "u": 0.545,
+        "stats": [
+          0.12785,
+          0.12752,
+          0.07144,
+          0.10442
+        ],
+        "family": "sharpness_noise"
+      },
+      "feat:tonal_entropy": {
+        "u": 0.612,
+        "stats": [
+          0.09648,
+          0.0907,
+          0.16074,
+          0.1861
+        ],
+        "family": "illumination"
+      },
+      "feat:width": {
+        "u": 0.0,
+        "stats": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "family": "geometry"
+      },
+      "task:class_prior": {
+        "u": 0.558,
+        "stats": [
+          0.0919
+        ],
+        "family": "class_mix"
+      }
+    }
+  },
+  "overall_attribution": {
+    "all_flagged_families": [],
+    "primary_families": [],
+    "families": [],
+    "features": [],
+    "sources": [
+      {
+        "source": "contributor_a",
+        "n": 160,
+        "abnormal": 0,
+        "abnormal_rate": 0.0,
+        "new_source": false
+      }
+    ]
+  },
+  "ood_overall": {
+    "n": 160,
+    "flagged": 0,
+    "rate": 0.0,
+    "ref_rate": 0.01,
+    "binomial_p": 1.0,
+    "new_clusters": [],
+    "far_fraction": 0.0
+  },
+  "batches": [
+    {
+      "batch_id": "b0",
+      "n": 40,
+      "ratio": 0.167,
+      "G": 0.952,
+      "gthr": 5.704,
+      "alert": false,
+      "note": null,
+      "null_median_ratio": 0.174,
+      "families": [],
+      "ood_rate": 0.0,
+      "ood_p": 1.0,
+      "new_clusters": [],
+      "tests": {
+        "emb:centroid": {
+          "u": 0.783,
+          "stats": [
+            0.17002
+          ],
+          "family": "semantic"
+        },
+        "emb:cluster_occupancy": {
+          "u": 0.542,
+          "stats": [
+            0.16497
+          ],
+          "family": "semantic"
+        },
+        "emb:knn_distance": {
+          "u": 0.952,
+          "stats": [
+            1.06663
+          ],
+          "family": "semantic"
+        },
+        "emb:mmd": {
+          "u": -0.135,
+          "stats": [
+            -0.0011
+          ],
+          "family": "semantic"
+        },
+        "feat:aspect": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:blockiness": {
+          "u": 0.533,
+          "stats": [
+            0.13898,
+            0.17793,
+            0.31386,
+            0.24185
+          ],
+          "family": "compression"
+        },
+        "feat:brightness": {
+          "u": 0.576,
+          "stats": [
+            0.18008,
+            0.19724,
+            0.28814,
+            0.29101
+          ],
+          "family": "illumination"
+        },
+        "feat:bytes_per_pixel": {
+          "u": 0.701,
+          "stats": [
+            0.19153,
+            0.2483,
+            0.2244,
+            0.24585
+          ],
+          "family": "compression"
+        },
+        "feat:contrast": {
+          "u": 0.548,
+          "stats": [
+            0.16314,
+            0.20615,
+            0.3197,
+            0.22024
+          ],
+          "family": "illumination"
+        },
+        "feat:edge_density": {
+          "u": 0.421,
+          "stats": [
+            0.11695,
+            0.22122,
+            0.08823,
+            0.11756
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:extreme_fraction": {
+          "u": 0.524,
+          "stats": [
+            0.00678,
+            0.02821,
+            0.05829,
+            0.08262
+          ],
+          "family": "illumination"
+        },
+        "feat:height": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:is_jpeg": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "compression"
+        },
+        "feat:mean_b": {
+          "u": 0.697,
+          "stats": [
+            0.21568,
+            0.38979,
+            0.37691,
+            0.31812
+          ],
+          "family": "color"
+        },
+        "feat:mean_g": {
+          "u": 0.507,
+          "stats": [
+            0.13898,
+            0.14503,
+            0.30242,
+            0.24462
+          ],
+          "family": "color"
+        },
+        "feat:mean_r": {
+          "u": 0.398,
+          "stats": [
+            0.11398,
+            0.14481,
+            0.26478,
+            0.20825
+          ],
+          "family": "color"
+        },
+        "feat:noise_est": {
+          "u": 0.383,
+          "stats": [
+            0.03771,
+            0.04093,
+            0.13747,
+            0.11902
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:out_confidence": {
+          "u": 0.432,
+          "stats": [
+            0.09576,
+            0.19496,
+            0.27154,
+            0.15319
+          ],
+          "family": "task_output"
+        },
+        "feat:out_entropy": {
+          "u": 0.499,
+          "stats": [
+            0.09958,
+            0.21521,
+            0.34674,
+            0.15478
+          ],
+          "family": "task_output"
+        },
+        "feat:saturation": {
+          "u": 0.562,
+          "stats": [
+            0.1411,
+            0.13466,
+            0.30232,
+            0.21494
+          ],
+          "family": "color"
+        },
+        "feat:sharpness": {
+          "u": 0.476,
+          "stats": [
+            0.11822,
+            0.35585,
+            0.07144,
+            0.10403
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:tonal_entropy": {
+          "u": 0.882,
+          "stats": [
+            0.22246,
+            0.99157,
+            0.29201,
+            0.40342
+          ],
+          "family": "illumination"
+        },
+        "feat:width": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "task:class_prior": {
+          "u": 0.648,
+          "stats": [
+            0.14725
+          ],
+          "family": "class_mix"
+        }
+      },
+      "attribution": {
+        "all_flagged_families": [],
+        "primary_families": [],
+        "families": [],
+        "features": [],
+        "sources": [
+          {
+            "source": "contributor_a",
+            "n": 40,
+            "abnormal": 0,
+            "abnormal_rate": 0.0,
+            "new_source": false
+          }
+        ]
+      },
+      "ids": [
+        "R-000001",
+        "R-000002",
+        "R-000003",
+        "R-000004",
+        "R-000005"
+      ]
+    },
+    {
+      "batch_id": "b1",
+      "n": 40,
+      "ratio": 0.168,
+      "G": 0.956,
+      "gthr": 5.704,
+      "alert": false,
+      "note": null,
+      "null_median_ratio": 0.174,
+      "families": [],
+      "ood_rate": 0.0,
+      "ood_p": 1.0,
+      "new_clusters": [],
+      "tests": {
+        "emb:centroid": {
+          "u": 0.703,
+          "stats": [
+            0.15264
+          ],
+          "family": "semantic"
+        },
+        "emb:cluster_occupancy": {
+          "u": 0.295,
+          "stats": [
+            0.08977
+          ],
+          "family": "semantic"
+        },
+        "emb:knn_distance": {
+          "u": 0.956,
+          "stats": [
+            1.07141
+          ],
+          "family": "semantic"
+        },
+        "emb:mmd": {
+          "u": -0.131,
+          "stats": [
+            -0.00106
+          ],
+          "family": "semantic"
+        },
+        "feat:aspect": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:blockiness": {
+          "u": 0.889,
+          "stats": [
+            0.27712,
+            1.03183,
+            0.364,
+            0.20921
+          ],
+          "family": "compression"
+        },
+        "feat:brightness": {
+          "u": 0.377,
+          "stats": [
+            0.08771,
+            0.19131,
+            0.30915,
+            0.11906
+          ],
+          "family": "illumination"
+        },
+        "feat:bytes_per_pixel": {
+          "u": 0.804,
+          "stats": [
+            0.21271,
+            0.79787,
+            0.16289,
+            0.26927
+          ],
+          "family": "compression"
+        },
+        "feat:contrast": {
+          "u": 0.711,
+          "stats": [
+            0.14619,
+            0.96947,
+            0.33151,
+            0.22452
+          ],
+          "family": "illumination"
+        },
+        "feat:edge_density": {
+          "u": 0.582,
+          "stats": [
+            0.13729,
+            0.22418,
+            0.16094,
+            0.13339
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:extreme_fraction": {
+          "u": 0.524,
+          "stats": [
+            0.00678,
+            0.02821,
+            0.05829,
+            0.08262
+          ],
+          "family": "illumination"
+        },
+        "feat:height": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:is_jpeg": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "compression"
+        },
+        "feat:mean_b": {
+          "u": 0.338,
+          "stats": [
+            0.09788,
+            0.15728,
+            0.23875,
+            0.1274
+          ],
+          "family": "color"
+        },
+        "feat:mean_g": {
+          "u": 0.537,
+          "stats": [
+            0.09322,
+            0.81561,
+            0.28327,
+            0.12858
+          ],
+          "family": "color"
+        },
+        "feat:mean_r": {
+          "u": 0.62,
+          "stats": [
+            0.12839,
+            0.89825,
+            0.3687,
+            0.20368
+          ],
+          "family": "color"
+        },
+        "feat:noise_est": {
+          "u": 0.874,
+          "stats": [
+            0.16907,
+            0.48202,
+            0.13747,
+            0.13395
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:out_confidence": {
+          "u": 0.344,
+          "stats": [
+            0.08517,
+            0.14321,
+            0.2645,
+            0.0765
+          ],
+          "family": "task_output"
+        },
+        "feat:out_entropy": {
+          "u": 0.383,
+          "stats": [
+            0.08856,
+            0.1262,
+            0.30791,
+            0.08198
+          ],
+          "family": "task_output"
+        },
+        "feat:saturation": {
+          "u": 0.554,
+          "stats": [
+            0.11653,
+            0.334,
+            0.34948,
+            0.14505
+          ],
+          "family": "color"
+        },
+        "feat:sharpness": {
+          "u": 0.491,
+          "stats": [
+            0.14788,
+            0.27299,
+            0.07144,
+            0.10637
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:tonal_entropy": {
+          "u": 0.533,
+          "stats": [
+            0.15212,
+            0.22613,
+            0.29391,
+            0.21611
+          ],
+          "family": "illumination"
+        },
+        "feat:width": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "task:class_prior": {
+          "u": 0.316,
+          "stats": [
+            0.07188
+          ],
+          "family": "class_mix"
+        }
+      },
+      "attribution": {
+        "all_flagged_families": [],
+        "primary_families": [],
+        "families": [],
+        "features": [],
+        "sources": [
+          {
+            "source": "contributor_a",
+            "n": 40,
+            "abnormal": 0,
+            "abnormal_rate": 0.0,
+            "new_source": false
+          }
+        ]
+      },
+      "ids": [
+        "R-000041",
+        "R-000042",
+        "R-000043",
+        "R-000044",
+        "R-000045"
+      ]
+    },
+    {
+      "batch_id": "b2",
+      "n": 40,
+      "ratio": 0.17,
+      "G": 0.971,
+      "gthr": 5.704,
+      "alert": false,
+      "note": null,
+      "null_median_ratio": 0.174,
+      "families": [],
+      "ood_rate": 0.0,
+      "ood_p": 1.0,
+      "new_clusters": [],
+      "tests": {
+        "emb:centroid": {
+          "u": 0.847,
+          "stats": [
+            0.18386
+          ],
+          "family": "semantic"
+        },
+        "emb:cluster_occupancy": {
+          "u": 0.923,
+          "stats": [
+            0.28099
+          ],
+          "family": "semantic"
+        },
+        "emb:knn_distance": {
+          "u": 0.964,
+          "stats": [
+            1.08065
+          ],
+          "family": "semantic"
+        },
+        "emb:mmd": {
+          "u": 0.186,
+          "stats": [
+            0.00151
+          ],
+          "family": "semantic"
+        },
+        "feat:aspect": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:blockiness": {
+          "u": 0.648,
+          "stats": [
+            0.21398,
+            0.38199,
+            0.33829,
+            0.19835
+          ],
+          "family": "compression"
+        },
+        "feat:brightness": {
+          "u": 0.759,
+          "stats": [
+            0.25127,
+            0.29073,
+            0.32869,
+            0.39104
+          ],
+          "family": "illumination"
+        },
+        "feat:bytes_per_pixel": {
+          "u": 0.475,
+          "stats": [
+            0.11653,
+            0.16121,
+            0.14854,
+            0.20441
+          ],
+          "family": "compression"
+        },
+        "feat:contrast": {
+          "u": 0.529,
+          "stats": [
+            0.17415,
+            0.23964,
+            0.27409,
+            0.20578
+          ],
+          "family": "illumination"
+        },
+        "feat:edge_density": {
+          "u": 0.68,
+          "stats": [
+            0.15508,
+            0.48364,
+            0.16094,
+            0.13919
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:extreme_fraction": {
+          "u": 0.524,
+          "stats": [
+            0.00678,
+            0.02821,
+            0.05829,
+            0.08262
+          ],
+          "family": "illumination"
+        },
+        "feat:height": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:is_jpeg": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "compression"
+        },
+        "feat:mean_b": {
+          "u": 0.824,
+          "stats": [
+            0.1661,
+            1.47243,
+            0.38488,
+            0.20287
+          ],
+          "family": "color"
+        },
+        "feat:mean_g": {
+          "u": 0.813,
+          "stats": [
+            0.22669,
+            0.41737,
+            0.38398,
+            0.40319
+          ],
+          "family": "color"
+        },
+        "feat:mean_r": {
+          "u": 0.705,
+          "stats": [
+            0.16568,
+            0.8418,
+            0.45943,
+            0.23079
+          ],
+          "family": "color"
+        },
+        "feat:noise_est": {
+          "u": 0.684,
+          "stats": [
+            0.09407,
+            0.38094,
+            0.13747,
+            0.12604
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:out_confidence": {
+          "u": 0.421,
+          "stats": [
+            0.0822,
+            0.13305,
+            0.32425,
+            0.13957
+          ],
+          "family": "task_output"
+        },
+        "feat:out_entropy": {
+          "u": 0.427,
+          "stats": [
+            0.1,
+            0.13244,
+            0.30676,
+            0.12012
+          ],
+          "family": "task_output"
+        },
+        "feat:saturation": {
+          "u": 0.971,
+          "stats": [
+            0.17712,
+            1.15214,
+            0.39641,
+            0.27664
+          ],
+          "family": "color"
+        },
+        "feat:sharpness": {
+          "u": 0.739,
+          "stats": [
+            0.18136,
+            0.94187,
+            0.07144,
+            0.10531
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:tonal_entropy": {
+          "u": 0.533,
+          "stats": [
+            0.12712,
+            0.33726,
+            0.34162,
+            0.16381
+          ],
+          "family": "illumination"
+        },
+        "feat:width": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "task:class_prior": {
+          "u": 0.585,
+          "stats": [
+            0.13289
+          ],
+          "family": "class_mix"
+        }
+      },
+      "attribution": {
+        "all_flagged_families": [],
+        "primary_families": [],
+        "families": [],
+        "features": [],
+        "sources": [
+          {
+            "source": "contributor_a",
+            "n": 40,
+            "abnormal": 0,
+            "abnormal_rate": 0.0,
+            "new_source": false
+          }
+        ]
+      },
+      "ids": [
+        "R-000081",
+        "R-000082",
+        "R-000083",
+        "R-000084",
+        "R-000085"
+      ]
+    },
+    {
+      "batch_id": "b3",
+      "n": 40,
+      "ratio": 0.192,
+      "G": 1.094,
+      "gthr": 5.704,
+      "alert": false,
+      "note": null,
+      "null_median_ratio": 0.174,
+      "families": [],
+      "ood_rate": 0.0,
+      "ood_p": 1.0,
+      "new_clusters": [],
+      "tests": {
+        "emb:centroid": {
+          "u": 0.672,
+          "stats": [
+            0.14579
+          ],
+          "family": "semantic"
+        },
+        "emb:cluster_occupancy": {
+          "u": 0.756,
+          "stats": [
+            0.23006
+          ],
+          "family": "semantic"
+        },
+        "emb:knn_distance": {
+          "u": 0.969,
+          "stats": [
+            1.08623
+          ],
+          "family": "semantic"
+        },
+        "emb:mmd": {
+          "u": -0.3,
+          "stats": [
+            -0.00244
+          ],
+          "family": "semantic"
+        },
+        "feat:aspect": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:blockiness": {
+          "u": 0.522,
+          "stats": [
+            0.14153,
+            0.20337,
+            0.32481,
+            0.196
+          ],
+          "family": "compression"
+        },
+        "feat:brightness": {
+          "u": 0.446,
+          "stats": [
+            0.11822,
+            0.33058,
+            0.3203,
+            0.11687
+          ],
+          "family": "illumination"
+        },
+        "feat:bytes_per_pixel": {
+          "u": 0.417,
+          "stats": [
+            0.08008,
+            0.12479,
+            0.14679,
+            0.20374
+          ],
+          "family": "compression"
+        },
+        "feat:contrast": {
+          "u": 0.573,
+          "stats": [
+            0.14915,
+            0.40267,
+            0.27138,
+            0.25939
+          ],
+          "family": "illumination"
+        },
+        "feat:edge_density": {
+          "u": 0.551,
+          "stats": [
+            0.16144,
+            0.4523,
+            0.08823,
+            0.13272
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:extreme_fraction": {
+          "u": 0.524,
+          "stats": [
+            0.00678,
+            0.02821,
+            0.05829,
+            0.08262
+          ],
+          "family": "illumination"
+        },
+        "feat:height": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "feat:is_jpeg": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "compression"
+        },
+        "feat:mean_b": {
+          "u": 0.967,
+          "stats": [
+            0.1911,
+            1.53612,
+            0.47125,
+            0.2986
+          ],
+          "family": "color"
+        },
+        "feat:mean_g": {
+          "u": 0.347,
+          "stats": [
+            0.07966,
+            0.08975,
+            0.29142,
+            0.1229
+          ],
+          "family": "color"
+        },
+        "feat:mean_r": {
+          "u": 0.611,
+          "stats": [
+            0.12331,
+            0.94329,
+            0.34624,
+            0.20016
+          ],
+          "family": "color"
+        },
+        "feat:noise_est": {
+          "u": 0.608,
+          "stats": [
+            0.05424,
+            0.36813,
+            0.13747,
+            0.12271
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:out_confidence": {
+          "u": 0.633,
+          "stats": [
+            0.17161,
+            0.16298,
+            0.34604,
+            0.25609
+          ],
+          "family": "task_output"
+        },
+        "feat:out_entropy": {
+          "u": 0.737,
+          "stats": [
+            0.1911,
+            0.3386,
+            0.37275,
+            0.26132
+          ],
+          "family": "task_output"
+        },
+        "feat:saturation": {
+          "u": 0.345,
+          "stats": [
+            0.075,
+            0.10473,
+            0.25398,
+            0.09166
+          ],
+          "family": "color"
+        },
+        "feat:sharpness": {
+          "u": 0.512,
+          "stats": [
+            0.16356,
+            0.27257,
+            0.07144,
+            0.10623
+          ],
+          "family": "sharpness_noise"
+        },
+        "feat:tonal_entropy": {
+          "u": 0.659,
+          "stats": [
+            0.18051,
+            0.38593,
+            0.28929,
+            0.32528
+          ],
+          "family": "illumination"
+        },
+        "feat:width": {
+          "u": 0.0,
+          "stats": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "family": "geometry"
+        },
+        "task:class_prior": {
+          "u": 1.094,
+          "stats": [
+            0.24858
+          ],
+          "family": "class_mix"
+        }
+      },
+      "attribution": {
+        "all_flagged_families": [
+          "class_mix"
+        ],
+        "primary_families": [
+          "class_mix"
+        ],
+        "families": [
+          {
+            "family": "class_mix",
+            "score": 1.09,
+            "tests": [
+              "task:class_prior"
+            ],
+            "primary": true
+          }
+        ],
+        "features": [],
+        "sources": [
+          {
+            "source": "contributor_a",
+            "n": 40,
+            "abnormal": 0,
+            "abnormal_rate": 0.0,
+            "new_source": false
+          }
+        ]
+      },
+      "ids": [
+        "R-000121",
+        "R-000122",
+        "R-000123",
+        "R-000124",
+        "R-000125"
+      ]
+    }
+  ],
+  "temporal": {
+    "status": "OK",
+    "ratios": [
+      0.167,
+      0.168,
+      0.17,
+      0.192
+    ],
+    "alerts": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "cusum": [
+      0.0,
+      0.0,
+      0.0,
+      0.018
+    ],
+    "cusum_alert_batch": null,
+    "onset_index": null,
+    "onset_batch": null,
+    "drift_start_index": null,
+    "pattern": "none",
+    "affected_batches": [],
+    "affected_families": []
+  },
+  "findings": [],
+  "finding_counts": {},
+  "part4_flags": {},
+  "unavailable_tests": [],
+  "limitations": [
+    "Distribution shift is not evidence of an attack: a new camera, season, location or lighting condition produces the same signal.",
+    "Thresholds are calibrated on the trusted reference only; a reference that is unrepresentative gives unrepresentative thresholds.",
+    "Small batches have low power; each batch is calibrated at its own size but a single-batch alert has a nonzero false-alarm rate (alpha_global).",
+    "Default handcrafted embeddings are less semantic than a frozen pretrained encoder (embedding.backend=onnx).",
+    "Task-output shift needs model outputs (black-box model or verified Part-3 ledger); otherwise it is reported UNAVAILABLE."
+  ],
+  "config": {
+    "seed": 0,
+    "workers": 4,
+    "window": 50,
+    "min_batch": 20,
+    "calibration": {
+      "draws": 240,
+      "alpha_feature": 0.01,
+      "alpha_global": 0.01
+    },
+    "embedding": {
+      "k": 5,
+      "clusters": 8,
+      "max_points": 200
+    },
+    "ood": {
+      "k": 5,
+      "z": 3.5,
+      "min_votes": 2,
+      "pca": 16,
+      "new_cluster_min": 4
+    },
+    "severity": {
+      "severe_ratio": 3.0,
+      "severe_min_families": 2
+    },
+    "temporal": {
+      "persist": 2,
+      "cusum_h": 3.0
+    },
+    "attribution": {
+      "abnormal_z": 2.0
+    }
+  },
+  "config_sha256": "537fce362bff2957d8e49f1f998da6785ae6722296efa9e00af2fab334e32c77",
+  "links": {
+    "stream": "stable_stream",
+    "dataset_id": "DS-12953977",
+    "ledger_chain_head": "c371e352f80998ae9c43fd96bc5f8394d4f6a14bfcf75645749d08d903f3473c",
+    "ledger_disposition": "ACCEPT",
+    "records_excluded_input_mismatch": 0
+  },
+  "runtime_s": 5.0,
+  "note": "A shift is evidence to review, not a statement of intent. Governance stays with the analyst."
+}

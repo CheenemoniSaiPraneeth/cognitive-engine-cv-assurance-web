@@ -1,0 +1,231 @@
+{
+  "cases": [
+    {
+      "case": "valid",
+      "attacker": null,
+      "attacked": 0,
+      "detected_full": 0,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [],
+      "expected_any_of": [],
+      "detected_by_content_checks_only": null,
+      "disposition": "ACCEPT"
+    },
+    {
+      "case": "output_tampering_naive",
+      "attacker": "naive",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "output_hash_mismatch",
+        "output_internally_inconsistent",
+        "record_hash_mismatch",
+        "reinference_mismatch"
+      ],
+      "expected_any_of": [
+        "output_hash_mismatch",
+        "record_hash_mismatch"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "output_tampering_insider",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "reinference_mismatch"
+      ],
+      "expected_any_of": [
+        "reinference_mismatch"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "input_substitution_naive",
+      "attacker": "naive",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "input_hash_mismatch"
+      ],
+      "expected_any_of": [
+        "input_hash_mismatch"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "input_substitution_insider",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "reinference_mismatch"
+      ],
+      "expected_any_of": [
+        "reinference_mismatch"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "model_substitution_hidden",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "reinference_mismatch"
+      ],
+      "expected_any_of": [
+        "reinference_mismatch"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "model_substitution_declared",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "model_not_registered"
+      ],
+      "expected_any_of": [
+        "model_not_registered"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "trojan_triggered_input",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "reinference_mismatch"
+      ],
+      "expected_any_of": [
+        "reinference_mismatch"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "config_tampering_consistent",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "config_policy_mismatch"
+      ],
+      "expected_any_of": [
+        "config_policy_mismatch"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "config_tampering_inconsistent",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "config_policy_mismatch",
+        "output_internally_inconsistent",
+        "reinference_mismatch"
+      ],
+      "expected_any_of": [
+        "config_policy_mismatch",
+        "reinference_mismatch",
+        "output_internally_inconsistent"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "replay_exact",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "replay_request_id_reuse",
+        "stale_record",
+        "timestamp_anomaly"
+      ],
+      "expected_any_of": [
+        "replay_request_id_reuse",
+        "replay_nonce_reuse",
+        "stale_record"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "replay_output_reuse",
+      "attacker": "insider",
+      "attacked": 4,
+      "detected_full": 4,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "reinference_mismatch"
+      ],
+      "expected_any_of": [
+        "reinference_mismatch",
+        "output_reuse_across_inputs"
+      ],
+      "detected_by_content_checks_only": 4,
+      "disposition": "QUARANTINE"
+    },
+    {
+      "case": "record_deletion",
+      "attacker": "insider",
+      "attacked": 3,
+      "detected_full": 3,
+      "false_positives": 0,
+      "case_detected": true,
+      "categories": [
+        "sequence_gap"
+      ],
+      "expected_any_of": [
+        "sequence_gap"
+      ],
+      "detected_by_content_checks_only": null,
+      "disposition": "QUARANTINE"
+    }
+  ],
+  "record_level": {
+    "tp": 44,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "clean_record_false_positive_rate": 0.0,
+  "valid_case_disposition": "ACCEPT"
+}

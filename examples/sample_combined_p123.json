@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-09-29T06:28:34+00:00",
+  "overall_disposition": "QUARANTINE",
+  "scenario": {
+    "served_model": "trojan_checker.npz",
+    "trusted_model": "trusted_reference.npz",
+    "record_claims_trusted_identity": true
+  },
+  "dataset": {
+    "id": "DS-377616f4",
+    "disposition": "QUARANTINE",
+    "finding_counts": {
+      "structural_error": 3,
+      "duplicate_pair_informational": 5,
+      "duplicate_flooding": 1,
+      "label_anomaly": 18,
+      "ood_anomaly": 8,
+      "trigger_candidate": 2,
+      "converging_signals": 2,
+      "source_concentration": 3
+    }
+  },
+  "model": {
+    "id": "MODEL-trojan_checker",
+    "disposition": "QUARANTINE",
+    "identity": "MISMATCH",
+    "finding_counts": {
+      "identity_mismatch": 1,
+      "parameter_localized_change": 2,
+      "parameter_difference": 1,
+      "dormant_high_influence_unit": 1,
+      "trigger_candidate_response": 3,
+      "model_substitution_assessment": 1
+    }
+  },
+  "inference": {
+    "disposition": "QUARANTINE",
+    "records": 60,
+    "record_counts": {
+      "QUARANTINE": 28,
+      "ACCEPT": 32
+    },
+    "finding_counts": {
+      "reinference_mismatch": 28,
+      "numerical_drift_within_tolerance": 2
+    },
+    "chain_head": "a2cec5540b4900a42c651cd7ce552d0772a469cf02f1653414ef533610785e8e"
+  },
+  "part3_flag_rate_by_part1_flag": {
+    "trigger_candidate": {
+      "records": 20,
+      "flagged_by_part3": 20,
+      "rate": 1.0
+    },
+    "label_anomaly": {
+      "records": 2,
+      "flagged_by_part3": 2,
+      "rate": 1.0
+    },
+    "ood_anomaly": {
+      "records": 1,
+      "flagged_by_part3": 0,
+      "rate": 0.0
+    },
+    "duplicate_group": {
+      "records": 17,
+      "flagged_by_part3": 0,
+      "rate": 0.0
+    },
+    "unflagged": {
+      "records": 20,
+      "flagged_by_part3": 6,
+      "rate": 0.3
+    }
+  },
+  "cross_signals": [
+    {
+      "signal": "CONVERGING_INFERENCE_EVIDENCE",
+      "severity": "critical",
+      "disposition": "QUARANTINE",
+      "detail": "20 of 28 re-inference mismatches are on inputs that Part 1 flagged as trigger candidates: recorded outputs were NOT produced by the claimed model on those inputs, and the inputs carry the recurring pattern found in the data.",
+      "part3_findings": [
+        "P-00001",
+        "P-00002",
+        "P-00003",
+        "P-00004",
+        "P-00005",
+        "P-00006",
+        "P-00007",
+        "P-00008",
+        "P-00009",
+        "P-00010",
+        "P-00011",
+        "P-00012",
+        "P-00013",
+        "P-00014",
+        "P-00015",
+        "P-00016",
+        "P-00017",
+        "P-00018",
+        "P-00019",
+        "P-00020"
+      ]
+    }
+  ],
+  "part12_cross_signals": [
+    {
+      "signal": "CONVERGING_TRIGGER_EVIDENCE",
+      "severity": "critical",
+      "disposition": "QUARANTINE",
+      "detail": "Part 1 found a recurring localized pattern in the training data AND this model is steered by that same pattern.",
+      "part1_findings": [
+        "F-00036",
+        "F-00037"
+      ],
+      "part2_findings": [
+        "M-00008"
+      ]
+    },
+    {
+      "signal": "MODEL_CORROBORATES_LABEL_ANOMALIES",
+      "severity": "medium",
+      "disposition": "REVIEW",
+      "detail": "Model agrees with dataset labels on 81% of unflagged samples but only 33% of Part 1 label-anomaly samples: independent support for the Part 1 label findings."
+    }
+  ],
+  "unavailable_tests": {
+    "part3": []
+  },
+  "note": "Dispositions prioritise review; they are not statements of intent. Governance stays with the analyst."
+}

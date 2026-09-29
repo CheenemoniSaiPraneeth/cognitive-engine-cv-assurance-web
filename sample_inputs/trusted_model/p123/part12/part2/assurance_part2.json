@@ -1,0 +1,480 @@
+{
+  "schema_version": "1.0",
+  "part": "2 - model integrity",
+  "detector_version": "part2-0.1.0",
+  "created_at": "2026-09-29T07:52:42+00:00",
+  "disposition": "ACCEPT",
+  "coverage": "LIMITED",
+  "model_id": "MODEL-trusted_reference",
+  "access_mode": "white-box",
+  "identity_status": "NO_EXPECTED_DIGEST",
+  "fingerprint": {
+    "sha256": "85c1ac5fb4c0667836dd24b88465a130c76d3c816ea504084fa8b36eebf55b71",
+    "size_bytes": 789422,
+    "file_name": "trusted_reference.npz",
+    "white_box": true,
+    "format": "numpy-mlp",
+    "architecture": "MLP 3072-64-4",
+    "parameter_count": 196932,
+    "runtime": "numpy",
+    "model_meta": {
+      "input_size": 32,
+      "mean": 0.5,
+      "std": 0.25,
+      "class_names": [
+        "circle",
+        "square",
+        "stripes",
+        "triangle"
+      ],
+      "tag": "trusted"
+    },
+    "input_schema": {
+      "dtype": "uint8",
+      "layout": "HWC RGB",
+      "resize_to": [
+        32,
+        32
+      ],
+      "normalisation": [
+        0.5,
+        0.25
+      ]
+    },
+    "output_schema": {
+      "type": "classification",
+      "num_classes": 4,
+      "activation": "softmax"
+    },
+    "layer_count": 2,
+    "architecture_signature": "bdcc88d72152861d4b337696f664d0c8498b426f3366403d1bfea4e228c2d575",
+    "tensor_shapes": {
+      "fc1.weight": [
+        3072,
+        64
+      ],
+      "fc1.bias": [
+        64
+      ],
+      "fc2.weight": [
+        64,
+        4
+      ],
+      "fc2.bias": [
+        4
+      ]
+    },
+    "expected_sha256": null,
+    "expected_source": null,
+    "identity_status": "NO_EXPECTED_DIGEST"
+  },
+  "parameter_findings": [],
+  "behaviour_findings": [],
+  "trigger_findings": [],
+  "substitution_findings": [
+    "M-00001"
+  ],
+  "substitution": {
+    "verdict": "UNVERIFIABLE_NO_TRUSTED_REFERENCE",
+    "identity_status": "NO_EXPECTED_DIGEST"
+  },
+  "parameter_analysis": {
+    "status": "OK",
+    "layer_inventory": [
+      {
+        "name": "fc1",
+        "type": "Linear",
+        "shape": [
+          3072,
+          64
+        ],
+        "activation": "relu"
+      },
+      {
+        "name": "fc2",
+        "type": "Linear",
+        "shape": [
+          64,
+          4
+        ],
+        "activation": "softmax"
+      }
+    ],
+    "tensor_stats": {
+      "fc1.weight": {
+        "shape": [
+          3072,
+          64
+        ],
+        "mean": 6.994724328394648e-06,
+        "std": 0.018071326641242672,
+        "l2": 8.012917311353805,
+        "abs_max": 0.08537490665912628,
+        "sparsity": 0.0
+      },
+      "fc1.bias": {
+        "shape": [
+          64
+        ],
+        "mean": 0.003761199764085177,
+        "std": 0.08081406011101341,
+        "l2": 0.6472123081792233,
+        "abs_max": 0.1948852241039276,
+        "sparsity": 0.0
+      },
+      "fc2.weight": {
+        "shape": [
+          64,
+          4
+        ],
+        "mean": 0.0038759679282520665,
+        "std": 1.1405039256082874,
+        "l2": 18.248168188301953,
+        "abs_max": 5.046666145324707,
+        "sparsity": 0.0
+      },
+      "fc2.bias": {
+        "shape": [
+          4
+        ],
+        "mean": 1.941256320104003,
+        "std": 2.5317857411669475,
+        "l2": 6.3807257077921795,
+        "abs_max": 5.93995475769043,
+        "sparsity": 0.0
+      }
+    },
+    "reference_diff": null,
+    "dormant_units": {
+      "fc1_relu": {
+        "units": 64,
+        "dead_or_dormant_units": 0,
+        "flagged_units": [],
+        "flagged_detail": []
+      }
+    },
+    "parameter_count": 196932
+  },
+  "behavioural_fingerprint": {
+    "prediction_hash": "fbd5568df1c103ad51de1baf07c2607dcd23bdf7e8b7552732d3de1f0c66277e",
+    "rounded_probability_hash": "d7acf58d74f256247f61bc235a2052a04ac28f4c95d6bfab31effbaaa4c9bacd",
+    "deterministic_max_abs_diff": 0.0,
+    "per_variant": {
+      "normal:identity": {
+        "class_frequency": [
+          0.2333,
+          0.2583,
+          0.2583,
+          0.25
+        ],
+        "mean_confidence": 0.8589,
+        "mean_entropy": 0.3835
+      },
+      "brightness:x0.7": {
+        "class_frequency": [
+          0.2167,
+          0.1833,
+          0.575,
+          0.025
+        ],
+        "mean_confidence": 0.7736,
+        "mean_entropy": 0.5943
+      },
+      "brightness:x1.3": {
+        "class_frequency": [
+          0.2083,
+          0.35,
+          0.1167,
+          0.325
+        ],
+        "mean_confidence": 0.8881,
+        "mean_entropy": 0.2933
+      },
+      "contrast:x0.6": {
+        "class_frequency": [
+          0.1333,
+          0.2083,
+          0.425,
+          0.2333
+        ],
+        "mean_confidence": 0.7547,
+        "mean_entropy": 0.6363
+      },
+      "contrast:x1.4": {
+        "class_frequency": [
+          0.3083,
+          0.2583,
+          0.2167,
+          0.2167
+        ],
+        "mean_confidence": 0.8832,
+        "mean_entropy": 0.298
+      },
+      "compression:jpeg30": {
+        "class_frequency": [
+          0.2333,
+          0.25,
+          0.2917,
+          0.225
+        ],
+        "mean_confidence": 0.8654,
+        "mean_entropy": 0.3709
+      },
+      "compression:jpeg60": {
+        "class_frequency": [
+          0.2417,
+          0.2417,
+          0.2667,
+          0.25
+        ],
+        "mean_confidence": 0.8687,
+        "mean_entropy": 0.368
+      },
+      "resize:down0.5": {
+        "class_frequency": [
+          0.2333,
+          0.25,
+          0.2667,
+          0.25
+        ],
+        "mean_confidence": 0.8651,
+        "mean_entropy": 0.37
+      },
+      "crop:center0.8": {
+        "class_frequency": [
+          0.2417,
+          0.2417,
+          0.275,
+          0.2417
+        ],
+        "mean_confidence": 0.8607,
+        "mean_entropy": 0.3583
+      },
+      "noise:sigma8": {
+        "class_frequency": [
+          0.2583,
+          0.25,
+          0.25,
+          0.2417
+        ],
+        "mean_confidence": 0.8522,
+        "mean_entropy": 0.3925
+      },
+      "noise:sigma16": {
+        "class_frequency": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "mean_confidence": 0.8395,
+        "mean_entropy": 0.4067
+      },
+      "blur:r1": {
+        "class_frequency": [
+          0.2333,
+          0.2583,
+          0.2583,
+          0.25
+        ],
+        "mean_confidence": 0.8644,
+        "mean_entropy": 0.3717
+      },
+      "blur:r2": {
+        "class_frequency": [
+          0.25,
+          0.2333,
+          0.2833,
+          0.2333
+        ],
+        "mean_confidence": 0.8679,
+        "mean_entropy": 0.3645
+      },
+      "occlusion:grey_centre_20pct": {
+        "class_frequency": [
+          0.125,
+          0.2,
+          0.425,
+          0.25
+        ],
+        "mean_confidence": 0.7555,
+        "mean_entropy": 0.6471
+      },
+      "occlusion:grey_corner_15pct": {
+        "class_frequency": [
+          0.225,
+          0.2417,
+          0.25,
+          0.2833
+        ],
+        "mean_confidence": 0.8491,
+        "mean_entropy": 0.407
+      }
+    }
+  },
+  "reference_comparison": null,
+  "accuracy": {
+    "received": {
+      "normal:identity": 0.8667,
+      "brightness:x0.7": 0.6417,
+      "brightness:x1.3": 0.7333,
+      "contrast:x0.6": 0.7583,
+      "contrast:x1.4": 0.825,
+      "compression:jpeg30": 0.875,
+      "compression:jpeg60": 0.85,
+      "resize:down0.5": 0.8583,
+      "crop:center0.8": 0.7583,
+      "noise:sigma8": 0.8417,
+      "noise:sigma16": 0.8333,
+      "blur:r1": 0.8667,
+      "blur:r2": 0.8917,
+      "occlusion:grey_centre_20pct": 0.3917,
+      "occlusion:grey_corner_15pct": 0.8083
+    },
+    "trusted_reference_model": null
+  },
+  "trigger_tests": {
+    "status": "OK",
+    "candidates_tested": 240,
+    "library_median_asr": 0.109,
+    "hits": 0,
+    "part1_candidate_results": [
+      {
+        "part1_candidate": "T-001",
+        "attack_success_rate": 0.13,
+        "target_class": 3,
+        "target_class_name": "triangle",
+        "reference_model_asr": null,
+        "confirmed_functional_response": false,
+        "part1_label_correlation": "circle",
+        "n_images": 60
+      },
+      {
+        "part1_candidate": "T-002",
+        "attack_success_rate": 0.13,
+        "target_class": 3,
+        "target_class_name": "triangle",
+        "reference_model_asr": null,
+        "confirmed_functional_response": false,
+        "part1_label_correlation": "circle",
+        "n_images": 60
+      },
+      {
+        "part1_candidate": "T-003",
+        "attack_success_rate": 0.065,
+        "target_class": 0,
+        "target_class_name": "circle",
+        "reference_model_asr": null,
+        "confirmed_functional_response": false,
+        "part1_label_correlation": "circle",
+        "n_images": 60
+      }
+    ],
+    "mode": "reference_free"
+  },
+  "module_status": {
+    "parameters": "OK",
+    "behaviour": "OK",
+    "trigger": "OK"
+  },
+  "unavailable_tests": [
+    "behavioural comparison vs trusted model: no trusted reference model supplied",
+    "parameter diff vs trusted model: no trusted reference model supplied"
+  ],
+  "significant_finding_count": 0,
+  "finding_counts": {
+    "identity_unverifiable": 1
+  },
+  "configuration": {
+    "seed": 0,
+    "max_battery_images": 120,
+    "max_trigger_images": 60,
+    "behaviour": {
+      "agree_review": 0.95,
+      "agree_high": 0.85,
+      "normal_agree_min": 0.99,
+      "min_accuracy": 0.5,
+      "accuracy_drop": 0.1,
+      "determinism_tol": 1e-06
+    },
+    "params": {
+      "identical_tol": 0.0,
+      "noise_rel_l2": 0.0001,
+      "small_rel_l2": 0.05,
+      "localized_unit_share": 0.5,
+      "localized_max_units": 3,
+      "dormant_active_frac": 0.02,
+      "influence_z": 3.5
+    },
+    "trigger": {
+      "sizes": [
+        0.08,
+        0.1,
+        0.125,
+        0.15
+      ],
+      "margin": 0.03,
+      "positions": [
+        "tl",
+        "tr",
+        "bl",
+        "br",
+        "c"
+      ],
+      "min_asr": 0.6,
+      "ref_excess": 0.3,
+      "noref_outlier": 0.4,
+      "quarantine_asr": 0.8,
+      "min_size_hits": 2
+    }
+  },
+  "configuration_sha256": "2c95716279d9838db94829bbaa21586245eaabebc81df0e2a930470802dad59b",
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.4.4",
+    "network_access_required": false,
+    "training_performed": false,
+    "battery_images": 120,
+    "class_names": {
+      "0": "circle",
+      "1": "square",
+      "2": "stripes",
+      "3": "triangle"
+    }
+  },
+  "limitations": [
+    "Hash mismatch proves the artifact differs from the trusted one, not that it was maliciously modified.",
+    "Parameter differences are evidence of model difference, not of compromise.",
+    "Trigger scan covers a finite pattern family/positions/sizes plus any Part 1 candidates; a clean scan is not proof of no backdoor.",
+    "Behavioural agreement is measured only on the supplied reference battery.",
+    "Black-box mode cannot inspect weights or activations; those tests are marked UNAVAILABLE, never PASS.",
+    "Zero-training: no model is trained or fine-tuned on the assessed artifact or data."
+  ],
+  "findings": [
+    {
+      "finding_id": "M-00001",
+      "asset_type": "model",
+      "asset_id": "MODEL-trusted_reference",
+      "category": "identity_unverifiable",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "substitution_v1",
+      "detector_version": "part2-0.1.0",
+      "evidence": {
+        "reason": "no trusted digest or reference artifact supplied"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:52:42+00:00",
+      "disposition": "UNAVAILABLE",
+      "limitations": [
+        "Identity comparison requires a trusted digest."
+      ]
+    }
+  ],
+  "timings_seconds": {
+    "parameters": 0.02,
+    "behaviour": 0.706,
+    "trigger": 1.779,
+    "total": 2.509
+  }
+}

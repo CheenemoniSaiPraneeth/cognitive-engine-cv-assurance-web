@@ -1,0 +1,68 @@
+{
+  "label_flip": {
+    "truth": 20,
+    "flagged": 21,
+    "tp": 20,
+    "fp": 1,
+    "fn": 0,
+    "precision": 0.952,
+    "recall": 1.0,
+    "f1": 0.976
+  },
+  "duplicate_flood": {
+    "truth": 25,
+    "flagged": 25,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "ood": {
+    "truth": 15,
+    "flagged": 12,
+    "tp": 9,
+    "fp": 3,
+    "fn": 6,
+    "precision": 0.75,
+    "recall": 0.6,
+    "f1": 0.667
+  },
+  "trigger": {
+    "truth": 25,
+    "flagged": 25,
+    "tp": 25,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "structural": {
+    "truth": 3,
+    "flagged": 3,
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "clean_set": {
+    "clean_samples": 466,
+    "flagged_any": 5,
+    "false_positive_rate": 0.0107,
+    "flagged_examples": [
+      "clean_0045.png",
+      "clean_0076.png",
+      "clean_0257.png",
+      "clean_0298.png",
+      "x_clean_0035.png"
+    ]
+  },
+  "source_level": {
+    "attack_source_disposition": "QUARANTINE",
+    "other_sources_flagged": []
+  }
+}

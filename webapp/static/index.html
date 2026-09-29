@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cognitive Engine · CV Assurance</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<aside class="side">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"></div>
+    <h1 class="brand-title">Cognitive<br>Engine</h1>
+    <p class="brand-sub">CV Assurance Framework</p>
+  </div>
+  <nav class="side-nav" aria-label="Pipeline">
+    <div class="nav-label">Pipeline</div>
+    <ol class="steps" id="sideSteps">
+      <li data-p="p1"><span class="dot"></span><span>P1</span> Data integrity</li>
+      <li data-p="p2"><span class="dot"></span><span>P2</span> Model assurance</li>
+      <li data-p="p3"><span class="dot"></span><span>P3</span> Inference provenance</li>
+      <li data-p="p4"><span class="dot"></span><span>P4</span> Distribution shift</li>
+      <li data-p="p5"><span class="dot"></span><span>P5</span> Governance</li>
+    </ol>
+  </nav>
+  <button class="side-home" id="homeBtn" hidden>← New assessment</button>
+</aside>
+
+<main class="main">
+  <!-- LANDING -->
+  <section id="viewHome">
+    <header class="hero">
+      <p class="eyebrow">CV ASSURANCE</p>
+      <h2>AI System Assurance &amp; Evidence Framework</h2>
+      <p class="lede">Evaluate data integrity, model behavior, inference provenance, distribution shift, and governance evidence.</p>
+    </header>
+
+    <div class="cards">
+      <article class="card card-primary" id="demoCard">
+        <div class="tag">Default demo · recommended</div>
+        <h3>Synthetic CV Assurance Dataset</h3>
+        <p class="muted">Explore the complete assurance pipeline using the built-in dataset. No upload required.</p>
+        <ul class="facts" id="demoFacts"><li class="muted">Loading dataset details…</li></ul>
+        <button class="btn btn-primary" id="demoBtn">Run Default Demo</button>
+        <p class="err" id="demoErr" hidden></p>
+      </article>
+
+      <div class="or" aria-hidden="true">OR</div>
+
+      <article class="card" id="uploadCard">
+        <div class="tag tag-muted">Custom dataset</div>
+        <h3>Use your dataset</h3>
+        <p class="muted">Upload a CV assurance ZIP package. It is validated before anything runs.</p>
+        <label class="drop" id="drop">
+          <input type="file" id="zipInput" accept=".zip" hidden>
+          <span id="dropText">Choose or drop <b>cv_assurance_input.zip</b></span>
+        </label>
+        <div id="valBox" hidden></div>
+        <button class="btn" id="runCustomBtn" hidden>Run Assurance</button>
+        <p class="err" id="uploadErr" hidden></p>
+      </article>
+    </div>
+
+    <section class="flow" aria-label="Pipeline overview">
+      <div><b>P1</b><span>Data integrity</span></div><i>→</i>
+      <div><b>P2</b><span>Model assurance</span></div><i>→</i>
+      <div><b>P3</b><span>Inference provenance</span></div><i>→</i>
+      <div><b>P4</b><span>Distribution shift</span></div><i>→</i>
+      <div><b>P5</b><span>Governance</span></div>
+    </section>
+
+    <details class="help">
+      <summary>Input package format</summary>
+      <pre>cv_assurance_input.zip
+├── images/                     <em>required</em>
+│   ├── image_001.jpg
+│   └── …
+├── annotations/                <em>required</em>
+│   └── annotations.json        <em>required · COCO format</em>
+├── model/                      <em>optional</em>
+│   ├── model.npz | model.onnx | model.pt        served model
+│   └── trusted_model.*         trusted reference (optional)
+├── streams/                    <em>optional</em>
+│   └── &lt;stream_name&gt;/  images (+ metadata.json)
+└── metadata/                   <em>optional</em></pre>
+      <p class="muted small">Without a model, only Part 1 (data integrity) and Part 5 run; Parts 2–4 are reported as not executed. Without a separate trusted reference, the served model is compared against itself.</p>
+    </details>
+  </section>
+
+  <!-- RUNNING -->
+  <section id="viewRun" hidden>
+    <header class="hero slim"><p class="eyebrow" id="runEyebrow">RUNNING</p><h2 id="runTitle">Running assurance…</h2></header>
+    <div class="card"><ul class="stages" id="stageList"></ul>
+      <p class="muted small" id="runMeta"></p>
+      <p class="err" id="runErr" hidden></p></div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="viewResult" hidden></section>
+</main>
+
+<aside class="drawer" id="drawer" hidden aria-live="polite"></aside>
+<script src="/static/app.js"></script>
+</body>
+</html>

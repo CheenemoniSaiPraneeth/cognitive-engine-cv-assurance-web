@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cognitive-engine-cv-assurance
+    runtime: docker
+    plan: starter        # 512MB+ recommended; the pipeline loads numpy/scipy/sklearn
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: MAX_ZIP_MB
+        value: "200"

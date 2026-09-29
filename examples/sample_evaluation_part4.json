@@ -1,0 +1,275 @@
+{
+ "shift_scenarios": 6,
+ "shift_recall": 1.0,
+ "stable_false_alarm_rate_windows": 0.0,
+ "stable_false_alarm_rate_batches": 0.0,
+ "mean_family_recall": 1.0,
+ "mean_family_recall_primary": 0.472,
+ "mean_family_precision": 0.318,
+ "onset_delays_batches": {
+  "step": 0,
+  "gradual": 1,
+  "transient": null
+ },
+ "pattern_accuracy": 1.0,
+ "calibration_stability_alarm_rate_by_batch_size": {
+  "30": 0.0,
+  "60": 0.0,
+  "100": 0.0
+ },
+ "cases": [
+  {
+   "case": "stable_1",
+   "shifted": false,
+   "detected": false,
+   "level": "NORMAL",
+   "ratio": 0.634,
+   "expected": [],
+   "flagged_families": [
+    "compression"
+   ],
+   "family_recall": null,
+   "family_recall_primary": null,
+   "family_precision": null
+  },
+  {
+   "case": "stable_2",
+   "shifted": false,
+   "detected": false,
+   "level": "NORMAL",
+   "ratio": 0.617,
+   "expected": [],
+   "flagged_families": [
+    "color"
+   ],
+   "family_recall": null,
+   "family_recall_primary": null,
+   "family_precision": null
+  },
+  {
+   "case": "stable_3",
+   "shifted": false,
+   "detected": false,
+   "level": "NORMAL",
+   "ratio": 0.686,
+   "expected": [],
+   "flagged_families": [
+    "semantic"
+   ],
+   "family_recall": null,
+   "family_recall_primary": null,
+   "family_precision": null
+  },
+  {
+   "case": "stable_4",
+   "shifted": false,
+   "detected": false,
+   "level": "NORMAL",
+   "ratio": 0.593,
+   "expected": [],
+   "flagged_families": [],
+   "family_recall": null,
+   "family_recall_primary": null,
+   "family_precision": null
+  },
+  {
+   "case": "illumination",
+   "shifted": true,
+   "detected": true,
+   "level": "SEVERE SHIFT",
+   "ratio": 18.906,
+   "expected": [
+    "illumination"
+   ],
+   "flagged_families": [
+    "compression",
+    "semantic",
+    "sharpness_noise"
+   ],
+   "family_recall": 1.0,
+   "family_recall_primary": 0.0,
+   "family_precision": 0.0
+  },
+  {
+   "case": "camera",
+   "shifted": true,
+   "detected": true,
+   "level": "SEVERE SHIFT",
+   "ratio": 204.2,
+   "expected": [
+    "color",
+    "geometry",
+    "sharpness_noise",
+    "semantic"
+   ],
+   "flagged_families": [
+    "geometry",
+    "sharpness_noise"
+   ],
+   "family_recall": 1.0,
+   "family_recall_primary": 0.5,
+   "family_precision": 1.0
+  },
+  {
+   "case": "compression",
+   "shifted": true,
+   "detected": true,
+   "level": "SEVERE SHIFT",
+   "ratio": 999.0,
+   "expected": [
+    "compression"
+   ],
+   "flagged_families": [
+    "compression",
+    "semantic",
+    "sharpness_noise"
+   ],
+   "family_recall": 1.0,
+   "family_recall_primary": 1.0,
+   "family_precision": 0.33
+  },
+  {
+   "case": "class_prior",
+   "shifted": true,
+   "detected": true,
+   "level": "SHIFT DETECTED",
+   "ratio": 2.72,
+   "expected": [
+    "class_mix"
+   ],
+   "flagged_families": [
+    "class_mix",
+    "compression",
+    "semantic",
+    "sharpness_noise"
+   ],
+   "family_recall": 1.0,
+   "family_recall_primary": 1.0,
+   "family_precision": 0.25
+  },
+  {
+   "case": "semantic",
+   "shifted": true,
+   "detected": true,
+   "level": "SEVERE SHIFT",
+   "ratio": 999.0,
+   "expected": [
+    "semantic"
+   ],
+   "flagged_families": [
+    "illumination",
+    "sharpness_noise"
+   ],
+   "family_recall": 1.0,
+   "family_recall_primary": 0.0,
+   "family_precision": 0.0
+  },
+  {
+   "case": "mixed",
+   "shifted": true,
+   "detected": true,
+   "level": "SEVERE SHIFT",
+   "ratio": 999.0,
+   "expected": [
+    "illumination",
+    "compression",
+    "class_mix"
+   ],
+   "flagged_families": [
+    "compression",
+    "semantic",
+    "sharpness_noise"
+   ],
+   "family_recall": 1.0,
+   "family_recall_primary": 0.33,
+   "family_precision": 0.33
+  }
+ ],
+ "series": [
+  {
+   "series": "stable",
+   "truth": "none",
+   "onset_true": null,
+   "pattern_pred": "none",
+   "onset_pred": null,
+   "delay_batches": null,
+   "cusum_alert": null,
+   "drift_start": null,
+   "ratios": [
+    0.718,
+    0.729,
+    0.709,
+    0.726,
+    0.719,
+    0.727,
+    0.728,
+    0.716
+   ],
+   "false_alert_batches": []
+  },
+  {
+   "series": "step",
+   "truth": "step",
+   "onset_true": 3,
+   "pattern_pred": "step",
+   "onset_pred": 3,
+   "delay_batches": 0,
+   "cusum_alert": 3,
+   "drift_start": 3,
+   "ratios": [
+    0.726,
+    0.719,
+    0.727,
+    19.451,
+    20.589,
+    20.402,
+    20.53,
+    19.226
+   ],
+   "false_alert_batches": []
+  },
+  {
+   "series": "gradual",
+   "truth": "gradual",
+   "onset_true": 2,
+   "pattern_pred": "gradual",
+   "onset_pred": 3,
+   "delay_batches": 1,
+   "cusum_alert": 4,
+   "drift_start": 2,
+   "ratios": [
+    0.719,
+    0.727,
+    0.905,
+    2.462,
+    3.917,
+    7.936,
+    11.717,
+    17.091
+   ],
+   "false_alert_batches": []
+  },
+  {
+   "series": "transient",
+   "truth": "transient",
+   "onset_true": 4,
+   "pattern_pred": "transient",
+   "onset_pred": null,
+   "delay_batches": null,
+   "cusum_alert": 4,
+   "drift_start": 3,
+   "ratios": [
+    0.729,
+    0.72,
+    0.717,
+    0.877,
+    21.318,
+    0.723,
+    0.725,
+    0.726
+   ],
+   "false_alert_batches": []
+  }
+ ],
+ "task_output_available": true
+}

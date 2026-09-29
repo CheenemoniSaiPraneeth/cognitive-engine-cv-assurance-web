@@ -1,0 +1,908 @@
+{
+  "schema_version": "1.0",
+  "part": "3 - inference provenance & output integrity",
+  "detector_version": "part3-0.1.0",
+  "created_at": "2026-09-29T07:53:52+00:00",
+  "disposition": "QUARANTINE",
+  "records_total": 40,
+  "record_status": {
+    "R-000001": "QUARANTINE",
+    "R-000002": "ACCEPT",
+    "R-000003": "QUARANTINE",
+    "R-000004": "QUARANTINE",
+    "R-000005": "QUARANTINE",
+    "R-000006": "QUARANTINE",
+    "R-000007": "QUARANTINE",
+    "R-000008": "QUARANTINE",
+    "R-000009": "QUARANTINE",
+    "R-000010": "QUARANTINE",
+    "R-000011": "QUARANTINE",
+    "R-000012": "QUARANTINE",
+    "R-000013": "QUARANTINE",
+    "R-000014": "ACCEPT",
+    "R-000015": "ACCEPT",
+    "R-000016": "ACCEPT",
+    "R-000017": "ACCEPT",
+    "R-000018": "ACCEPT",
+    "R-000019": "ACCEPT",
+    "R-000020": "ACCEPT",
+    "R-000021": "ACCEPT",
+    "R-000022": "ACCEPT",
+    "R-000023": "ACCEPT",
+    "R-000024": "ACCEPT",
+    "R-000025": "ACCEPT",
+    "R-000026": "ACCEPT",
+    "R-000027": "ACCEPT",
+    "R-000028": "ACCEPT",
+    "R-000029": "ACCEPT",
+    "R-000030": "ACCEPT",
+    "R-000031": "QUARANTINE",
+    "R-000032": "ACCEPT",
+    "R-000033": "QUARANTINE",
+    "R-000034": "ACCEPT",
+    "R-000035": "ACCEPT",
+    "R-000036": "ACCEPT",
+    "R-000037": "QUARANTINE",
+    "R-000038": "ACCEPT",
+    "R-000039": "ACCEPT",
+    "R-000040": "ACCEPT"
+  },
+  "record_counts": {
+    "QUARANTINE": 15,
+    "ACCEPT": 25
+  },
+  "checks_executed": {
+    "chain": 40,
+    "signature": 40,
+    "hash_binding": 40,
+    "input_binding": 40,
+    "model_identity": 40,
+    "config_policy": 40,
+    "reinference": 40,
+    "replay_binding": 40
+  },
+  "chain_head": "b5c5d344f11688ffeba1add7c927a2d34bde728243d167e4866fd16cc5052042",
+  "signature_checked": true,
+  "findings": [
+    {
+      "finding_id": "P-00001",
+      "asset_type": "inference",
+      "asset_id": "R-000001",
+      "category": "reinference_mismatch",
+      "severity": "critical",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": true,
+        "decision_changed": true,
+        "topk_structure_differs": true,
+        "max_prob_diff": 1.0,
+        "stored_pred": "circle",
+        "recomputed_pred": "triangle",
+        "stored_decision": "circle",
+        "recomputed_decision": "triangle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "4e6b21ca41fcdb59299bad26e8aa189f2f99ffd2cdaec70b00e5e17368520405"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00002",
+      "asset_type": "inference",
+      "asset_id": "R-000002",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0002,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00003",
+      "asset_type": "inference",
+      "asset_id": "R-000003",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.127,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "a0e7947aef902941aec924cd9e6dea7d37240078aab2bff693fde4fb332dd06c"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00004",
+      "asset_type": "inference",
+      "asset_id": "R-000004",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0041,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "670a9af1014f4d8a6ae2e4b9e38b315e4dcc0702d0adac78503f8be1836a114d"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00005",
+      "asset_type": "inference",
+      "asset_id": "R-000005",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0453,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "7a794670e0d8e584d653c4f9fd94a6cf49093952e4a7cf6a1ce2cf50386c282f"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00006",
+      "asset_type": "inference",
+      "asset_id": "R-000006",
+      "category": "reinference_mismatch",
+      "severity": "critical",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": true,
+        "decision_changed": true,
+        "topk_structure_differs": true,
+        "max_prob_diff": 0.7135,
+        "stored_pred": "circle",
+        "recomputed_pred": "stripes",
+        "stored_decision": "circle",
+        "recomputed_decision": "REJECT",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "e17deed4bee875ed871c98c8586b4bf0005baee3309946bed3cb9c92e6a440ef"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00007",
+      "asset_type": "inference",
+      "asset_id": "R-000007",
+      "category": "reinference_mismatch",
+      "severity": "critical",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": true,
+        "decision_changed": true,
+        "topk_structure_differs": true,
+        "max_prob_diff": 0.647,
+        "stored_pred": "circle",
+        "recomputed_pred": "square",
+        "stored_decision": "circle",
+        "recomputed_decision": "REJECT",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "5075593909796713b2dee6be00148dd2c50632ecc6aae783c48fbeb683443505"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00008",
+      "asset_type": "inference",
+      "asset_id": "R-000008",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0982,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "9a38960842462a138f4d33a37c7a5c964cfe769ea4ed1dab81d2339405a74bf7"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00009",
+      "asset_type": "inference",
+      "asset_id": "R-000009",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.4759,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "c478157e17c8aafc6ee1a319debecea0334f617fc53a12e655c8e3e859d296e6"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00010",
+      "asset_type": "inference",
+      "asset_id": "R-000010",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.2672,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "d356d4fcd925f68faad6566a984d91e3001a896e37565eec44bb276e83ad46cd"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00011",
+      "asset_type": "inference",
+      "asset_id": "R-000011",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.1533,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "74e3cd3e448745f9fdb6a2488082be9a61e76b2f8e0c0dcef805cd6e39a75ffb"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00012",
+      "asset_type": "inference",
+      "asset_id": "R-000012",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0753,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "265597c0ea128de11e76a55b6eea1e83a7a1836aa810f17b7cfd43b4d51f739d"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00013",
+      "asset_type": "inference",
+      "asset_id": "R-000013",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.1918,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "fa81e9ba975b6109e364578e390fad2b48fc0033f10482d30aa3d9e896a190ea"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00014",
+      "asset_type": "inference",
+      "asset_id": "R-000014",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0001,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00015",
+      "asset_type": "inference",
+      "asset_id": "R-000015",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0001,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00016",
+      "asset_type": "inference",
+      "asset_id": "R-000016",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0001,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00017",
+      "asset_type": "inference",
+      "asset_id": "R-000017",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00018",
+      "asset_type": "inference",
+      "asset_id": "R-000018",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00019",
+      "asset_type": "inference",
+      "asset_id": "R-000019",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00020",
+      "asset_type": "inference",
+      "asset_id": "R-000020",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00021",
+      "asset_type": "inference",
+      "asset_id": "R-000021",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0001,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00022",
+      "asset_type": "inference",
+      "asset_id": "R-000022",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00023",
+      "asset_type": "inference",
+      "asset_id": "R-000023",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0001,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00024",
+      "asset_type": "inference",
+      "asset_id": "R-000024",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00025",
+      "asset_type": "inference",
+      "asset_id": "R-000025",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00026",
+      "asset_type": "inference",
+      "asset_id": "R-000027",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0004,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00027",
+      "asset_type": "inference",
+      "asset_id": "R-000028",
+      "category": "numerical_drift_within_tolerance",
+      "severity": "low",
+      "confidence": 0.9,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0006,
+        "stored_pred": "square",
+        "recomputed_pred": "square",
+        "stored_decision": "square",
+        "recomputed_decision": "square",
+        "result": "TOLERANCE_MATCH"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "ACCEPT",
+      "limitations": [
+        "Within recorded tolerance; hardware/float differences expected."
+      ]
+    },
+    {
+      "finding_id": "P-00028",
+      "asset_type": "inference",
+      "asset_id": "R-000031",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0042,
+        "stored_pred": "circle",
+        "recomputed_pred": "circle",
+        "stored_decision": "circle",
+        "recomputed_decision": "circle",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "68177ef7409441ce497eda13563294da8ba8b462f14dc32d08ef561419d93f9c"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00029",
+      "asset_type": "inference",
+      "asset_id": "R-000033",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": false,
+        "max_prob_diff": 0.0068,
+        "stored_pred": "stripes",
+        "recomputed_pred": "stripes",
+        "stored_decision": "stripes",
+        "recomputed_decision": "stripes",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "c0edb9e29fb598ca6d5ac08ac71f869cd0ec530efb9f7cfd72436b8b6a603b19"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    },
+    {
+      "finding_id": "P-00030",
+      "asset_type": "inference",
+      "asset_id": "R-000037",
+      "category": "reinference_mismatch",
+      "severity": "high",
+      "confidence": 0.97,
+      "detector": "reinference_v1",
+      "detector_version": "part3-0.1.0",
+      "evidence": {
+        "pred_changed": false,
+        "decision_changed": false,
+        "topk_structure_differs": true,
+        "max_prob_diff": 0.0018,
+        "stored_pred": "stripes",
+        "recomputed_pred": "stripes",
+        "stored_decision": "stripes",
+        "recomputed_decision": "stripes",
+        "result": "MISMATCH",
+        "recomputed_output_sha256": "55c25eb0e471c56907e2f2d1d05c85c04576333a39666727ec06f3119f85dd21"
+      },
+      "reference_assets": [],
+      "timestamp": "2026-09-29T07:53:52+00:00",
+      "disposition": "QUARANTINE",
+      "limitations": [
+        "Recorded output differs from independent recomputation with the claimed model, recorded input and recorded config."
+      ]
+    }
+  ],
+  "finding_counts": {
+    "reinference_mismatch": 15,
+    "numerical_drift_within_tolerance": 15
+  },
+  "unavailable_tests": [],
+  "limitations": [
+    "Provenance cannot prove what happened before the trusted capture point (input acquisition / first hash).",
+    "A fully privileged attacker who controls the host, the signing key AND the model registry can forge consistent evidence.",
+    "Re-inference proves the recorded output is what the CLAIMED model produces for the recorded input; a substituted model that gives identical outputs on an input (e.g. a dormant trojan on a clean image) is indistinguishable here - Part 2 covers that.",
+    "Configuration tampering that is internally consistent is only detectable against a trusted policy config; without one it is UNAVAILABLE.",
+    "Floating-point/hardware differences are handled by a recorded tolerance; a valid hash proves identity of bytes, not semantic correctness.",
+    "Zero-training: nothing is trained; only the supplied model is re-executed."
+  ],
+  "policy_present": true,
+  "configuration_sha256": "3d49071136fd9799447d6602a948322d8cc01ffc6e26fe6cb4469db0ee5eb33d"
+}

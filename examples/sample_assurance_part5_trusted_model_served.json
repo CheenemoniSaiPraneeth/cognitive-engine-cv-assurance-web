@@ -1,0 +1,3807 @@
+{
+ "schema_version": "1.0",
+ "part": "5 - analyst assurance & governance",
+ "detector_version": "part5-0.1.0",
+ "created_at": "2026-09-29T08:00:26+00:00",
+ "assessment_id": "A5-220bc15dffd2",
+ "parts": {
+  "1": {
+   "disposition": "QUARANTINE",
+   "level": null,
+   "artifacts": 1,
+   "scopes": [
+    "DS-12953977"
+   ],
+   "finding_counts": {
+    "structural_error": 3,
+    "duplicate_pair_informational": 8,
+    "duplicate_flooding": 1,
+    "label_anomaly": 17,
+    "ood_anomaly": 5,
+    "trigger_candidate": 3,
+    "converging_signals": 2,
+    "source_concentration": 3
+   },
+   "coverage": []
+  },
+  "2": {
+   "disposition": "ACCEPT",
+   "level": null,
+   "artifacts": 1,
+   "scopes": [
+    "MODEL-trusted_reference"
+   ],
+   "finding_counts": {
+    "identity_unverifiable": 1
+   },
+   "coverage": [
+    "LIMITED"
+   ]
+  },
+  "3": {
+   "disposition": "ACCEPT",
+   "level": null,
+   "artifacts": 3,
+   "scopes": [
+    "dataset_sample_ledger",
+    "shifted_stream",
+    "stable_stream"
+   ],
+   "finding_counts": {},
+   "coverage": []
+  },
+  "4": {
+   "disposition": "REVIEW",
+   "level": "SEVERE SHIFT",
+   "artifacts": 2,
+   "scopes": [
+    "shifted_stream",
+    "stable_stream"
+   ],
+   "finding_counts": {
+    "distribution_shift": 1,
+    "drift_onset": 1,
+    "geometry_shift": 1,
+    "sharpness_noise_shift": 2,
+    "compression_shift": 1,
+    "new_source": 1,
+    "semantic_shift": 1,
+    "illumination_shift": 1
+   },
+   "coverage": []
+  }
+ },
+ "cases": [
+  {
+   "case_id": "C-a2316531",
+   "rule": "source_convergence",
+   "title": "Source 'contributor_x' shows 3 converging data-integrity signals",
+   "entities": [
+    "dataset:DS-12953977",
+    "source:contributor_x"
+   ],
+   "parts": [
+    1
+   ],
+   "severity": "critical",
+   "suggested_disposition": "QUARANTINE",
+   "priority": {
+    "score": 0.954,
+    "band": "HIGH",
+    "independent_parts": [
+     1
+    ],
+    "base_noisy_or": 0.954,
+    "independence_bonus": 0.0,
+    "contributions": [
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "source_concentration",
+      "severity": "high",
+      "count": 2,
+      "max_finding_score": 0.665,
+      "volume_bonus": 0.0151,
+      "group_score": 0.6801
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "duplicate_flooding",
+      "severity": "high",
+      "count": 1,
+      "max_finding_score": 0.6531,
+      "volume_bonus": 0.0,
+      "group_score": 0.6531
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "trigger_candidate",
+      "severity": "high",
+      "count": 3,
+      "max_finding_score": 0.56,
+      "volume_bonus": 0.0239,
+      "group_score": 0.5839
+     }
+    ],
+    "method": "noisy-OR of evidence-group scores (severity x confidence x category weight, +log-volume bonus) + independence bonus per extra Part"
+   },
+   "rationale": "3 independent Part-1 detectors elevate the same source (duplicate rate, label_anomaly rate, trigger_candidate rate; 128 samples, cross-signal count 3). Evidence concentrates in one contributor rather than being spread across the dataset.",
+   "next_action": "Inspect duplicate/trigger groups and label-anomaly samples attributed to 'contributor_x'; check contributor provenance before allowing this data into training.",
+   "tags": [
+    "data",
+    "converging"
+   ],
+   "finding_count": 6,
+   "finding_uids": [
+    "P1:DS-12953977:F-00006",
+    "P1:DS-12953977:F-00035",
+    "P1:DS-12953977:F-00036",
+    "P1:DS-12953977:F-00037",
+    "P1:DS-12953977:F-00040",
+    "P1:DS-12953977:F-00041"
+   ],
+   "evidence_hash": "36b471ab154379d2ee2b16537dad2491fa32b909167541d82dabd982b3c6a835",
+   "trace": [
+    "source:contributor_x",
+    "dataset:DS-12953977"
+   ]
+  },
+  {
+   "case_id": "C-7672ae6e",
+   "rule": "operational_shift",
+   "title": "Stream 'shifted_stream': severe shift in geometry",
+   "entities": [
+    "stream:shifted_stream",
+    "window:shifted_stream"
+   ],
+   "parts": [
+    4
+   ],
+   "severity": "high",
+   "suggested_disposition": "REVIEW",
+   "priority": {
+    "score": 0.99,
+    "band": "HIGH",
+    "independent_parts": [
+     4
+    ],
+    "base_noisy_or": 0.999,
+    "independence_bonus": 0.0,
+    "contributions": [
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "compression_shift",
+      "severity": "high",
+      "count": 1,
+      "max_finding_score": 0.693,
+      "volume_bonus": 0.0,
+      "group_score": 0.693
+     },
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "distribution_shift",
+      "severity": "high",
+      "count": 1,
+      "max_finding_score": 0.693,
+      "volume_bonus": 0.0,
+      "group_score": 0.693
+     },
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "geometry_shift",
+      "severity": "high",
+      "count": 1,
+      "max_finding_score": 0.693,
+      "volume_bonus": 0.0,
+      "group_score": 0.693
+     },
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "sharpness_noise_shift",
+      "severity": "high",
+      "count": 1,
+      "max_finding_score": 0.693,
+      "volume_bonus": 0.0,
+      "group_score": 0.693
+     },
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "illumination_shift",
+      "severity": "medium",
+      "count": 1,
+      "max_finding_score": 0.33,
+      "volume_bonus": 0.0,
+      "group_score": 0.33
+     },
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "semantic_shift",
+      "severity": "medium",
+      "count": 1,
+      "max_finding_score": 0.33,
+      "volume_bonus": 0.0,
+      "group_score": 0.33
+     },
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "sharpness_noise_shift",
+      "severity": "medium",
+      "count": 1,
+      "max_finding_score": 0.33,
+      "volume_bonus": 0.0,
+      "group_score": 0.33
+     },
+     {
+      "part": 4,
+      "scope": "shifted_stream",
+      "category": "drift_onset",
+      "severity": "medium",
+      "count": 1,
+      "max_finding_score": 0.32,
+      "volume_bonus": 0.0,
+      "group_score": 0.32
+     }
+    ],
+    "method": "noisy-OR of evidence-group scores (severity x confidence x category weight, +log-volume bonus) + independence bonus per extra Part"
+   },
+   "rationale": "Operational population differs from the trusted reference: pattern step, onset b2, primary families geometry; ledger verified intact. A shift is not an attack - a new camera, lighting or scene can cause it.",
+   "next_action": "Decide: accept and re-baseline the reference (Retest) or investigate acquisition changes at the onset batch.",
+   "tags": [
+    "shift"
+   ],
+   "finding_count": 9,
+   "finding_uids": [
+    "P4:shifted_stream:S-00001",
+    "P4:shifted_stream:S-00002",
+    "P4:shifted_stream:S-00003",
+    "P4:shifted_stream:S-00004",
+    "P4:shifted_stream:S-00005",
+    "P4:shifted_stream:S-00006",
+    "P4:shifted_stream:S-00007",
+    "P4:shifted_stream:S-00008",
+    "P4:shifted_stream:S-00009"
+   ],
+   "evidence_hash": "13a957e9e6346d0b1395f1d4ba5ec4b248170bfeb6a306197d2cce3f05fdab26",
+   "trace": [
+    "stream:shifted_stream",
+    "window:shifted_stream"
+   ]
+  },
+  {
+   "case_id": "C-5671b112",
+   "rule": "isolated_signal",
+   "title": "Part 1 'DS-12953977': isolated signal(s) - converging_signals, label_anomaly, ood_anomaly, source_concentration, structural_error",
+   "entities": [
+    "batch:batch_x",
+    "dataset:DS-12953977",
+    "part1:DS-12953977",
+    "sample:img_000fb9fc6c",
+    "sample:img_02641a0ec3",
+    "sample:img_0b3b6c44fc",
+    "sample:img_114129616d"
+   ],
+   "parts": [
+    1
+   ],
+   "severity": "high",
+   "suggested_disposition": "REVIEW",
+   "priority": {
+    "score": 0.6,
+    "band": "ELEVATED",
+    "independent_parts": [
+     1
+    ],
+    "base_noisy_or": 0.996,
+    "independence_bonus": 0.0,
+    "contributions": [
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "label_anomaly",
+      "severity": "high",
+      "count": 2,
+      "max_finding_score": 0.7,
+      "volume_bonus": 0.0151,
+      "group_score": 0.7151
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "structural_error",
+      "severity": "high",
+      "count": 2,
+      "max_finding_score": 0.693,
+      "volume_bonus": 0.0151,
+      "group_score": 0.7081
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "source_concentration",
+      "severity": "high",
+      "count": 1,
+      "max_finding_score": 0.665,
+      "volume_bonus": 0.0,
+      "group_score": 0.665
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "label_anomaly",
+      "severity": "medium",
+      "count": 15,
+      "max_finding_score": 0.4,
+      "volume_bonus": 0.0588,
+      "group_score": 0.4588
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "structural_error",
+      "severity": "medium",
+      "count": 1,
+      "max_finding_score": 0.396,
+      "volume_bonus": 0.0,
+      "group_score": 0.396
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "converging_signals",
+      "severity": "medium",
+      "count": 2,
+      "max_finding_score": 0.32,
+      "volume_bonus": 0.0151,
+      "group_score": 0.3351
+     },
+     {
+      "part": 1,
+      "scope": "DS-12953977",
+      "category": "ood_anomaly",
+      "severity": "medium",
+      "count": 4,
+      "max_finding_score": 0.2284,
+      "volume_bonus": 0.0301,
+      "group_score": 0.2585
+     }
+    ],
+    "method": "noisy-OR of evidence-group scores (severity x confidence x category weight, +log-volume bonus) + independence bonus per extra Part",
+    "capped": "isolated (uncorroborated) signal: priority capped by policy"
+   },
+   "rationale": "Single-Part evidence with no corroboration from another Part. A lone anomaly can be benign (rare legitimate sample, export artefact); shown for review, not escalated.",
+   "next_action": "Inspect the listed samples/assets; look for corroborating signal in another Part before escalating.",
+   "tags": [
+    "isolated"
+   ],
+   "finding_count": 27,
+   "finding_uids": [
+    "P1:DS-12953977:F-00001",
+    "P1:DS-12953977:F-00002",
+    "P1:DS-12953977:F-00003",
+    "P1:DS-12953977:F-00013",
+    "P1:DS-12953977:F-00014",
+    "P1:DS-12953977:F-00015",
+    "P1:DS-12953977:F-00016",
+    "P1:DS-12953977:F-00017",
+    "P1:DS-12953977:F-00018",
+    "P1:DS-12953977:F-00019",
+    "P1:DS-12953977:F-00020",
+    "P1:DS-12953977:F-00021",
+    "P1:DS-12953977:F-00022",
+    "P1:DS-12953977:F-00023",
+    "P1:DS-12953977:F-00024",
+    "P1:DS-12953977:F-00025",
+    "P1:DS-12953977:F-00026",
+    "P1:DS-12953977:F-00027",
+    "P1:DS-12953977:F-00028",
+    "P1:DS-12953977:F-00029",
+    "P1:DS-12953977:F-00030",
+    "P1:DS-12953977:F-00031",
+    "P1:DS-12953977:F-00032",
+    "P1:DS-12953977:F-00033",
+    "P1:DS-12953977:F-00038",
+    "P1:DS-12953977:F-00039",
+    "P1:DS-12953977:F-00042"
+   ],
+   "evidence_hash": "d2580c54dbfe6049bf9b9ba62b296cf4b1b0715d4ca9de4fed48c8181ad05182",
+   "trace": [
+    "sample:img_000fb9fc6c",
+    "sample:img_02641a0ec3",
+    "sample:img_0b3b6c44fc",
+    "sample:img_114129616d",
+    "batch:batch_x",
+    "dataset:DS-12953977",
+    "part1:DS-12953977"
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "kind": "source_id",
+   "name": "contributor_a",
+   "dataset": "DS-12953977",
+   "sample_count": 80,
+   "duplicate_rate": 0.0,
+   "label_anomaly_rate": 0.0,
+   "ood_rate": 0.0,
+   "trigger_candidate_rate": 0.0,
+   "structural_error_rate": 0.0,
+   "anomaly_categories": {},
+   "cross_signal_count": 0,
+   "disposition": "ACCEPT",
+   "elevated_signals": []
+  },
+  {
+   "kind": "source_id",
+   "name": "contributor_b",
+   "dataset": "DS-12953977",
+   "sample_count": 80,
+   "duplicate_rate": 0.0,
+   "label_anomaly_rate": 0.0,
+   "ood_rate": 0.0,
+   "trigger_candidate_rate": 0.0,
+   "structural_error_rate": 0.0,
+   "anomaly_categories": {},
+   "cross_signal_count": 0,
+   "disposition": "ACCEPT",
+   "elevated_signals": []
+  },
+  {
+   "kind": "source_id",
+   "name": "contributor_c",
+   "dataset": "DS-12953977",
+   "sample_count": 80,
+   "duplicate_rate": 0.0,
+   "label_anomaly_rate": 0.0,
+   "ood_rate": 0.0,
+   "trigger_candidate_rate": 0.0,
+   "structural_error_rate": 0.0,
+   "anomaly_categories": {},
+   "cross_signal_count": 0,
+   "disposition": "ACCEPT",
+   "elevated_signals": []
+  },
+  {
+   "kind": "source_id",
+   "name": "contributor_x",
+   "dataset": "DS-12953977",
+   "sample_count": 128,
+   "duplicate_rate": 0.1953,
+   "label_anomaly_rate": 0.1328,
+   "ood_rate": 0.0391,
+   "trigger_candidate_rate": 0.1953,
+   "structural_error_rate": 0.0234,
+   "anomaly_categories": {
+    "duplicate": 25,
+    "label_anomaly": 17,
+    "ood": 5,
+    "trigger_candidate": 25,
+    "structural": 3
+   },
+   "cross_signal_count": 3,
+   "disposition": "QUARANTINE",
+   "elevated_signals": [
+    "duplicate",
+    "label_anomaly",
+    "trigger_candidate"
+   ]
+  },
+  {
+   "kind": "batch_id",
+   "name": "batch_0",
+   "dataset": "DS-12953977",
+   "sample_count": 40,
+   "duplicate_rate": 0.0,
+   "label_anomaly_rate": 0.0,
+   "ood_rate": 0.0,
+   "trigger_candidate_rate": 0.0,
+   "structural_error_rate": 0.0,
+   "anomaly_categories": {},
+   "cross_signal_count": 0,
+   "disposition": "ACCEPT",
+   "elevated_signals": []
+  }
+ ],
+ "findings": [
+  {
+   "uid": "P1:DS-12953977:F-00001",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00001",
+   "asset_type": "sample",
+   "asset_id": "img_0b3b6c44fc",
+   "category": "structural_error",
+   "severity": "high",
+   "confidence": 0.99,
+   "detector": "ingestion_validator_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "kind": "missing_image_file",
+    "file_name": "x_missing_000.png",
+    "detail": "image file not found"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Structural problems can be benign export artefacts."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_0b3b6c44fc"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00002",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00002",
+   "asset_type": "sample",
+   "asset_id": "img_6212db9079",
+   "category": "structural_error",
+   "severity": "medium",
+   "confidence": 0.99,
+   "detector": "ingestion_validator_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "kind": "impossible_coordinates",
+    "file_name": "x_badbox_000.png",
+    "detail": "bbox=[10, 10, -5, 40]"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Structural problems can be benign export artefacts."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_6212db9079"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00003",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00003",
+   "asset_type": "sample",
+   "asset_id": "img_000fb9fc6c",
+   "category": "structural_error",
+   "severity": "high",
+   "confidence": 0.99,
+   "detector": "ingestion_validator_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "kind": "unreadable_image",
+    "file_name": "x_corrupt_000.png",
+    "detail": "OSError: image file is truncated"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Structural problems can be benign export artefacts."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_000fb9fc6c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00004",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00004",
+   "asset_type": "group",
+   "asset_id": "G-001",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "exact",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "square",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_x",
+    "top_source_fraction": 1.0,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_6b6cc6b56d",
+     "img_d5a974f2bc"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-001",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00005",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00005",
+   "asset_type": "group",
+   "asset_id": "G-002",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "exact",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "square",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_x",
+    "top_source_fraction": 1.0,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_f75614bae1",
+     "img_a505c1f44f"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-002",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00006",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00006",
+   "asset_type": "group",
+   "asset_id": "G-003",
+   "category": "duplicate_flooding",
+   "severity": "high",
+   "confidence": 0.933,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "near",
+    "group_size": 25,
+    "fraction_of_dataset": 0.0683,
+    "top_class": "square",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_x",
+    "top_source_fraction": 1.0,
+    "member_count": 25,
+    "member_sample_ids": [
+     "img_27e18b8869",
+     "img_84f3a02b8b",
+     "img_b5e16f87e8",
+     "img_5386a22769",
+     "img_2c63d3a9cd",
+     "img_e18e9b0773",
+     "img_633ad0b6cc",
+     "img_e1911a1b2b",
+     "img_488f27577e",
+     "img_6b6cc6b56d",
+     "img_2d12911c08",
+     "img_cf204446c6",
+     "img_8fa34c28cb",
+     "img_77f72b3537",
+     "img_f3a81d56e3",
+     "img_f75614bae1",
+     "img_b7bbbf9073",
+     "img_f182f95b8b",
+     "img_d7776b1a79",
+     "img_a65c4d20cf",
+     "img_a505c1f44f",
+     "img_80c9c0534f",
+     "img_607f0ddd19",
+     "img_e8d2ad3d24",
+     "img_d5a974f2bc"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-003",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00007",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00007",
+   "asset_type": "group",
+   "asset_id": "G-004",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "near",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "triangle",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_b",
+    "top_source_fraction": 0.5,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_e48cc8b014",
+     "img_588211397c"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-004",
+    "source:contributor_b"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00008",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00008",
+   "asset_type": "group",
+   "asset_id": "G-005",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "near",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "triangle",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_c",
+    "top_source_fraction": 0.5,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_3e281e1848",
+     "img_8864d8ddaa"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-005",
+    "source:contributor_c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00009",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00009",
+   "asset_type": "group",
+   "asset_id": "G-006",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "near",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "circle",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_c",
+    "top_source_fraction": 0.5,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_eb859ad5e1",
+     "img_8c33399640"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-006",
+    "source:contributor_c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00010",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00010",
+   "asset_type": "group",
+   "asset_id": "G-007",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "near",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "circle",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_c",
+    "top_source_fraction": 0.5,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_17e204c046",
+     "img_556bfd19ec"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-007",
+    "source:contributor_c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00011",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00011",
+   "asset_type": "group",
+   "asset_id": "G-008",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "near",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "triangle",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_c",
+    "top_source_fraction": 0.5,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_297fe9709f",
+     "img_129c8adf9c"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-008",
+    "source:contributor_c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00012",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00012",
+   "asset_type": "group",
+   "asset_id": "G-009",
+   "category": "duplicate_pair_informational",
+   "severity": "low",
+   "confidence": 0.5,
+   "detector": "duplicate_flooding_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "level": "near",
+    "group_size": 2,
+    "fraction_of_dataset": 0.0055,
+    "top_class": "triangle",
+    "top_class_fraction": 1.0,
+    "top_source": "contributor_c",
+    "top_source_fraction": 0.5,
+    "member_count": 2,
+    "member_sample_ids": [
+     "img_77f270cf9d",
+     "img_7c60f5f054"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "ACCEPT",
+   "limitations": [
+    "Duplicates can be legitimate (burst capture, augmentation); policy is domain-specific."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "group:G-009",
+    "source:contributor_c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00013",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00013",
+   "asset_type": "sample",
+   "asset_id": "img_11e8f3c24c",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.912,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": "0.088",
+    "dominant_neighbour_share": "0.912",
+    "local_label_entropy": 0.214,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.636,
+    "nearest_neighbours": [
+     "img_129c8adf9c",
+     "img_8864d8ddaa",
+     "img_163c56bc45",
+     "img_297fe9709f",
+     "img_77f270cf9d"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_11e8f3c24c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00014",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00014",
+   "asset_type": "sample",
+   "asset_id": "img_114129616d",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.651,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "square",
+    "dominant_neighbour_label": "circle",
+    "neighbour_label_agreement": "0.094",
+    "dominant_neighbour_share": "0.651",
+    "local_label_entropy": 0.614,
+    "k": 10,
+    "cluster_majority_label": "circle",
+    "cluster_purity": 0.882,
+    "nearest_neighbours": [
+     "img_ac7d6cac24",
+     "img_5eab270fe0",
+     "img_6121f8ff20",
+     "img_9d41f54af6",
+     "img_71f9cd7e0b"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_114129616d"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00015",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00015",
+   "asset_type": "sample",
+   "asset_id": "img_f780f7c6ec",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.615,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": "0.186",
+    "dominant_neighbour_share": "0.615",
+    "local_label_entropy": 0.772,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.733,
+    "nearest_neighbours": [
+     "img_7e1dd8dc19",
+     "img_a2d8dd574a",
+     "img_e52c4370bf",
+     "img_3e1eafb9bf",
+     "img_c335e8494c"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_f780f7c6ec"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00016",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00016",
+   "asset_type": "sample",
+   "asset_id": "img_4973e0bd41",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.811,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "square",
+    "dominant_neighbour_label": "circle",
+    "neighbour_label_agreement": 0.0,
+    "dominant_neighbour_share": "0.811",
+    "local_label_entropy": 0.349,
+    "k": 10,
+    "cluster_majority_label": "circle",
+    "cluster_purity": 0.895,
+    "nearest_neighbours": [
+     "img_c42a82b0f9",
+     "img_02f3a516e6",
+     "img_c69d2ac3e9",
+     "img_58c5248c9c",
+     "img_21fbe987c9"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_4973e0bd41"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00017",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00017",
+   "asset_type": "sample",
+   "asset_id": "img_3406d19a05",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 1.0,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": 0.0,
+    "dominant_neighbour_share": "1.0",
+    "local_label_entropy": -0.0,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.733,
+    "nearest_neighbours": [
+     "img_79354faf16",
+     "img_a2d8dd574a",
+     "img_4167fb03b1",
+     "img_6e034a657a",
+     "img_58f08d3add"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_3406d19a05"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00018",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00018",
+   "asset_type": "sample",
+   "asset_id": "img_71f9cd7e0b",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.897,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "square",
+    "dominant_neighbour_label": "circle",
+    "neighbour_label_agreement": "0.103",
+    "dominant_neighbour_share": "0.897",
+    "local_label_entropy": 0.239,
+    "k": 10,
+    "cluster_majority_label": "circle",
+    "cluster_purity": 0.882,
+    "nearest_neighbours": [
+     "img_9fbf58cc56",
+     "img_5eab270fe0",
+     "img_2ac65604d3",
+     "img_114129616d",
+     "img_305181c591"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_71f9cd7e0b"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00019",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00019",
+   "asset_type": "sample",
+   "asset_id": "img_80400fe65f",
+   "category": "label_anomaly",
+   "severity": "high",
+   "confidence": 1.0,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": 0.0,
+    "dominant_neighbour_share": "1.0",
+    "local_label_entropy": -0.0,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.846,
+    "nearest_neighbours": [
+     "img_aec2a20cf9",
+     "img_31796c67bd",
+     "img_d8be8dec6a",
+     "img_0a96aca33b",
+     "img_6b4bf27ce1"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_80400fe65f"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00020",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00020",
+   "asset_type": "sample",
+   "asset_id": "img_02641a0ec3",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.733,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "square",
+    "dominant_neighbour_label": "circle",
+    "neighbour_label_agreement": "0.087",
+    "dominant_neighbour_share": "0.733",
+    "local_label_entropy": 0.63,
+    "k": 10,
+    "cluster_majority_label": "circle",
+    "cluster_purity": 0.632,
+    "nearest_neighbours": [
+     "img_b263c2c583",
+     "img_3ff8ecceab",
+     "img_4dbade8231",
+     "img_25c1adecc8",
+     "img_99b6239827"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_02641a0ec3"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00021",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00021",
+   "asset_type": "sample",
+   "asset_id": "img_57a367ce04",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.887,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": "0.113",
+    "dominant_neighbour_share": "0.887",
+    "local_label_entropy": 0.255,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.636,
+    "nearest_neighbours": [
+     "img_e18deacd47",
+     "img_608ceb8496",
+     "img_543a1a7d99",
+     "img_eeb8950052",
+     "img_ee4959efcc"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_57a367ce04"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00022",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00022",
+   "asset_type": "sample",
+   "asset_id": "img_f08ded2e40",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.589,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "square",
+    "dominant_neighbour_label": "circle",
+    "neighbour_label_agreement": "0.139",
+    "dominant_neighbour_share": "0.693",
+    "local_label_entropy": 0.68,
+    "k": 10,
+    "cluster_majority_label": "square",
+    "cluster_purity": 0.5,
+    "nearest_neighbours": [
+     "img_763f8171ba",
+     "img_cb829e5bf8",
+     "img_346a0fd325",
+     "img_ccd1cb1103",
+     "img_af0e470853"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_f08ded2e40"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00023",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00023",
+   "asset_type": "sample",
+   "asset_id": "img_f620532f08",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.696,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": "0.237",
+    "dominant_neighbour_share": "0.696",
+    "local_label_entropy": 0.559,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.636,
+    "nearest_neighbours": [
+     "img_237140db82",
+     "img_5b5731021a",
+     "img_ccd1cb1103",
+     "img_9b5dad81f3",
+     "img_fa65976b85"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_f620532f08"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00024",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00024",
+   "asset_type": "sample",
+   "asset_id": "img_74b07f5b59",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.91,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "square",
+    "dominant_neighbour_label": "circle",
+    "neighbour_label_agreement": 0.0,
+    "dominant_neighbour_share": "0.91",
+    "local_label_entropy": 0.219,
+    "k": 10,
+    "cluster_majority_label": "circle",
+    "cluster_purity": 0.632,
+    "nearest_neighbours": [
+     "img_8c5bacef33",
+     "img_3999ff15d7",
+     "img_aec04a1e79",
+     "img_08e1897a4c",
+     "img_c5d7a8462a"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_74b07f5b59"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00025",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00025",
+   "asset_type": "sample",
+   "asset_id": "img_62ac0444b5",
+   "category": "label_anomaly",
+   "severity": "high",
+   "confidence": 0.916,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": "0.084",
+    "dominant_neighbour_share": "0.916",
+    "local_label_entropy": 0.209,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.846,
+    "nearest_neighbours": [
+     "img_dac112f36b",
+     "img_5d1ac7d138",
+     "img_ab15371192",
+     "img_aec2a20cf9",
+     "img_79354faf16"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_62ac0444b5"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00026",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00026",
+   "asset_type": "sample",
+   "asset_id": "img_2ede9daa15",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.914,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "square",
+    "dominant_neighbour_label": "circle",
+    "neighbour_label_agreement": "0.086",
+    "dominant_neighbour_share": "0.914",
+    "local_label_entropy": 0.212,
+    "k": 10,
+    "cluster_majority_label": "circle",
+    "cluster_purity": 0.632,
+    "nearest_neighbours": [
+     "img_75b8d1625e",
+     "img_50a5497239",
+     "img_02370fdb8c",
+     "img_e77e2a22d5",
+     "img_19cbac6997"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_2ede9daa15"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00027",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00027",
+   "asset_type": "sample",
+   "asset_id": "img_164016c8c0",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.639,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": "0.175",
+    "dominant_neighbour_share": "0.639",
+    "local_label_entropy": 0.652,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.6,
+    "nearest_neighbours": [
+     "img_96d39b71d0",
+     "img_ab15371192",
+     "img_a4a530d332",
+     "img_e3858dfe35",
+     "img_b7e57dade9"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_164016c8c0"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00028",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00028",
+   "asset_type": "sample",
+   "asset_id": "img_543a1a7d99",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.817,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "stripes",
+    "dominant_neighbour_label": "triangle",
+    "neighbour_label_agreement": "0.183",
+    "dominant_neighbour_share": "0.817",
+    "local_label_entropy": 0.343,
+    "k": 10,
+    "cluster_majority_label": "triangle",
+    "cluster_purity": 0.636,
+    "nearest_neighbours": [
+     "img_588211397c",
+     "img_e48cc8b014",
+     "img_608ceb8496",
+     "img_57a367ce04",
+     "img_fa65976b85"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_543a1a7d99"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00029",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00029",
+   "asset_type": "sample",
+   "asset_id": "img_58e3d69637",
+   "category": "label_anomaly",
+   "severity": "medium",
+   "confidence": 0.604,
+   "detector": "label_integrity_knn_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "assigned_label": "circle",
+    "dominant_neighbour_label": "square",
+    "neighbour_label_agreement": 0.0,
+    "dominant_neighbour_share": "0.604",
+    "local_label_entropy": 0.484,
+    "k": 10,
+    "cluster_majority_label": "square",
+    "cluster_purity": 0.727,
+    "nearest_neighbours": [
+     "img_9c21ce223c",
+     "img_ea9dc60196",
+     "img_e72964b46c",
+     "img_3d150f8ee8",
+     "img_34e136ff36"
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:12+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Similarity-based evidence only; visually ambiguous classes can trigger this."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_58e3d69637"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00030",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00030",
+   "asset_type": "sample",
+   "asset_id": "img_9c21ce223c",
+   "category": "ood_anomaly",
+   "severity": "medium",
+   "confidence": 0.571,
+   "detector": "ood_multi_scorer_v2",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "votes": 4,
+    "scorers": 7,
+    "reference_mode": "self",
+    "scores": {
+     "emb_knn_distance": 0.6236,
+     "emb_mahalanobis": 7.0098,
+     "emb_lof": 2.0681,
+     "emb_isolation_forest": 0.4294,
+     "stat_knn_distance": 14.2725,
+     "stat_robust_mahalanobis": 180.9246,
+     "stat_isolation_forest": 0.759
+    },
+    "robust_z": {
+     "emb_knn_distance": 0.84,
+     "emb_mahalanobis": 1.83,
+     "emb_lof": 10.44,
+     "emb_isolation_forest": 0.21,
+     "stat_knn_distance": 29.83,
+     "stat_robust_mahalanobis": 174.14,
+     "stat_isolation_forest": 7.4
+    },
+    "nearest_reference": [
+     [
+      "img_58e3d69637",
+      0.812
+     ],
+     [
+      "img_e72964b46c",
+      0.785
+     ],
+     [
+      "img_ea9dc60196",
+      0.733
+     ]
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:13+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Distributional difference only - not evidence of malicious intent.",
+    "Rare legitimate samples can be flagged.",
+    "No trusted reference supplied: dataset used as its own reference."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_9c21ce223c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00031",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00031",
+   "asset_type": "sample",
+   "asset_id": "img_ea9dc60196",
+   "category": "ood_anomaly",
+   "severity": "medium",
+   "confidence": 0.571,
+   "detector": "ood_multi_scorer_v2",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "votes": 4,
+    "scorers": 7,
+    "reference_mode": "self",
+    "scores": {
+     "emb_knn_distance": 0.6414,
+     "emb_mahalanobis": 6.6818,
+     "emb_lof": 2.2416,
+     "emb_isolation_forest": 0.4305,
+     "stat_knn_distance": 14.2978,
+     "stat_robust_mahalanobis": 180.9702,
+     "stat_isolation_forest": 0.7549
+    },
+    "robust_z": {
+     "emb_knn_distance": 1.07,
+     "emb_mahalanobis": 1.4,
+     "emb_lof": 12.15,
+     "emb_isolation_forest": 0.24,
+     "stat_knn_distance": 29.89,
+     "stat_robust_mahalanobis": 174.18,
+     "stat_isolation_forest": 7.31
+    },
+    "nearest_reference": [
+     [
+      "img_9c21ce223c",
+      0.733
+     ],
+     [
+      "img_58e3d69637",
+      0.727
+     ],
+     [
+      "img_e72964b46c",
+      0.727
+     ]
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:13+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Distributional difference only - not evidence of malicious intent.",
+    "Rare legitimate samples can be flagged.",
+    "No trusted reference supplied: dataset used as its own reference."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_ea9dc60196"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00032",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00032",
+   "asset_type": "sample",
+   "asset_id": "img_e72964b46c",
+   "category": "ood_anomaly",
+   "severity": "medium",
+   "confidence": 0.571,
+   "detector": "ood_multi_scorer_v2",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "votes": 4,
+    "scorers": 7,
+    "reference_mode": "self",
+    "scores": {
+     "emb_knn_distance": 0.5959,
+     "emb_mahalanobis": 6.8806,
+     "emb_lof": 2.5242,
+     "emb_isolation_forest": 0.4378,
+     "stat_knn_distance": 14.4388,
+     "stat_robust_mahalanobis": 181.0111,
+     "stat_isolation_forest": 0.7558
+    },
+    "robust_z": {
+     "emb_knn_distance": 0.47,
+     "emb_mahalanobis": 1.66,
+     "emb_lof": 14.94,
+     "emb_isolation_forest": 0.41,
+     "stat_knn_distance": 30.24,
+     "stat_robust_mahalanobis": 174.22,
+     "stat_isolation_forest": 7.33
+    },
+    "nearest_reference": [
+     [
+      "img_9c21ce223c",
+      0.785
+     ],
+     [
+      "img_ea9dc60196",
+      0.727
+     ],
+     [
+      "img_58e3d69637",
+      0.727
+     ]
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:13+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Distributional difference only - not evidence of malicious intent.",
+    "Rare legitimate samples can be flagged.",
+    "No trusted reference supplied: dataset used as its own reference."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_e72964b46c"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00033",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00033",
+   "asset_type": "sample",
+   "asset_id": "img_58e3d69637",
+   "category": "ood_anomaly",
+   "severity": "medium",
+   "confidence": 0.571,
+   "detector": "ood_multi_scorer_v2",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "votes": 4,
+    "scorers": 7,
+    "reference_mode": "self",
+    "scores": {
+     "emb_knn_distance": 0.6114,
+     "emb_mahalanobis": 6.9898,
+     "emb_lof": 1.9051,
+     "emb_isolation_forest": 0.4472,
+     "stat_knn_distance": 14.5708,
+     "stat_robust_mahalanobis": 181.0506,
+     "stat_isolation_forest": 0.7716
+    },
+    "robust_z": {
+     "emb_knn_distance": 0.67,
+     "emb_mahalanobis": 1.81,
+     "emb_lof": 8.82,
+     "emb_isolation_forest": 0.63,
+     "stat_knn_distance": 30.56,
+     "stat_robust_mahalanobis": 174.26,
+     "stat_isolation_forest": 7.68
+    },
+    "nearest_reference": [
+     [
+      "img_9c21ce223c",
+      0.812
+     ],
+     [
+      "img_ea9dc60196",
+      0.727
+     ],
+     [
+      "img_e72964b46c",
+      0.727
+     ]
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:13+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Distributional difference only - not evidence of malicious intent.",
+    "Rare legitimate samples can be flagged.",
+    "No trusted reference supplied: dataset used as its own reference."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_58e3d69637"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00034",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00034",
+   "asset_type": "sample",
+   "asset_id": "img_70e16e8730",
+   "category": "ood_anomaly",
+   "severity": "low",
+   "confidence": 0.286,
+   "detector": "ood_multi_scorer_v2",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "votes": 2,
+    "scorers": 7,
+    "reference_mode": "self",
+    "scores": {
+     "emb_knn_distance": 0.5202,
+     "emb_mahalanobis": 5.5312,
+     "emb_lof": 1.0009,
+     "emb_isolation_forest": 0.4358,
+     "stat_knn_distance": 3.4334,
+     "stat_robust_mahalanobis": 21.7206,
+     "stat_isolation_forest": 0.6127
+    },
+    "robust_z": {
+     "emb_knn_distance": -0.54,
+     "emb_mahalanobis": -0.13,
+     "emb_lof": -0.11,
+     "emb_isolation_forest": 0.36,
+     "stat_knn_distance": 3.35,
+     "stat_robust_mahalanobis": 17.99,
+     "stat_isolation_forest": 4.12
+    },
+    "nearest_reference": [
+     [
+      "img_21fbe987c9",
+      0.568
+     ],
+     [
+      "img_02f3a516e6",
+      0.534
+     ],
+     [
+      "img_58c5248c9c",
+      0.519
+     ]
+    ]
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:13+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Distributional difference only - not evidence of malicious intent.",
+    "Rare legitimate samples can be flagged.",
+    "No trusted reference supplied: dataset used as its own reference."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_70e16e8730"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00035",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00035",
+   "asset_type": "pattern",
+   "asset_id": "T-001",
+   "category": "trigger_candidate",
+   "severity": "high",
+   "confidence": 0.8,
+   "detector": "trigger_candidate_patch_recurrence_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "support": 25,
+    "support_fraction": 0.0744,
+    "location_norm_xyxy": [
+     0.833,
+     0.833,
+     1.0,
+     1.0
+    ],
+    "position_specificity_ratio": 24.3,
+    "pixel_consistency_std": 0.69,
+    "label_correlation": {
+     "value": "circle",
+     "fraction": 1.0,
+     "base_rate": 0.289,
+     "p_value": 3.2419881411345857e-14
+    },
+    "source_correlation": {
+     "value": "contributor_x",
+     "fraction": 1.0,
+     "base_rate": 0.298,
+     "p_value": 6.942534798257662e-14
+    },
+    "label_concentrated": true,
+    "source_concentrated": true,
+    "member_sample_ids": [
+     "img_70e16e8730",
+     "img_19cbac6997",
+     "img_f209049e13",
+     "img_b30cd21e82",
+     "img_9fbf58cc56",
+     "img_d91dc4dad8",
+     "img_8916b195bc",
+     "img_ee41ee5e13",
+     "img_afd4e3b577",
+     "img_08e1897a4c",
+     "img_602c548655",
+     "img_0d448cdc15",
+     "img_c39b592519",
+     "img_a31a8cadf2",
+     "img_852c8ec813",
+     "img_fb5733802a",
+     "img_13842a5225",
+     "img_ff5a6b8bf6",
+     "img_f33ae427c1",
+     "img_e394b32ae4",
+     "img_763f8171ba",
+     "img_b263c2c583",
+     "img_62ab31394f",
+     "img_43804a6554",
+     "img_c397e8a16b"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Potential trigger candidate only; dataset evidence cannot establish a functional backdoor.",
+    "Low-opacity, blended, or input-dependent triggers may be missed."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "pattern:T-001",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00036",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00036",
+   "asset_type": "pattern",
+   "asset_id": "T-002",
+   "category": "trigger_candidate",
+   "severity": "high",
+   "confidence": 0.8,
+   "detector": "trigger_candidate_patch_recurrence_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "support": 11,
+    "support_fraction": 0.0327,
+    "location_norm_xyxy": [
+     0.896,
+     0.833,
+     1.0,
+     1.0
+    ],
+    "position_specificity_ratio": 11.0,
+    "pixel_consistency_std": 4.76,
+    "label_correlation": {
+     "value": "circle",
+     "fraction": 1.0,
+     "base_rate": 0.289,
+     "p_value": 1.1607990009212247e-06
+    },
+    "source_correlation": {
+     "value": "contributor_x",
+     "fraction": 1.0,
+     "base_rate": 0.298,
+     "p_value": 1.6228110219130772e-06
+    },
+    "label_concentrated": true,
+    "source_concentrated": true,
+    "member_sample_ids": [
+     "img_19cbac6997",
+     "img_8916b195bc",
+     "img_ee41ee5e13",
+     "img_afd4e3b577",
+     "img_602c548655",
+     "img_c39b592519",
+     "img_a31a8cadf2",
+     "img_f33ae427c1",
+     "img_e394b32ae4",
+     "img_763f8171ba",
+     "img_b263c2c583"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Potential trigger candidate only; dataset evidence cannot establish a functional backdoor.",
+    "Low-opacity, blended, or input-dependent triggers may be missed."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "pattern:T-002",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00037",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00037",
+   "asset_type": "pattern",
+   "asset_id": "T-003",
+   "category": "trigger_candidate",
+   "severity": "high",
+   "confidence": 0.8,
+   "detector": "trigger_candidate_patch_recurrence_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "support": 11,
+    "support_fraction": 0.0327,
+    "location_norm_xyxy": [
+     0.833,
+     0.896,
+     0.917,
+     1.0
+    ],
+    "position_specificity_ratio": 11.0,
+    "pixel_consistency_std": 11.79,
+    "label_correlation": {
+     "value": "circle",
+     "fraction": 1.0,
+     "base_rate": 0.289,
+     "p_value": 1.1607990009212247e-06
+    },
+    "source_correlation": {
+     "value": "contributor_x",
+     "fraction": 1.0,
+     "base_rate": 0.298,
+     "p_value": 1.6228110219130772e-06
+    },
+    "label_concentrated": true,
+    "source_concentrated": true,
+    "member_sample_ids": [
+     "img_19cbac6997",
+     "img_8916b195bc",
+     "img_afd4e3b577",
+     "img_c39b592519",
+     "img_852c8ec813",
+     "img_fb5733802a",
+     "img_f33ae427c1",
+     "img_e394b32ae4",
+     "img_763f8171ba",
+     "img_62ab31394f",
+     "img_c397e8a16b"
+    ],
+    "member_ids_truncated": false
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Potential trigger candidate only; dataset evidence cannot establish a functional backdoor.",
+    "Low-opacity, blended, or input-dependent triggers may be missed."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "pattern:T-003",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00038",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00038",
+   "asset_type": "sample",
+   "asset_id": "img_58e3d69637",
+   "category": "converging_signals",
+   "severity": "medium",
+   "confidence": 0.8,
+   "detector": "cross_signal_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "signals": [
+     "label_anomaly",
+     "ood_anomaly"
+    ],
+    "file_name": "x_ood_010.png"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Multiple independent detectors point at the same sample."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_58e3d69637"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00039",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00039",
+   "asset_type": "sample",
+   "asset_id": "img_70e16e8730",
+   "category": "converging_signals",
+   "severity": "medium",
+   "confidence": 0.8,
+   "detector": "cross_signal_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "signals": [
+     "ood_anomaly",
+     "trigger_candidate"
+    ],
+    "file_name": "x_trig_000.png"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Multiple independent detectors point at the same sample."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "sample:img_70e16e8730"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00040",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00040",
+   "asset_type": "source",
+   "asset_id": "source_id:contributor_x",
+   "category": "source_concentration",
+   "severity": "high",
+   "confidence": 0.95,
+   "detector": "source_aggregation_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "sample_count": 128,
+    "duplicate_rate": 0.1953,
+    "label_anomaly_rate": 0.1328,
+    "ood_rate": 0.0391,
+    "trigger_candidate_rate": 0.1953,
+    "structural_error_rate": 0.0234,
+    "anomaly_categories": {
+     "duplicate": 25,
+     "label_anomaly": 17,
+     "ood": 5,
+     "trigger_candidate": 25,
+     "structural": 3
+    },
+    "share_of_all_flagged": {
+     "duplicate": 1.0,
+     "label_anomaly": 1.0,
+     "ood": 1.0,
+     "trigger_candidate": 1.0,
+     "structural": 1.0
+    },
+    "elevated_signals": [
+     "duplicate",
+     "label_anomaly",
+     "trigger_candidate"
+    ],
+    "cross_signal_count": 3,
+    "disposition": "QUARANTINE"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "QUARANTINE",
+   "limitations": [
+    "Concentration of evidence prioritises review; it does not establish intent."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00041",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00041",
+   "asset_type": "source",
+   "asset_id": "contributor_id:contributor_x",
+   "category": "source_concentration",
+   "severity": "high",
+   "confidence": 0.95,
+   "detector": "source_aggregation_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "sample_count": 128,
+    "duplicate_rate": 0.1953,
+    "label_anomaly_rate": 0.1328,
+    "ood_rate": 0.0391,
+    "trigger_candidate_rate": 0.1953,
+    "structural_error_rate": 0.0234,
+    "anomaly_categories": {
+     "duplicate": 25,
+     "label_anomaly": 17,
+     "ood": 5,
+     "trigger_candidate": 25,
+     "structural": 3
+    },
+    "share_of_all_flagged": {
+     "duplicate": 1.0,
+     "label_anomaly": 1.0,
+     "ood": 1.0,
+     "trigger_candidate": 1.0,
+     "structural": 1.0
+    },
+    "elevated_signals": [
+     "duplicate",
+     "label_anomaly",
+     "trigger_candidate"
+    ],
+    "cross_signal_count": 3,
+    "disposition": "QUARANTINE"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "QUARANTINE",
+   "limitations": [
+    "Concentration of evidence prioritises review; it does not establish intent."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "source:contributor_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P1:DS-12953977:F-00042",
+   "part": 1,
+   "scope": "DS-12953977",
+   "source_finding_id": "F-00042",
+   "asset_type": "source",
+   "asset_id": "batch_id:batch_x",
+   "category": "source_concentration",
+   "severity": "high",
+   "confidence": 0.95,
+   "detector": "source_aggregation_v1",
+   "detector_version": "part1-0.1.0",
+   "evidence": {
+    "sample_count": 128,
+    "duplicate_rate": 0.1953,
+    "label_anomaly_rate": 0.1328,
+    "ood_rate": 0.0391,
+    "trigger_candidate_rate": 0.1953,
+    "structural_error_rate": 0.0234,
+    "anomaly_categories": {
+     "duplicate": 25,
+     "label_anomaly": 17,
+     "ood": 5,
+     "trigger_candidate": 25,
+     "structural": 3
+    },
+    "share_of_all_flagged": {
+     "duplicate": 1.0,
+     "label_anomaly": 1.0,
+     "ood": 1.0,
+     "trigger_candidate": 1.0,
+     "structural": 1.0
+    },
+    "elevated_signals": [
+     "duplicate",
+     "label_anomaly",
+     "trigger_candidate"
+    ],
+    "cross_signal_count": 3,
+    "disposition": "QUARANTINE"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:14+00:00",
+   "disposition": "QUARANTINE",
+   "limitations": [
+    "Concentration of evidence prioritises review; it does not establish intent."
+   ],
+   "entities": [
+    "dataset:DS-12953977",
+    "batch:batch_x"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "asset_type": null,
+   "asset_id": null,
+   "detector": null,
+   "detector_version": null,
+   "timestamp": null,
+   "source_finding_id": null,
+   "uid": "P1:DS-12953977:U-01",
+   "part": 1,
+   "scope": "DS-12953977",
+   "category": "test_unavailable",
+   "severity": "low",
+   "confidence": 1.0,
+   "evidence": {
+    "test": "trusted-reference OOD calibration: no trusted reference supplied (dataset used as its own reference - self-reference mode)"
+   },
+   "reference_assets": [],
+   "disposition": "UNAVAILABLE",
+   "limitations": [
+    "test not executed - this is NOT a PASS for that capability"
+   ],
+   "entities": [
+    "part:1"
+   ],
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P2:MODEL-trusted_reference:M-00001",
+   "part": 2,
+   "scope": "MODEL-trusted_reference",
+   "source_finding_id": "M-00001",
+   "asset_type": "model",
+   "asset_id": "MODEL-trusted_reference",
+   "category": "identity_unverifiable",
+   "severity": "low",
+   "confidence": 0.9,
+   "detector": "substitution_v1",
+   "detector_version": "part2-0.1.0",
+   "evidence": {
+    "reason": "no trusted digest or reference artifact supplied"
+   },
+   "reference_assets": [],
+   "timestamp": "2026-09-29T08:00:17+00:00",
+   "disposition": "UNAVAILABLE",
+   "limitations": [
+    "Identity comparison requires a trusted digest."
+   ],
+   "entities": [
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "888251ecd88c7b964929cde072b6765357d479ade62170a4a38d45b4a3c0a8c2"
+  },
+  {
+   "asset_type": null,
+   "asset_id": null,
+   "detector": null,
+   "detector_version": null,
+   "timestamp": null,
+   "source_finding_id": null,
+   "uid": "P2:MODEL-trusted_reference:U-01",
+   "part": 2,
+   "scope": "MODEL-trusted_reference",
+   "category": "test_unavailable",
+   "severity": "low",
+   "confidence": 1.0,
+   "evidence": {
+    "test": "behavioural comparison vs trusted model: no trusted reference model supplied"
+   },
+   "reference_assets": [],
+   "disposition": "UNAVAILABLE",
+   "limitations": [
+    "test not executed - this is NOT a PASS for that capability"
+   ],
+   "entities": [
+    "part:2"
+   ],
+   "artifact_sha256": "888251ecd88c7b964929cde072b6765357d479ade62170a4a38d45b4a3c0a8c2"
+  },
+  {
+   "asset_type": null,
+   "asset_id": null,
+   "detector": null,
+   "detector_version": null,
+   "timestamp": null,
+   "source_finding_id": null,
+   "uid": "P2:MODEL-trusted_reference:U-02",
+   "part": 2,
+   "scope": "MODEL-trusted_reference",
+   "category": "test_unavailable",
+   "severity": "low",
+   "confidence": 1.0,
+   "evidence": {
+    "test": "parameter diff vs trusted model: no trusted reference model supplied"
+   },
+   "reference_assets": [],
+   "disposition": "UNAVAILABLE",
+   "limitations": [
+    "test not executed - this is NOT a PASS for that capability"
+   ],
+   "entities": [
+    "part:2"
+   ],
+   "artifact_sha256": "888251ecd88c7b964929cde072b6765357d479ade62170a4a38d45b4a3c0a8c2"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00001",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00001",
+   "asset_type": "window",
+   "asset_id": "operational_window",
+   "category": "distribution_shift",
+   "severity": "high",
+   "confidence": 0.99,
+   "detector": "p4.shift_engine",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "level": "SEVERE SHIFT",
+    "worst_batch": "b2",
+    "ratio": 58.88,
+    "families": [
+     "geometry",
+     "sharpness_noise",
+     "compression",
+     "semantic",
+     "illumination",
+     "color"
+    ],
+    "top_features": [
+     {
+      "feature": "height",
+      "u": 60.625,
+      "ref_mean": 128.0,
+      "cur_mean": 120.0,
+      "effect_size": -3.12,
+      "direction": "down"
+     },
+     {
+      "feature": "width",
+      "u": 60.625,
+      "ref_mean": 128.0,
+      "cur_mean": 120.0,
+      "effect_size": -3.12,
+      "direction": "down"
+     },
+     {
+      "feature": "noise_est",
+      "u": 4.925,
+      "ref_mean": 4.5747,
+      "cur_mean": 3.0046,
+      "effect_size": -0.28,
+      "direction": "down"
+     },
+     {
+      "feature": "bytes_per_pixel",
+      "u": 3.186,
+      "ref_mean": 1.7787,
+      "cur_mean": 1.5737,
+      "effect_size": -0.99,
+      "direction": "down"
+     }
+    ],
+    "reference_id": "REF-d25e21c03fcc",
+    "interpretation": "operational population differs from trusted reference; cause requires analyst judgement"
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Distribution shift is not evidence of an attack: a new camera, season, location or lighting condition produces the same signal.",
+    "Thresholds are calibrated on the trusted reference only; a reference that is unrepresentative gives unrepresentative thresholds."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00002",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00002",
+   "asset_type": "window",
+   "asset_id": "operational_window",
+   "category": "drift_onset",
+   "severity": "medium",
+   "confidence": 0.8,
+   "detector": "p4.temporal",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "pattern": "step",
+    "onset_batch": "b2",
+    "drift_start_index": 2,
+    "cusum_alert_batch": 2,
+    "affected_batches": [
+     "b2",
+     "b3"
+    ],
+    "affected_families": [
+     "class_mix",
+     "color",
+     "compression",
+     "geometry",
+     "illumination",
+     "semantic",
+     "sharpness_noise",
+     "task_output"
+    ]
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Onset resolution is limited to batch granularity."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00003",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00003",
+   "asset_type": "batch",
+   "asset_id": "b2",
+   "category": "geometry_shift",
+   "severity": "high",
+   "confidence": 0.99,
+   "detector": "p4.attribution",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "score": 335.86,
+    "tests": [
+     "feat:height",
+     "feat:width"
+    ],
+    "features": [
+     {
+      "feature": "height",
+      "u": 335.855,
+      "ref_mean": 128.0,
+      "cur_mean": 96.0,
+      "effect_size": -12.5,
+      "direction": "down"
+     },
+     {
+      "feature": "width",
+      "u": 335.855,
+      "ref_mean": 128.0,
+      "cur_mean": 96.0,
+      "effect_size": -12.5,
+      "direction": "down"
+     }
+    ]
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Family-level attribution; not a causal proof."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream/b2",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00004",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00004",
+   "asset_type": "batch",
+   "asset_id": "b2",
+   "category": "sharpness_noise_shift",
+   "severity": "high",
+   "confidence": 0.99,
+   "detector": "p4.attribution",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "score": 9.87,
+    "tests": [
+     "feat:noise_est",
+     "feat:sharpness",
+     "feat:edge_density"
+    ],
+    "features": [
+     {
+      "feature": "noise_est",
+      "u": 9.87,
+      "ref_mean": 4.5747,
+      "cur_mean": 0.7413,
+      "effect_size": -0.69,
+      "direction": "down"
+     },
+     {
+      "feature": "sharpness",
+      "u": 4.087,
+      "ref_mean": 873.5876,
+      "cur_mean": 10.0449,
+      "effect_size": -0.18,
+      "direction": "down"
+     },
+     {
+      "feature": "edge_density",
+      "u": 1.701,
+      "ref_mean": 0.0222,
+      "cur_mean": 0.0033,
+      "effect_size": -0.22,
+      "direction": "down"
+     }
+    ]
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Family-level attribution; not a causal proof."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream/b2",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00005",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00005",
+   "asset_type": "batch",
+   "asset_id": "b2",
+   "category": "compression_shift",
+   "severity": "high",
+   "confidence": 0.99,
+   "detector": "p4.attribution",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "score": 6.36,
+    "tests": [
+     "feat:bytes_per_pixel",
+     "feat:blockiness"
+    ],
+    "features": [
+     {
+      "feature": "bytes_per_pixel",
+      "u": 6.36,
+      "ref_mean": 1.7787,
+      "cur_mean": 1.074,
+      "effect_size": -3.41,
+      "direction": "down"
+     },
+     {
+      "feature": "blockiness",
+      "u": 1.576,
+      "ref_mean": 0.9969,
+      "cur_mean": 1.0062,
+      "effect_size": 0.11,
+      "direction": "up"
+     }
+    ]
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Family-level attribution; not a causal proof."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream/b2",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00006",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00006",
+   "asset_type": "batch",
+   "asset_id": "b2",
+   "category": "new_source",
+   "severity": "medium",
+   "confidence": 0.7,
+   "detector": "p4.attribution",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "source": "cam_B",
+    "n": 40,
+    "abnormal": 40,
+    "abnormal_rate": 1.0,
+    "new_source": true
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Source metadata is self-reported by the operational system."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream/b2",
+    "source:cam_B",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00007",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00007",
+   "asset_type": "batch",
+   "asset_id": "b3",
+   "category": "semantic_shift",
+   "severity": "medium",
+   "confidence": 0.825,
+   "detector": "p4.attribution",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "score": 16.3,
+    "tests": [
+     "emb:mmd",
+     "emb:centroid",
+     "emb:cluster_occupancy"
+    ],
+    "features": []
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Family-level attribution; not a causal proof."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream/b3",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00008",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00008",
+   "asset_type": "batch",
+   "asset_id": "b3",
+   "category": "sharpness_noise_shift",
+   "severity": "medium",
+   "confidence": 0.825,
+   "detector": "p4.attribution",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "score": 9.39,
+    "tests": [
+     "feat:noise_est",
+     "feat:sharpness",
+     "feat:edge_density"
+    ],
+    "features": [
+     {
+      "feature": "noise_est",
+      "u": 9.395,
+      "ref_mean": 4.5747,
+      "cur_mean": 2.9467,
+      "effect_size": -0.29,
+      "direction": "down"
+     },
+     {
+      "feature": "sharpness",
+      "u": 3.77,
+      "ref_mean": 873.5876,
+      "cur_mean": 189.2251,
+      "effect_size": -0.14,
+      "direction": "down"
+     }
+    ]
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Family-level attribution; not a causal proof."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream/b3",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  },
+  {
+   "uid": "P4:shifted_stream:S-00009",
+   "part": 4,
+   "scope": "shifted_stream",
+   "source_finding_id": "S-00009",
+   "asset_type": "batch",
+   "asset_id": "b3",
+   "category": "illumination_shift",
+   "severity": "medium",
+   "confidence": 0.825,
+   "detector": "p4.attribution",
+   "detector_version": "part4-0.1.0",
+   "evidence": {
+    "score": 4.42,
+    "tests": [
+     "feat:brightness",
+     "feat:tonal_entropy",
+     "feat:contrast"
+    ],
+    "features": [
+     {
+      "feature": "brightness",
+      "u": 4.417,
+      "ref_mean": 126.3837,
+      "cur_mean": 80.4266,
+      "effect_size": -2.27,
+      "direction": "down"
+     },
+     {
+      "feature": "tonal_entropy",
+      "u": 2.223,
+      "ref_mean": 5.2084,
+      "cur_mean": 4.7186,
+      "effect_size": -1.03,
+      "direction": "down"
+     }
+    ]
+   },
+   "reference_assets": [
+    "REF-d25e21c03fcc"
+   ],
+   "timestamp": "2026-09-29T08:00:26+00:00",
+   "disposition": "REVIEW",
+   "limitations": [
+    "Family-level attribution; not a causal proof."
+   ],
+   "entities": [
+    "stream:shifted_stream",
+    "ledger:shifted_stream",
+    "dataset:DS-12953977",
+    "window:shifted_stream/b3",
+    "model:MODEL-trusted_reference"
+   ],
+   "artifact_sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+  }
+ ],
+ "finding_counts": {
+  "structural_error": 3,
+  "duplicate_pair_informational": 8,
+  "duplicate_flooding": 1,
+  "label_anomaly": 17,
+  "ood_anomaly": 5,
+  "trigger_candidate": 3,
+  "converging_signals": 2,
+  "source_concentration": 3,
+  "test_unavailable": 3,
+  "identity_unverifiable": 1,
+  "distribution_shift": 1,
+  "drift_onset": 1,
+  "geometry_shift": 1,
+  "sharpness_noise_shift": 2,
+  "compression_shift": 1,
+  "new_source": 1,
+  "semantic_shift": 1,
+  "illumination_shift": 1
+ },
+ "unavailable": [
+  {
+   "uid": "P1:DS-12953977:U-01",
+   "part": 1,
+   "scope": "DS-12953977",
+   "test": "trusted-reference OOD calibration: no trusted reference supplied (dataset used as its own reference - self-reference mode)",
+   "impact": "test not executed - this is NOT a PASS for that capability",
+   "artifact_sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+  },
+  {
+   "uid": "P2:MODEL-trusted_reference:U-01",
+   "part": 2,
+   "scope": "MODEL-trusted_reference",
+   "test": "behavioural comparison vs trusted model: no trusted reference model supplied",
+   "impact": "test not executed - this is NOT a PASS for that capability",
+   "artifact_sha256": "888251ecd88c7b964929cde072b6765357d479ade62170a4a38d45b4a3c0a8c2"
+  },
+  {
+   "uid": "P2:MODEL-trusted_reference:U-02",
+   "part": 2,
+   "scope": "MODEL-trusted_reference",
+   "test": "parameter diff vs trusted model: no trusted reference model supplied",
+   "impact": "test not executed - this is NOT a PASS for that capability",
+   "artifact_sha256": "888251ecd88c7b964929cde072b6765357d479ade62170a4a38d45b4a3c0a8c2"
+  }
+ ],
+ "graph": {
+  "nodes": [
+   {
+    "id": "batch:batch_x",
+    "type": "batch"
+   },
+   {
+    "id": "dataset:DS-12953977",
+    "type": "dataset"
+   },
+   {
+    "id": "group:G-001",
+    "type": "group"
+   },
+   {
+    "id": "group:G-002",
+    "type": "group"
+   },
+   {
+    "id": "group:G-003",
+    "type": "group"
+   },
+   {
+    "id": "group:G-004",
+    "type": "group"
+   },
+   {
+    "id": "group:G-005",
+    "type": "group"
+   },
+   {
+    "id": "group:G-006",
+    "type": "group"
+   },
+   {
+    "id": "group:G-007",
+    "type": "group"
+   },
+   {
+    "id": "group:G-008",
+    "type": "group"
+   },
+   {
+    "id": "group:G-009",
+    "type": "group"
+   },
+   {
+    "id": "ledger:shifted_stream",
+    "type": "ledger"
+   },
+   {
+    "id": "model:MODEL-trusted_reference",
+    "type": "model"
+   },
+   {
+    "id": "part:1",
+    "type": "part"
+   },
+   {
+    "id": "part:2",
+    "type": "part"
+   },
+   {
+    "id": "pattern:T-001",
+    "type": "pattern"
+   },
+   {
+    "id": "pattern:T-002",
+    "type": "pattern"
+   },
+   {
+    "id": "pattern:T-003",
+    "type": "pattern"
+   },
+   {
+    "id": "sample:img_000fb9fc6c",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_02641a0ec3",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_0b3b6c44fc",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_114129616d",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_11e8f3c24c",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_164016c8c0",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_2ede9daa15",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_3406d19a05",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_4973e0bd41",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_543a1a7d99",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_57a367ce04",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_58e3d69637",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_6212db9079",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_62ac0444b5",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_70e16e8730",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_71f9cd7e0b",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_74b07f5b59",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_80400fe65f",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_9c21ce223c",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_e72964b46c",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_ea9dc60196",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_f08ded2e40",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_f620532f08",
+    "type": "sample"
+   },
+   {
+    "id": "sample:img_f780f7c6ec",
+    "type": "sample"
+   },
+   {
+    "id": "source:cam_B",
+    "type": "source"
+   },
+   {
+    "id": "source:contributor_b",
+    "type": "source"
+   },
+   {
+    "id": "source:contributor_c",
+    "type": "source"
+   },
+   {
+    "id": "source:contributor_x",
+    "type": "source"
+   },
+   {
+    "id": "stream:shifted_stream",
+    "type": "stream"
+   },
+   {
+    "id": "window:shifted_stream",
+    "type": "window"
+   },
+   {
+    "id": "window:shifted_stream/b2",
+    "type": "window"
+   },
+   {
+    "id": "window:shifted_stream/b3",
+    "type": "window"
+   }
+  ],
+  "edges": [
+   [
+    "batch:batch_x",
+    "dataset:DS-12953977",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-001",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-002",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-003",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-004",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-005",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-006",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-007",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-008",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "group:G-009",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "ledger:shifted_stream",
+    9
+   ],
+   [
+    "dataset:DS-12953977",
+    "model:MODEL-trusted_reference",
+    9
+   ],
+   [
+    "dataset:DS-12953977",
+    "pattern:T-001",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "pattern:T-002",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "pattern:T-003",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_000fb9fc6c",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_02641a0ec3",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_0b3b6c44fc",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_114129616d",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_11e8f3c24c",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_164016c8c0",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_2ede9daa15",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_3406d19a05",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_4973e0bd41",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_543a1a7d99",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_57a367ce04",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_58e3d69637",
+    3
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_6212db9079",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_62ac0444b5",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_70e16e8730",
+    2
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_71f9cd7e0b",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_74b07f5b59",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_80400fe65f",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_9c21ce223c",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_e72964b46c",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_ea9dc60196",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_f08ded2e40",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_f620532f08",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "sample:img_f780f7c6ec",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "source:cam_B",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "source:contributor_b",
+    1
+   ],
+   [
+    "dataset:DS-12953977",
+    "source:contributor_c",
+    5
+   ],
+   [
+    "dataset:DS-12953977",
+    "source:contributor_x",
+    8
+   ],
+   [
+    "dataset:DS-12953977",
+    "stream:shifted_stream",
+    9
+   ],
+   [
+    "dataset:DS-12953977",
+    "window:shifted_stream",
+    2
+   ],
+   [
+    "dataset:DS-12953977",
+    "window:shifted_stream/b2",
+    4
+   ],
+   [
+    "dataset:DS-12953977",
+    "window:shifted_stream/b3",
+    3
+   ],
+   [
+    "group:G-001",
+    "source:contributor_x",
+    1
+   ],
+   [
+    "group:G-002",
+    "source:contributor_x",
+    1
+   ],
+   [
+    "group:G-003",
+    "source:contributor_x",
+    1
+   ],
+   [
+    "group:G-004",
+    "source:contributor_b",
+    1
+   ],
+   [
+    "group:G-005",
+    "source:contributor_c",
+    1
+   ],
+   [
+    "group:G-006",
+    "source:contributor_c",
+    1
+   ],
+   [
+    "group:G-007",
+    "source:contributor_c",
+    1
+   ],
+   [
+    "group:G-008",
+    "source:contributor_c",
+    1
+   ],
+   [
+    "group:G-009",
+    "source:contributor_c",
+    1
+   ],
+   [
+    "ledger:shifted_stream",
+    "model:MODEL-trusted_reference",
+    9
+   ],
+   [
+    "ledger:shifted_stream",
+    "source:cam_B",
+    1
+   ],
+   [
+    "ledger:shifted_stream",
+    "stream:shifted_stream",
+    9
+   ],
+   [
+    "ledger:shifted_stream",
+    "window:shifted_stream",
+    2
+   ],
+   [
+    "ledger:shifted_stream",
+    "window:shifted_stream/b2",
+    4
+   ],
+   [
+    "ledger:shifted_stream",
+    "window:shifted_stream/b3",
+    3
+   ],
+   [
+    "model:MODEL-trusted_reference",
+    "source:cam_B",
+    1
+   ],
+   [
+    "model:MODEL-trusted_reference",
+    "stream:shifted_stream",
+    9
+   ],
+   [
+    "model:MODEL-trusted_reference",
+    "window:shifted_stream",
+    2
+   ],
+   [
+    "model:MODEL-trusted_reference",
+    "window:shifted_stream/b2",
+    4
+   ],
+   [
+    "model:MODEL-trusted_reference",
+    "window:shifted_stream/b3",
+    3
+   ],
+   [
+    "pattern:T-001",
+    "source:contributor_x",
+    1
+   ],
+   [
+    "pattern:T-002",
+    "source:contributor_x",
+    1
+   ],
+   [
+    "pattern:T-003",
+    "source:contributor_x",
+    1
+   ],
+   [
+    "source:cam_B",
+    "stream:shifted_stream",
+    1
+   ],
+   [
+    "source:cam_B",
+    "window:shifted_stream/b2",
+    1
+   ],
+   [
+    "stream:shifted_stream",
+    "window:shifted_stream",
+    2
+   ],
+   [
+    "stream:shifted_stream",
+    "window:shifted_stream/b2",
+    4
+   ],
+   [
+    "stream:shifted_stream",
+    "window:shifted_stream/b3",
+    3
+   ]
+  ]
+ },
+ "assumptions": [
+  "Part 3/4 findings linked to the single supplied Part 2 model (MODEL-trusted_reference) as the served model"
+ ],
+ "policy": {
+  "severity_weight": {
+   "low": 0.15,
+   "medium": 0.4,
+   "high": 0.7,
+   "critical": 0.95
+  },
+  "category_weight": {
+   "duplicate_pair_informational": 0.2,
+   "identity_unverifiable": 0.2,
+   "numerical_drift_within_tolerance": 0.1,
+   "test_unavailable": 0.0
+  },
+  "default_category_weight": 1.0,
+  "group_volume_bonus": {
+   "per_log10": 0.05,
+   "cap": 0.1
+  },
+  "independence_bonus": {
+   "per_extra_part": 0.08,
+   "cap": 0.25
+  },
+  "priority_bands": {
+   "HIGH": 0.85,
+   "ELEVATED": 0.5,
+   "MODERATE": 0.25
+  },
+  "isolated_signal_max_disposition": "REVIEW",
+  "isolated_priority_cap": 0.6,
+  "min_rationale_chars": 15,
+  "min_severity_for_residual_case": "medium",
+  "max_findings_listed_per_case": 12,
+  "max_findings_in_explorer": 400
+ },
+ "policy_sha256": "bf73954c8e5febeb68dc4437b585ca960b73bd79725e2868349ece18554bee1e",
+ "reproducibility": {
+  "inputs": [
+   {
+    "part": 1,
+    "scope": "DS-12953977",
+    "path": "/home/claude/demo_p12345/trusted_model_served/p1234/p123/part12/part1/assurance_part1.json",
+    "sha256": "db181c24dfbda75cbc7bae008e119cce5ad38a9f8b1173254df4b437208dbb00"
+   },
+   {
+    "part": 2,
+    "scope": "MODEL-trusted_reference",
+    "path": "/home/claude/demo_p12345/trusted_model_served/p1234/p123/part12/part2/assurance_part2.json",
+    "sha256": "888251ecd88c7b964929cde072b6765357d479ade62170a4a38d45b4a3c0a8c2"
+   },
+   {
+    "part": 3,
+    "scope": "dataset_sample_ledger",
+    "path": "/home/claude/demo_p12345/trusted_model_served/p1234/p123/part3/assurance_part3.json",
+    "sha256": "07c8bfbb22c90dea5fb6d3a78ce4faa35f6456569df47955a57f72dcc88ac272"
+   },
+   {
+    "part": 3,
+    "scope": "shifted_stream",
+    "path": "/home/claude/demo_p12345/trusted_model_served/p1234/streams/shifted_stream/part3/assurance_part3.json",
+    "sha256": "ef814c0e08af5b7fba48e77096ac7f97cd250ce139300f2541359c15f7d70236"
+   },
+   {
+    "part": 3,
+    "scope": "stable_stream",
+    "path": "/home/claude/demo_p12345/trusted_model_served/p1234/streams/stable_stream/part3/assurance_part3.json",
+    "sha256": "c4690d1ceab5c4f28a6de5c08c6866ad7b63af6a6d7425df3162737b114697fd"
+   },
+   {
+    "part": 4,
+    "scope": "shifted_stream",
+    "path": "/home/claude/demo_p12345/trusted_model_served/p1234/streams/shifted_stream/part4/assurance_part4.json",
+    "sha256": "af3fbb1f846fa4542c9241593b54c15eb81ff6d13cd4c413f12dee91760c8669"
+   },
+   {
+    "part": 4,
+    "scope": "stable_stream",
+    "path": "/home/claude/demo_p12345/trusted_model_served/p1234/streams/stable_stream/part4/assurance_part4.json",
+    "sha256": "d2aeb55099d4c9b062522fe16e6ff5580a578a817530b398f08a8969ac9b1a2f"
+   }
+  ],
+  "policy_sha256": "bf73954c8e5febeb68dc4437b585ca960b73bd79725e2868349ece18554bee1e",
+  "python": "3.12.3",
+  "numpy": "2.4.4",
+  "platform": "Linux-6.18.44-fc-v37-x86_64-with-glibc2.39",
+  "network_access_required": false,
+  "training_performed": false,
+  "rerun": "python -m cv_assurance part5 assemble --results <same dirs> --out <dir> [--policy <same policy>] -> identical case_ids and evidence_hashes"
+ },
+ "limitations": [
+  "Rule-based correlation only: converging evidence raises review priority, it does not establish intent, attribution or a functional backdoor beyond tests executed.",
+  "The review-priority score is a transparent noisy-OR of policy weights, not a probability of malicious activity.",
+  "Absence of findings is not proof of safety; UNAVAILABLE items are coverage gaps, never passes.",
+  "A distribution shift is not automatically an attack; governance decides whether it is acceptable.",
+  "The audit trail is tamper-evident within the declared trust boundary; a fully privileged attacker who controls the host, the key or the assurance binary is out of scope.",
+  "Inputs are trusted only from the point at which Parts 1-4 artifacts were captured (their hashes are recorded here)."
+ ],
+ "honest_claims": [
+  "Detects specified integrity inconsistencies and controlled attack scenarios and correlates them across data, model, inference and shift.",
+  "Every case links to raw findings, their detector versions and the hash of the artifact that produced them.",
+  "Runs offline; no retraining, no cloud/API calls; unavailable tests are disclosed."
+ ],
+ "overall": {
+  "system_disposition": "QUARANTINE",
+  "governance_adjusted_disposition": "QUARANTINE",
+  "open_cases": 3,
+  "coverage": "PARTIAL",
+  "coverage_gaps": [
+   "1",
+   "2"
+  ],
+  "why": [
+   "C-a2316531 [QUARANTINE] Source 'contributor_x' shows 3 converging data-integrity signals",
+   "C-7672ae6e [REVIEW] Stream 'shifted_stream': severe shift in geometry",
+   "C-5671b112 [REVIEW] Part 1 'DS-12953977': isolated signal(s) - converging_signals, label_anomaly, ood_anomaly, source_concentration, structural_error"
+  ]
+ },
+ "governance": {
+  "case_state": {
+   "C-a2316531": {
+    "status": "OPEN",
+    "history": [],
+    "stale": false,
+    "last": null
+   },
+   "C-7672ae6e": {
+    "status": "OPEN",
+    "history": [],
+    "stale": false,
+    "last": null
+   },
+   "C-5671b112": {
+    "status": "OPEN",
+    "history": [],
+    "stale": false,
+    "last": null
+   }
+  },
+  "orphan_decisions": [],
+  "actions": [
+   "accept",
+   "review",
+   "quarantine",
+   "retest",
+   "close"
+  ]
+ },
+ "audit": {
+  "path": "audit_part5.jsonl",
+  "verify": {
+   "ok": true,
+   "events": 9,
+   "reason": "chain intact; 9 HMAC signatures valid",
+   "head": "abd5219f653f793a727e883eb8e955940a79b93cba566ec0d30043a46d650a30",
+   "signed": true
+  },
+  "events_at_render": 9
+ },
+ "refreshed_at": "2026-09-29T08:00:26+00:00"
+}

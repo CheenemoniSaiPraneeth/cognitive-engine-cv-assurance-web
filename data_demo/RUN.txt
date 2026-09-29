@@ -1,0 +1,9 @@
+# full Parts 1-5, TRUSTED model served (expect: data findings + shift REVIEW, no model/inference failures)
+python -m cv_assurance part5 integrated --dataset ./data_demo/dataset --model ./data_demo/models/trusted_reference.npz --trusted-model ./data_demo/models/trusted_reference.npz \
+  --stream stable_stream=./data_demo/streams/stable_stream --stream shifted_stream=./data_demo/streams/shifted_stream --format coco --out ./data_demo/run_trusted
+
+# full Parts 1-5, TROJAN model served (expect converging QUARANTINE cases across Parts 1-4)
+python -m cv_assurance part5 integrated --dataset ./data_demo/dataset --model ./data_demo/models/trojan_checker.npz --trusted-model ./data_demo/models/trusted_reference.npz \
+  --stream stable_stream=./data_demo/streams/stable_stream --stream shifted_stream=./data_demo/streams/shifted_stream --format coco --out ./data_demo/run_trojan
+
+# open ./data_demo/run_trojan/part5/report_part5.html

@@ -1,0 +1,8 @@
+numpy>=1.24
+Pillow>=9.0
+scipy>=1.10
+scikit-learn>=1.2
+# optional: frozen pretrained encoder (ONNX) for stronger semantic embeddings
+# onnxruntime>=1.16
+# optional: pytest for tests
+# pytest
